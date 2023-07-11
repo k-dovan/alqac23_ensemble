@@ -20,7 +20,7 @@ if __name__ == '__main__':
     corpus_paths = [
         alqac23_corpus_path,
         alqac22_corpus_path,
-        zalo_corpus_path
+        # zalo_corpus_path
     ]
     
     data = []

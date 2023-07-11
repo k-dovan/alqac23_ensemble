@@ -23,6 +23,11 @@ def encode_legal_data(legal_dict_json, models):
             emb2_list.append(emb2)
         emb2_arr = np.array(emb2_list)
         list_emb_models.append(emb2_arr)
+    
+    # save embedded data to file
+    with open("generated_data/embedded_corpus_data.pkl", "wb") as f1:
+        pickle.dump(list_emb_models, f1)
+
     return list_emb_models
 
 def encode_question(question_data, models):
@@ -37,9 +42,9 @@ def encode_question(question_data, models):
         question_embs.append(emb_quest_dict)
     return question_embs
 
-def load_encoded_legal_corpus(legal_data_path):
+def load_embedded_legal_corpus():
     print("Start loading legal corpus.")
-    with open(legal_data_path, "rb") as f1:
+    with open("generated_data/embedded_corpus_data.pkl", "rb") as f1:
         emb_legal_data = pickle.load(f1)
     return emb_legal_data
 
@@ -68,7 +73,7 @@ if __name__ == "__main__":
     parser.add_argument("--saved_model", default="saved_model", type=str)
     parser.add_argument("--legal_dict_json", default="generated_data/legal_dict.json", type=str)
     parser.add_argument("--bm25_path", default="saved_model/bm25_Plus_04_06_model_full_manual_stopword", type=str)
-    parser.add_argument("--legal_data", default="saved_model/doc_refers_saved", type=str, help="path to legal corpus for reference")
+    parser.add_argument("--legal_data", default="generated_data/flattened_corpus.pkl", type=str, help="path to flattened corpus")
     parser.add_argument("--range-score", default=2.6, type=float, help="range of cos sin score for multiple-answer")
     parser.add_argument("--encode_legal_data", action="store_true", help="for legal data encoding")
     args = parser.parse_args()
@@ -93,13 +98,13 @@ if __name__ == "__main__":
     bm25 = load_bm25(args.bm25_path)
     # load corpus to search
     print("Load legal data.")
-    with open(args.legal_data, "rb") as doc_refer_file:
-        doc_refers = pickle.load(doc_refer_file)
+    with open(args.legal_data, "rb") as flat_corpus:
+        flattened_corpus = pickle.load(flat_corpus)
     # load pre encoded for legal corpus
     if args.encode_legal_data:
         emb_legal_data = encode_legal_data(args.legal_dict_json, models)
     else:
-        emb_legal_data = load_encoded_legal_corpus('encoded_legal_data.pkl')
+        emb_legal_data = load_embedded_legal_corpus()
 
     # encode question for query
     question_embs = encode_question(question_items, models)
@@ -150,7 +155,7 @@ if __name__ == "__main__":
         # post processing character error
         dup_ans = []
         for idx, idx_pred in enumerate(map_ids):
-            pred = doc_refers[idx_pred]
+            pred = flattened_corpus[idx_pred]
             law_id = pred[0]
             article_id = pred[1]
             

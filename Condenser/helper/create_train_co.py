@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 import argparse
 import json
 from transformers import AutoTokenizer
@@ -20,7 +21,7 @@ from tqdm import tqdm
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--file', required=True)
-parser.add_argument('--save_to', required=True)
+parser.add_argument('--save_path', required=True)
 parser.add_argument('--tokenizer', required=True)
 args = parser.parse_args()
 
@@ -28,8 +29,6 @@ tokenizer = AutoTokenizer.from_pretrained(args.tokenizer, use_fast=True)
 
 
 def encode_one(line):
-    # item = json.loads(line)
-    # spans = item['spans']
     spans = line.split("#")
     if len(spans) <= 1:
         return None
@@ -45,7 +44,7 @@ def encode_one(line):
     return json.dumps({'spans': tokenized})
 
 
-with open(args.save_to, 'w') as f:
+with open(os.path.join(args.save_path, 'cocondenser_data_encoded.json'), 'w') as f:
     with Pool() as p:
         all_tokenized = p.imap_unordered(
             encode_one,

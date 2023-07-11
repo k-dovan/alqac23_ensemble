@@ -59,15 +59,15 @@ if __name__ == '__main__':
                 documents.append(tokens)
                 doc_refers.append([law_id, article_id, article_text])
         
-        with open(os.path.join(save_path, "documents_manual"), "wb") as documents_file:
+        with open(os.path.join(save_path, "bm25_tokenized_corpus.pkl"), "wb") as documents_file:
             pickle.dump(documents, documents_file)
-        with open(os.path.join(save_path,"doc_refers_saved"), "wb") as doc_refer_file:
-            pickle.dump(doc_refers, doc_refer_file)
+        with open(os.path.join(save_path,"flattened_corpus.pkl"), "wb") as flat_corpus_file:
+            pickle.dump(doc_refers, flat_corpus_file)
     else:
-        with open(os.path.join(save_path, "documents_manual"), "rb") as documents_file:
+        with open(os.path.join(save_path, "bm25_tokenized_corpus.pkl"), "rb") as documents_file:
             documents = pickle.load(documents_file)
-        with open(os.path.join(save_path,"doc_refers_saved"), "rb") as doc_refer_file:
-            doc_refers = pickle.load(doc_refer_file)
+        with open(os.path.join(save_path,"flattened_corpus.pkl"), "rb") as flat_corpus_file:
+            doc_refers = pickle.load(flat_corpus_file)
             
 
     # Grid_search, evaluate on training questions

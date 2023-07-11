@@ -33,8 +33,8 @@ if __name__ == '__main__':
 
     with open(args.model_path, "rb") as bm_file:
         bm25 = pickle.load(bm_file)
-    with open("saved_model/doc_refers_saved", "rb") as doc_refer_file:
-        doc_refers = pickle.load(doc_refer_file)
+    with open("generated_data/flattened_corpus.pkl", "rb") as flat_corpus_file:
+        doc_refers = pickle.load(flat_corpus_file)
 
     doc_data = json.load(open("generated_data/legal_dict.json"))
 

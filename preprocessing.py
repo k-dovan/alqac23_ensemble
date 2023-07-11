@@ -27,9 +27,8 @@ if __name__ == "__main__":
         data.extend(json.load(open(corpus_path)))
         
     print("=======================")
-    print("Start create doc refer.")
-    documents = []
-    doc_refers = []
+    print("Start create flattened corpus.")
+    flattened_corpus = []
     for law_article in tqdm(data):
         law_id = law_article["id"]
         law_articles = law_article["articles"]
@@ -37,8 +36,8 @@ if __name__ == "__main__":
         for sub_article in law_articles:
             article_id = sub_article["id"]
             article_text = sub_article["text"]
-            doc_refers.append([law_id, article_id, article_text])
+            flattened_corpus.append([law_id, article_id, article_text])
     os.makedirs(args.save_path, exist_ok=True)
-    with open(os.path.join(args.save_path,"doc_refers_saved.pkl"), "wb") as doc_refer_file:
-        pickle.dump(doc_refers, doc_refer_file)
+    with open(os.path.join(args.save_path,"flattened_corpus.pkl"), "wb") as flat_corpus_file:
+        pickle.dump(flattened_corpus, flat_corpus_file)
     print("Created Doc Data.")

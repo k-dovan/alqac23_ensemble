@@ -24,8 +24,8 @@ import nltk
 nltk.download("punkt", quiet=True)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--file', type=str)
-parser.add_argument('--save_to', type=str)
+parser.add_argument('--corpus_file', type=str)
+parser.add_argument('--save_path', type=str)
 parser.add_argument('--column', type=int, help="take specified column")
 parser.add_argument('--tokenizer_name', required=True)
 parser.add_argument('--max_len', type=int, default=512)
@@ -34,7 +34,6 @@ parser.add_argument('--short_sentence_prob', type=float, default=0.1)
 args = parser.parse_args()
 
 tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_name, use_fast=True)
-file_name = os.path.split(args.file)[1]
 
 target_length = args.max_len - tokenizer.num_special_tokens_to_add(pair=False)
 
@@ -72,10 +71,10 @@ def encode_one_line(text: str):
     return blocks
 
 
-with open(args.file, 'r') as corpus_file:
+with open(args.corpus_file, 'r') as corpus_file:
     lines = corpus_file.readlines()
 
-with open(os.path.join(args.save_to, file_name + '.json'), 'w') as tokenized_file:
+with open(os.path.join(args.save_path, 'condenser_data_encoded.json'), 'w') as tokenized_file:
     with Pool() as p:
         all_blocks = p.imap_unordered(
             encode_one_line,
