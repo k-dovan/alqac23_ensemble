@@ -1,6 +1,6 @@
 import string
 from underthesea import word_tokenize
-import os
+import re
 import json
 
 number = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
@@ -12,6 +12,10 @@ stop_word = number + chars + ["của", "và", "các", "có", "được", "theo",
             "do", "một", "bị", "vào", "lại", "ở", "nếu", "làm", "đây", 
             "như", "đó", "mà", "nơi", "”", "“"]
 
+# replace by regex numbered and letter bullets from articles
+regx_numbered_list = r"\n+\d{1,3}\."
+regx_letter_list = r"\n+[abcdđefghijklmnopqrstuvxyz]\)"
+
 def remove_stopword(w):
     return w not in stop_word
 def remove_punctuation(w):
@@ -20,10 +24,12 @@ def lower_case(w):
     return w.lower()
 
 def bm25_tokenizer(text):
+    text = re.sub(regx_numbered_list, " ", text)
+    text = re.sub(regx_letter_list, " ", text)
     tokens = word_tokenize(text)
     tokens = list(map(lower_case, tokens))
     tokens = list(filter(remove_punctuation, tokens))
-    tokens = list(filter(remove_stopword, tokens))
+    # tokens = list(filter(remove_stopword, tokens))
     return tokens
 
 def calculate_f2(precision, recall):        
