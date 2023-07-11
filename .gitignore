@@ -29,7 +29,7 @@ share/python-wheels/
 MANIFEST
 # avoid load pretrained and data
 saved_model/
-zac2021-ltr-data/
+alqac23_data/
 legal_data/
 generated_data/
 
