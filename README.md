@@ -81,22 +81,22 @@ Original source code here: https://github.com/luyug/Condenser (we modified sever
 ### Create data for Condenser: 
  
 ```
-python helper/create_train.py \
+python Condenser/helper/create_train.py \
     --tokenizer_name $MODEL_NAME \
     --corpus_file $DATA_FILE \
     --save_path $SAVE_CONDENSER \
     --max_len $MAX_LENGTH 
 
 $MODEL_NAME=vinai/phobert-large
-$DATA_FILE=../generated_data/corpus.txt
-$SAVE_CONDENSER=../generated_data/
+$DATA_FILE=generated_data/corpus.txt
+$SAVE_CONDENSER=generated_data/condenser_data_encoded
 $MAX_LENGTH=256
 ```
 
 #### **Note**: $MODEL_NAME checkpoint from finetuned language model.
 
 ```
-python run_pre_training.py \
+python Condenser/run_pre_training.py \
   --output_dir $OUTDIR \
   --model_name_or_path $MODEL_NAME \
   --do_train \
@@ -119,9 +119,9 @@ python run_pre_training.py \
 ```
 We use this setting to run Condenser:
 ```
-python run_pre_training.py   \
-    --output_dir saved_model_1/  \
-    --model_name_or_path '/path/to/language/model'   \
+python Condenser/run_pre_training.py   \
+    --output_dir saved_model/condenser_phobert_large/  \
+    --model_name_or_path saved_model/mlm_finetuned_phobert_large   \
     --do_train   
     --save_steps 2000   \
     --per_device_train_batch_size 32   \
@@ -136,7 +136,7 @@ python run_pre_training.py   \
     --n_head_layers 2   \
     --skip_from 6   \
     --max_seq_length 256   \
-    --train_dir ../generated_data/   \
+    --train_dir generated_data/condenser_data_encoded   \
     --weight_decay 0.01   \
     --late_mlm
 ```
@@ -146,16 +146,16 @@ python run_pre_training.py   \
 First, we create data for cocodenser
 
 ```
-python helper/create_train_co.py \
+python Condenser/helper/create_train_co.py \
     --tokenizer vinai/phobert-large \
-    --file ../generated_data/cocondenser_data.json \
-    --save_path ../generated_data \
+    --file generated_data/cocondenser_data.json \
+    --save_path generated_data/cocondenser_data_encoded \
 ```
 
 Run the following cmd to train co-condenser model:
 ```
-python  run_co_pre_training.py   \
-    --output_dir saved_model/cocondenser/   \
+python  Condenser/run_co_pre_training.py   \
+    --output_dir saved_model/condenser_phobert_large/   \
     --model_name_or_path $CONDENSER_CKPT   \
     --do_train   \
     --save_steps 2000   \
@@ -172,7 +172,7 @@ python  run_co_pre_training.py   \
     --n_head_layers 2   \
     --skip_from 6   \
     --max_seq_length 256   \
-    --train_dir ../generated_data/cocondenser/   \
+    --train_dir generated_data/cocondenser_data_encoded/   \
     --weight_decay 0.01   \
     --late_mlm  \
     --cache_chunk_size 32 \
