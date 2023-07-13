@@ -108,6 +108,7 @@ python run_pre_training.py \
   --learning_rate 5e-5 \
   --num_train_epochs 8 \
   --overwrite_output_dir \
+  --remove_unused_columns False \
   --dataloader_num_workers 32 \
   --n_head_layers 2 \
   --skip_from 6 \
@@ -130,6 +131,7 @@ python run_pre_training.py   \
     --learning_rate 5e-5   \
     --num_train_epochs 8   \
     --overwrite_output_dir   \
+    --remove_unused_columns False \
     --dataloader_num_workers 32   \
     --n_head_layers 2   \
     --skip_from 6   \

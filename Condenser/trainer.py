@@ -52,11 +52,6 @@ class CondenserPreTrainer(Trainer):
         # Good practice: save your training arguments together with the trained model
         torch.save(self.args, os.path.join(output_dir, "training_args.bin"))
 
-    def _remove_unused_columns(self, dataset, description: Optional[str] = None):
-        # we are not going to do this in this
-        # as collator will be generating new columns
-        pass
-
     def create_optimizer_and_scheduler(self, num_training_steps: int):
         if self.args.warmup_ratio > 0:
             self.args.warmup_steps = num_training_steps * self.args.warmup_ratio
