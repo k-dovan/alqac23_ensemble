@@ -17,9 +17,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--pretrained_model", default="", type=str, help="path to your language model")
     parser.add_argument("--max_seq_length", default=256, type=int, help="maximum sequence length")
+    parser.add_argument("--pooling_mode", default="mean", type=str, choices=["mean","max","cls"], help="pooling mode for sentence-transformers")
     parser.add_argument("--pair_data_path", type=str, default="", help="path to saved pair data")
-    parser.add_argument("--round", default=1, type=str, help="training round ")
-    parser.add_argument("--num_val", default=2500, type=int, help="number of eval data")
+    parser.add_argument("--round", default=1, type=int, help="training round")
+    parser.add_argument("--num_eval", default=2500, type=int, help="number of eval data")
     parser.add_argument("--epochs", default=5, type=int, help="Number of training epochs")
     parser.add_argument("--saved_model", default="", type=str, help="path to savd model directory.")
     parser.add_argument("--batch_size", type=int, default=32, help="batch size")
@@ -30,10 +31,10 @@ if __name__ == '__main__':
                         datefmt='%Y-%m-%d %H:%M:%S',
                         level=logging.INFO,
                         handlers=[LoggingHandler()])
-    if round == 1:
+    if args.round == 1:
         print(f"Training round 1")
         word_embedding_model = models.Transformer(args.pretrained_model, max_seq_length=args.max_seq_length)
-        pooling_model = models.Pooling(word_embedding_model.get_word_embedding_dimension())
+        pooling_model = models.Pooling(word_embedding_model.get_word_embedding_dimension(), pooling_mode=args.pooling_mode)
         model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
         print(model)
     else:
@@ -47,7 +48,7 @@ if __name__ == '__main__':
     sent1 = []
     sent2 = []
     scores = []
-    num_train = len(save_pairs) - args.num_val
+    num_train = len(save_pairs) - args.num_eval
 
     for idx, pair in enumerate(save_pairs):
         relevant = float(pair["relevant"])

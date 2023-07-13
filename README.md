@@ -152,7 +152,7 @@ python Condenser/helper/create_train_co.py \
     --save_path generated_data/cocondenser_data_encoded \
 ```
 
-Run the following cmd to train co-condenser model:
+Run the following cmd to train co-condenser model (require to install [GradCache](https://github.com/luyug/GradCache)):
 ```
 python  Condenser/run_co_pre_training.py   \
     --output_dir saved_model/condenser_phobert_large/   \
@@ -191,13 +191,54 @@ python train_sentence_bert.py
     --max_seq_length 256 \
     --pair_data_path /path/to/your/negative/pairs/data\
     --round 1 \
-    --num_val $NUM_VAL\
+    --num_eval $NUM_EVAL\
     --epochs 10\
     --saved_model /path/to/your/save/model/directory\
     --batch_size 32\
 ```
 
-here we pick $NUM_VAL is 50 * 20 and 50 * 50 for top 20 and 50 pairs data respectively
+Here we pick $NUM_EVAL is 50 * 20 and 50 * 50 for top 20 and 50 pairs data respectively.
+
+#### mlm_finetuned_phobert_large -> Sentence-Transformers
+```
+python train_sentence_bert.py \
+    --pretrained_model saved_model/mlm_finetuned_phobert_large \
+    --max_seq_length 256 \
+    --pair_data_path generated_data/qrel_pairs_bm25_top20 \
+    --round 1 \
+    --num_eval 1000 \
+    --epochs 4 \
+    --saved_model saved_model/sbert_round1_epoch4_topk20_mlm_finetuned_phobert_large \
+    --batch_size 32
+```
+
+#### condenser_phobert_large (cls_pooling) -> Sentence-Transformers
+```
+python train_sentence_bert.py \
+    --pretrained_model saved_model/condenser_phobert_large \
+    --max_seq_length 256 \
+    --pooling_mode cls \
+    --pair_data_path generated_data/qrel_pairs_bm25_top20 \
+    --round 1 \
+    --num_eval 1000 \
+    --epochs 4 \
+    --saved_model saved_model/sbert_round1_epoch4_topk20_condenser_phobert_large \
+    --batch_size 32
+```
+
+#### cocondenser_phobert_large (cls_pooling) -> Sentence-Transformers
+```
+python train_sentence_bert.py \
+    --pretrained_model saved_model/cocondenser_phobert_large \
+    --max_seq_length 256 \
+    --pooling_mode cls \
+    --pair_data_path generated_data/qrel_pairs_bm25_top20 \
+    --round 1 \
+    --num_eval 1000 \
+    --epochs 4 \
+    --saved_model saved_model/sbert_round1_epoch4_topk20_cocondenser_phobert_large \
+    --batch_size 32
+```
 
 ### Round 2: using hard negative pairs create from Round 1 model
 - Step 1: Run the following cmd to generate hard negative pairs from round 1 model:
@@ -217,12 +258,17 @@ python train_sentence_bert.py
     --max_seq_length 256 \
     --pair_data_path /path/to/your/negative/pairs/data\
     --round 2 \
-    --num_val $NUM_VAL\
+    --num_eval $NUM_EVAL\
     --epochs 5\
     --saved_model /path/to/your/save/model/directory\
     --batch_size 32\
 ```
 Tips: Use small learning rate for model convergence
+
+## Run time-consuming tasks via `ssh` with `stdout/stderr` redirected to log files
+```
+screen -dm bash -c "[your_command_line] 2> [your_log_file]"
+```
 
 ## Prediction
 ### For reproducing result.
