@@ -37,15 +37,17 @@ if __name__ == '__main__':
         for sub_article in law_articles:
             article_id = sub_article["id"]
             article_text = sub_article["text"]
-            article_full = article_text.replace("\n", " ")
+            article_full = re.sub(r'\n+', " ", article_text)
             cp.write(article_full + "\n")
             
             # Save data for cocondenser 
             spans = []
-            passages = re.split(r"\n[0-9]+\. |1\. ", article_text)
-            for idx, p in enumerate(passages):
+            passages = re.split(r"\n+[0-9]{1,3}\.", article_text)
+            for p in passages:
                 if p != "":
-                    spans.append(p)
+                    p_1 = re.sub(r'([\:;.])\n+', r'\1 ', p)
+                    p_2 = re.sub(r'\n+', r'. ', p_1)
+                    spans.append(p_2)
             co_f.write("#".join(spans) + "\n")
             
             concat_id = law_id + "_" + article_id
@@ -77,7 +79,7 @@ if __name__ == '__main__':
         train_items.extend(json.load(open(train_corpus_path)))
 
     for item in tqdm(train_items):
-        question = item["text"]
+        question = re.sub(r'\s*\n+\s*', " ", item["text"]) 
         cp.write(question + "\n")
 
     # enrich corpus from public test file
@@ -85,7 +87,7 @@ if __name__ == '__main__':
     public_items = json.load(open(alqac23_corpus_path_test))
 
     for item in tqdm(public_items):
-        question = item["text"]
+        question = re.sub(r'\s*\n+\s*', " ", item["text"]) 
         cp.write(question + "\n")
 
     cp.close()
