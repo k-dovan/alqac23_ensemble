@@ -4,7 +4,6 @@ import numpy as np
 import json
 import torch
 from tqdm import tqdm
-from rank_bm25 import *
 import argparse
 import warnings 
 from sentence_transformers import SentenceTransformer, util
@@ -13,56 +12,63 @@ warnings.filterwarnings("ignore")
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model_path", default="saved_model/bm25_Plus_04_06_model_full_manual_stopword", type=str)
-    parser.add_argument("--sentence_bert_path", default="", type=str, help="path to round 1 sentence bert model")
-    parser.add_argument("--data_path", default="zac2021-ltr-data", type=str, help="path to input data")
-    parser.add_argument("--save_path", default="pair_data", type=str)
-    parser.add_argument("--top_k", default=20, type=str, help="top k hard negative mining")
-    parser.add_argument("--path_doc_refer", default="generated_data/flattened_corpus.pkl", type=str, help="path to flattened corpus")
-    parser.add_argument("--path_legal", default="generated_data/legal_dict.json", type=str, help="path to legal dict")
+    parser.add_argument("--sbert_model_path", default="", type=str, help="path to round 1 sentence bert model")
+    parser.add_argument("--data_path", default="alqac23_data", type=str, help="path to input data")
+    parser.add_argument("--save_path", default="generated_data", type=str)
+    parser.add_argument("--top_k", default=20, type=int, help="top k hard negative mining")
+    parser.add_argument("--flattened_corpus", default="generated_data/flattened_corpus.pkl", type=str, help="path to flattened corpus")
+    parser.add_argument("--legal_dict_path", default="generated_data/legal_dict.json", type=str, help="path to legal dict")
+    parser.add_argument("--load_embedding", action="store_true", help="load pre-computed embedding")
     args = parser.parse_args()
 
+    # get sbert model name
+    sbert_model_name = os.path.basename(args.sbert_model_path)
+
     # load training data from json
-    data = json.load(open(os.path.join(args.data_path, "train_question_answer.json")))
+    alqac23_corpus_path_train = os.path.join(args.data_path, "train.json")
+    alqac22_corpus_path_train = os.path.join(args.data_path, "additional_data/ALQAC_2022_training_data/question.json")
+    zalo_corpus_path_train = os.path.join(args.data_path, "additional_data/zalo/zalo_question.json")
+     
+    train_corpus_paths = [
+        alqac23_corpus_path_train,
+        alqac22_corpus_path_train,
+        # zalo_corpus_path_train
+    ]
 
-    training_data = data["items"]
-    print(len(training_data))
-
-    # load bm25 model
-    with open(args.model_path, "rb") as bm_file:
-        bm25 = pickle.load(bm_file)
-
-    with open(args.path_doc_refer, "rb") as doc_refer_file:
-        doc_refers = pickle.load(doc_refer_file)
-
-    doc_path = os.path.join(args.path_legal)
-    df = open(doc_path)
-    doc_data = json.load(df)
+    train_items = []
+    for train_corpus_path in train_corpus_paths:
+        train_items.extend(json.load(open(train_corpus_path)))
     
-    # load hard negative model
-    model = SentenceTransformer(args.sentence_bert_path)
+    print(len(train_items))
 
-    # add embedding for data
-    # if you already have data with encoded sentence uncoment line 47 - 54
-    import pickle
-    embed_list = []
-    for k, v in tqdm(doc_data.items()):
-        embed = model.encode(v['title'] + ' ' + v['text'])
-        doc_data[k]['embedding'] = embed
+    with open(args.flattened_corpus, "rb") as flat_corpus_file:
+        flat_corpus_data = pickle.load(flat_corpus_file)
 
-    with open('legal_corpus_vibert_embedding.pkl', 'wb') as pkl:
-        pickle.dump(doc_data, pkl)
+    with open(args.legal_dict_path) as legal_dict_file:
+        doc_data = json.load(legal_dict_file)
+    
+    # load sbert model
+    model = SentenceTransformer(args.sbert_model_path)
 
-    with open('legal_corpus_vibert_embedding.pkl', 'rb') as pkl:
+    # pre-compute embedding data and save  
+    if not args.load_embedding:
+        embed_list = []
+        for k, v in tqdm(doc_data.items()):
+            embed = model.encode(v['text'])
+            doc_data[k]['embedding'] = embed
+
+        with open(f'{args.save_path}/corpus_embedding_{sbert_model_name}.pkl', 'wb') as pkl:
+            pickle.dump(doc_data, pkl)
+
+    with open(f'{args.save_path}/corpus_embedding_{sbert_model_name}.pkl', 'rb') as pkl:
         data = pickle.load(pkl)
 
     pred_list = []
     top_k = args.top_k
     save_pairs = []
 
-    for idx, item in tqdm(enumerate(training_data)):
-        question_id = item["question_id"]
-        question = item["question"]
+    for idx, item in tqdm(enumerate(train_items)):
+        question = item["text"]
         relevant_articles = item["relevant_articles"]
         actual_positive = len(relevant_articles)
         
@@ -70,7 +76,7 @@ if __name__ == '__main__':
             save_dict = {}
             save_dict["question"] = question
             concat_id = article["law_id"] + "_" + article["article_id"]
-            save_dict["document"] = doc_data[concat_id]["title"] + " " + doc_data[concat_id]["text"]
+            save_dict["document"] = doc_data[concat_id]["text"]
             save_dict["relevant"] = 1
             save_pairs.append(save_dict)
         
@@ -87,7 +93,7 @@ if __name__ == '__main__':
         
         
         for idx, idx_pred in enumerate(predictions):
-            pred = doc_refers[idx_pred]
+            pred = flat_corpus_data[idx_pred]
                 
             check = 0
             for article in relevant_articles:
@@ -97,11 +103,11 @@ if __name__ == '__main__':
                 save_dict = {}
                 save_dict["question"] = question
                 concat_id = pred[0] + "_" + pred[1]
-                save_dict["document"] = doc_data[concat_id]["title"] + " " + doc_data[concat_id]["text"]
+                save_dict["document"] = doc_data[concat_id]["text"]
                 save_dict["relevant"] = 0
                 save_pairs.append(save_dict)
 
     save_path = args.save_path
     os.makedirs(save_path, exist_ok=True)
-    with open(os.path.join(save_path, f"save_pairs_vibert_top{top_k}.pkl"), "wb") as pair_file:
+    with open(os.path.join(save_path, f"qrel_pairs_{sbert_model_name}_top{top_k}.pkl"), "wb") as pair_file:
         pickle.dump(save_pairs, pair_file)

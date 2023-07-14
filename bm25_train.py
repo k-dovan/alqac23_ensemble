@@ -46,7 +46,7 @@ if __name__ == '__main__':
     if args.load_docs:
         print("Process documents")
         documents = []
-        doc_refers = []
+        flat_corpus_data = []
         for law_article in tqdm(data):
             law_id = law_article["id"]
             law_articles = law_article["articles"]
@@ -57,17 +57,17 @@ if __name__ == '__main__':
                     
                 tokens = bm25_tokenizer(article_text)
                 documents.append(tokens)
-                doc_refers.append([law_id, article_id, article_text])
+                flat_corpus_data.append([law_id, article_id, article_text])
         
         with open(os.path.join(save_path, "bm25_tokenized_corpus.pkl"), "wb") as documents_file:
             pickle.dump(documents, documents_file)
         with open(os.path.join(save_path,"flattened_corpus.pkl"), "wb") as flat_corpus_file:
-            pickle.dump(doc_refers, flat_corpus_file)
+            pickle.dump(flat_corpus_data, flat_corpus_file)
     else:
         with open(os.path.join(save_path, "bm25_tokenized_corpus.pkl"), "rb") as documents_file:
             documents = pickle.load(documents_file)
         with open(os.path.join(save_path,"flattened_corpus.pkl"), "rb") as flat_corpus_file:
-            doc_refers = pickle.load(flat_corpus_file)
+            flat_corpus_data = pickle.load(flat_corpus_file)
             
 
     # Grid_search, evaluate on training questions
@@ -97,9 +97,7 @@ if __name__ == '__main__':
     k = args.num_eval
     for idx, item in tqdm(enumerate(train_items)):
         if idx >= k:
-            continue
-        qid = "question_id" if "question_id" in item.keys() else "id"
-        question_id = item[qid]
+            continue        
         question = item["text"]
         relevant_articles = item["relevant_articles"]
         actual_positive = len(relevant_articles)
@@ -122,7 +120,7 @@ if __name__ == '__main__':
         true_positive = 0
         false_positive = 0
         for idx, idx_pred in enumerate(predictions):
-            pred = doc_refers[idx_pred]            
+            pred = flat_corpus_data[idx_pred]            
             
             # suggest to investigate/pick thresh_score
             #TODO: calculate histogram of the thresh_score to cutoff at right place

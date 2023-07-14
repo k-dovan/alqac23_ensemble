@@ -34,7 +34,7 @@ if __name__ == '__main__':
     with open(args.model_path, "rb") as bm_file:
         bm25 = pickle.load(bm_file)
     with open("generated_data/flattened_corpus.pkl", "rb") as flat_corpus_file:
-        doc_refers = pickle.load(flat_corpus_file)
+        flat_corpus_data = pickle.load(flat_corpus_file)
 
     doc_data = json.load(open("generated_data/legal_dict.json"))
 
@@ -46,8 +46,6 @@ if __name__ == '__main__':
     k = len(train_items)
     top_n = 50
     for idx, item in tqdm(enumerate(train_items)):
-        qid = "question_id" if "question_id" in item.keys() else "id"
-        question_id = item[qid]
         question = item["text"]
         relevant_articles = item["relevant_articles"]
         actual_positive = len(relevant_articles)
@@ -76,7 +74,7 @@ if __name__ == '__main__':
         true_positive = 0
         false_positive = 0
         for idx, idx_pred in enumerate(predictions):
-            pred = doc_refers[idx_pred]
+            pred = flat_corpus_data[idx_pred]
                 
             #print(pred, doc_scores[idx_pred])
             #if doc_scores[idx_pred] >= 20:

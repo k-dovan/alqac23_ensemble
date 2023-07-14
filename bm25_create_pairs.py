@@ -39,9 +39,7 @@ if __name__ == '__main__':
 
     save_pairs = []
     top_n = args.top_pair
-    for idx, item in tqdm(enumerate(train_items)):
-        qid = "question_id" if "question_id" in item.keys() else "id"
-        question_id = item[qid]
+    for idx, item in tqdm(enumerate(train_items)):        
         question = item["text"]
         relevant_articles = item["relevant_articles"]
         actual_positive = len(relevant_articles)
