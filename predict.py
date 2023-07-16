@@ -73,7 +73,7 @@ if __name__ == "__main__":
     parser.add_argument("--saved_model", default="saved_model", type=str)
     parser.add_argument("--legal_dict_json", default="generated_data/legal_dict.json", type=str)
     parser.add_argument("--bm25_path", default="saved_model/bm25_Plus_04_06_model_full_manual_stopword", type=str)
-    parser.add_argument("--legal_data", default="generated_data/flattened_corpus.pkl", type=str, help="path to flattened corpus")
+    parser.add_argument("--legal_data", default="generated_data/flat_corpus.pkl", type=str, help="path to flat corpus")
     parser.add_argument("--range-score", default=2.6, type=float, help="range of cos sin score for multiple-answer")
     parser.add_argument("--encode_legal_data", action="store_true", help="for legal data encoding")
     args = parser.parse_args()
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     # load corpus to search
     print("Load legal data.")
     with open(args.legal_data, "rb") as flat_corpus:
-        flattened_corpus = pickle.load(flat_corpus)
+        flat_corpus = pickle.load(flat_corpus)
     # load pre encoded for legal corpus
     if args.encode_legal_data:
         emb_legal_data = encode_legal_data(args.legal_dict_json, models)
@@ -155,7 +155,7 @@ if __name__ == "__main__":
         # post processing character error
         dup_ans = []
         for idx, idx_pred in enumerate(map_ids):
-            pred = flattened_corpus[idx_pred]
+            pred = flat_corpus[idx_pred]
             law_id = pred[0]
             article_id = pred[1]
             

@@ -6,37 +6,39 @@ from unicodedata import name
 import numpy as np
 from tqdm import tqdm
 from rank_bm25 import *
-from utils import bm25_tokenizer, calculate_f2, load_json
+from utils import bm25_tokenizer, calculate_f2
 import argparse
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data_path", default="alqac23_data", type=str, help="path to input data")
-    parser.add_argument("--model_path", default="saved_model/bm25plus_k1.5_b0.75_F2_79_P_68_R_85", type=str)
-    parser.add_argument("--save_pair_path", default="pair_data/", type=str, help="path to save pair sentence directory")
+    parser.add_argument("--raw_data_dir", default="alqac23_data", type=str, help="directory to raw data")
+    parser.add_argument("--model_path", default="saved_model/bm25/alqac23_bm25plus_k1.5_b0.75", type=str)
+    parser.add_argument("--corpus_name", default="alqac23", type=str, choices=["alqac23", "alqac22", "zalo"], help="corpus for bm25")
+    parser.add_argument("--top_k", default=20, type=int)
+    parser.add_argument("--save_dir", default="generated_data", type=str, help="path to save pair sentences")
     args = parser.parse_args()
    
-    alqac23_corpus_path_train = os.path.join(args.data_path, "train.json")
-    alqac22_corpus_path_train = os.path.join(args.data_path, "additional_data/ALQAC_2022_training_data/question.json")
-    zalo_corpus_path_train = os.path.join(args.data_path, "additional_data/zalo/zalo_question.json")
-     
-    train_corpus_paths = [
-        alqac23_corpus_path_train,
-        alqac22_corpus_path_train,
-        # zalo_corpus_path_train
-    ]
+    alqac23_corpus_path_train = os.path.join(args.raw_data_dir, "train.json")
+    alqac22_corpus_path_train = os.path.join(args.raw_data_dir, "additional_data/ALQAC_2022_training_data/question.json")
+    zalo_corpus_path_train = os.path.join(args.raw_data_dir, "additional_data/zalo/zalo_question.json")
     
-    train_items = []    
-    for train_corpus_path in train_corpus_paths:
-        train_items.extend(json.load(open(train_corpus_path)))
+    train_corpus_paths = {
+        "alqac23": alqac23_corpus_path_train,
+        "alqac22": alqac22_corpus_path_train,
+        "zalo": zalo_corpus_path_train
+    }
+    
+    train_items = []
+    train_corpus_path = train_corpus_paths[args.corpus_name]
+    train_items = json.load(open(train_corpus_path))
 
     with open(args.model_path, "rb") as bm_file:
         bm25 = pickle.load(bm_file)
-    with open("generated_data/flattened_corpus.pkl", "rb") as flat_corpus_file:
+    with open(f"{args.save_dir}/{args.corpus_name}_flat_corpus.pkl", "rb") as flat_corpus_file:
         flat_corpus_data = pickle.load(flat_corpus_file)
 
-    doc_data = json.load(open("generated_data/legal_dict.json"))
+    doc_data = json.load(open(f"{args.save_dir}/{args.corpus_name}_legal_dict.json"))
 
     save_pairs = []
 
@@ -44,7 +46,7 @@ if __name__ == '__main__':
     total_precision = 0
     total_recall = 0
     k = len(train_items)
-    top_n = 50
+    top_n = args.top_k
     for idx, item in tqdm(enumerate(train_items)):
         question = item["text"]
         relevant_articles = item["relevant_articles"]
@@ -57,7 +59,7 @@ if __name__ == '__main__':
         # predictions = []
         # for top in top_pred:
         #     predictions.append(np.where(doc_scores == top)[0][0])
-        predictions = np.argpartition(doc_scores, len(doc_scores) - top_n)[-top_n:]
+        predictions = np.argpartition(doc_scores, -top_n)[-top_n:]
         # if doc_scores[predictions[1]] - doc_scores[predictions[0]] >= 2.6:
         #      predictions = [predictions[1]]
         
@@ -109,8 +111,8 @@ if __name__ == '__main__':
     print(f"Average Precision: {total_precision/k:0.3f}")
     print(f"Average Recall: {total_recall/k:0.3f}")
 
-    save_path = args.save_pair_path
+    save_path = args.save_dir
     os.makedirs(save_path, exist_ok=True)
-    with open(os.path.join(save_path, f"qrel_pairs_bm25_top{top_n}"), "wb") as pair_file:
+    with open(os.path.join(save_path, f"{args.corpus_name}_qrel_pairs_bm25_top{top_n}"), "wb") as pair_file:
         pickle.dump(save_pairs, pair_file)
-    print (f"Number of pairs: {len(save_pairs)}")
+    print (f"Number of pairs saved: {len(save_pairs)}")

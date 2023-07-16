@@ -9,10 +9,10 @@ from utils import bm25_tokenizer, calculate_f2
 # from config import Config
 
 class Config:
-    data_path = "alqac23_data"
-    save_bm25 = "saved_model"
+    raw_data_dir = "alqac23_data"
+    save_bm25 = "saved_model/bm25"
     top_k_bm25 = 2
-    bm25_k1 = 2.0
+    bm25_k1 = 1.5
     bm25_b = 0.75
 
 if __name__ == '__main__':
@@ -20,28 +20,29 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # load document to save running time, 
     # must re-run if we change pre-process step
+    parser.add_argument("--corpus_name", default="alqac23", type=str, choices=["alqac23", "alqac22", "zalo"], help="corpus for bm25")
     parser.add_argument("--load_docs", action="store_false")
     parser.add_argument("--num_eval", default=500, type=str)
     args = parser.parse_args()
+
     cfg = Config()
     
     save_path = cfg.save_bm25
     os.makedirs(save_path, exist_ok=True)
 
-    raw_data = cfg.data_path
+    raw_data = cfg.raw_data_dir
     alqac23_corpus_path = os.path.join(raw_data, "law.json")
     alqac22_corpus_path = os.path.join(raw_data, "additional_data/ALQAC_2022_training_data/law.json")
     zalo_corpus_path = os.path.join(raw_data, "additional_data/zalo/zalo_corpus.json")
 
-    corpus_paths = [
-        alqac23_corpus_path,
-        alqac22_corpus_path,
-        # zalo_corpus_path
-    ]
+    corpus_paths = {
+        "alqac23": alqac23_corpus_path,
+        "alqac22": alqac22_corpus_path,
+        "zalo": zalo_corpus_path
+    }    
     
-    data = []
-    for corpus_path in corpus_paths:
-        data.extend(json.load(open(corpus_path)))
+    data_path = corpus_paths[args.corpus_name]
+    data = json.load(open(data_path))
 
     if args.load_docs:
         print("Process documents")
@@ -59,14 +60,14 @@ if __name__ == '__main__':
                 documents.append(tokens)
                 flat_corpus_data.append([law_id, article_id, article_text])
         
-        with open(os.path.join(save_path, "bm25_tokenized_corpus.pkl"), "wb") as documents_file:
+        with open(f"generated_data/{args.corpus_name}_bm25_tokenized_corpus.pkl", "wb") as documents_file:
             pickle.dump(documents, documents_file)
-        with open(os.path.join(save_path,"flattened_corpus.pkl"), "wb") as flat_corpus_file:
+        with open(f"generated_data/{args.corpus_name}_flat_corpus.pkl", "wb") as flat_corpus_file:
             pickle.dump(flat_corpus_data, flat_corpus_file)
     else:
-        with open(os.path.join(save_path, "bm25_tokenized_corpus.pkl"), "rb") as documents_file:
+        with open(f"generated_data/{args.corpus_name}_bm25_tokenized_corpus.pkl", "rb") as documents_file:
             documents = pickle.load(documents_file)
-        with open(os.path.join(save_path,"flattened_corpus.pkl"), "rb") as flat_corpus_file:
+        with open(f"generated_data/{args.corpus_name}_flat_corpus.pkl", "rb") as flat_corpus_file:
             flat_corpus_data = pickle.load(flat_corpus_file)
             
 
@@ -74,16 +75,16 @@ if __name__ == '__main__':
     alqac23_corpus_path_train = os.path.join(raw_data, "train.json")
     alqac22_corpus_path_train = os.path.join(raw_data, "additional_data/ALQAC_2022_training_data/question.json")
     zalo_corpus_path_train = os.path.join(raw_data, "additional_data/zalo/zalo_question.json")
-     
-    train_corpus_paths = [
-        alqac23_corpus_path_train,
-        alqac22_corpus_path_train,
-        # zalo_corpus_path_train
-    ]
+    
+    train_corpus_paths = {
+        "alqac23": alqac23_corpus_path_train,
+        "alqac22": alqac22_corpus_path_train,
+        "zalo": zalo_corpus_path_train
+    }
     
     train_items = []
-    for train_corpus_path in train_corpus_paths:
-        train_items.extend(json.load(open(train_corpus_path)))
+    train_corpus_path = train_corpus_paths[args.corpus_name]
+    train_items = json.load(open(train_corpus_path))
 
     print (f"Number of training questions: {len(train_items)}")
 
@@ -94,13 +95,15 @@ if __name__ == '__main__':
     total_precision = 0
     total_recall = 0
     
-    k = args.num_eval
+    k = args.num_eval if args.num_eval < len(train_items) else len(train_items)
     for idx, item in tqdm(enumerate(train_items)):
         if idx >= k:
-            continue        
+            break        
         question = item["text"]
         relevant_articles = item["relevant_articles"]
         actual_positive = len(relevant_articles)
+
+        # print(question)
         
         tokenized_query = bm25_tokenizer(question)
         doc_scores = bm25.get_scores(tokenized_query)
@@ -108,7 +111,7 @@ if __name__ == '__main__':
         # Get top N
         # N large -> reduce precision, increase recall
         # N small -> increase precision, reduce recall
-        predictions = np.argpartition(doc_scores, len(doc_scores) - cfg.top_k_bm25)[-cfg.top_k_bm25:]
+        predictions = np.argpartition(doc_scores, -cfg.top_k_bm25)[-cfg.top_k_bm25:]
 
         # suggest to investigate delta score for tricking
         #TODO: calculate histogram of the delta_scores to cutoff at right place
@@ -130,9 +133,14 @@ if __name__ == '__main__':
             #     # print(pred)
             #     print(doc_scores[idx_pred])
             
+            # print(doc_scores[idx_pred])
+            # print(pred[0], pred[1])
+
             # Remove prediction with too low score: 20
             if doc_scores[idx_pred] >= thresh_score:
                 for article in relevant_articles:
+                    # print(article["law_id"], article["article_id"])
+
                     if pred[0] == article["law_id"] and pred[1] == article["article_id"]:
                         true_positive += 1
                     else:
@@ -151,6 +159,6 @@ if __name__ == '__main__':
 
     # save the model with its performance
     with open(os.path.join(save_path, 
-                           f"bm25plus_k{cfg.bm25_k1}_b{cfg.bm25_b}_F2_{100*total_f2/k:0.0f}_P_{100*total_precision/k:0.0f}_R_{100*total_recall/k:0.0f}"), "wb"
+                           f"{args.corpus_name}_bm25plus_k{cfg.bm25_k1}_b{cfg.bm25_b}"), "wb"
                            ) as bm_file:
         pickle.dump(bm25, bm_file)

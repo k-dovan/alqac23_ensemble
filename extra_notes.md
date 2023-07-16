@@ -23,43 +23,43 @@ python Condenser/run_co_pre_training.py --output_dir saved_model/cocondenser_pho
 ## Train sentence transformers (round 1)
 
 ### mlm_finetuned_vibert_base_cased
-python train_sentence_bert.py --pretrained_model saved_model/mlm_finetuned_vibert_base_cased --max_seq_length 512 --pair_data_path generated_data/qrel_pairs_bm25_top20 --round 1 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round1_epoch4_topk20_mlm_finetuned_vibert_base_cased --batch_size 32
+python train_sentence_bert.py --pretrained_model saved_model/mlm_finetuned_vibert_base_cased --max_seq_length 512 --pair_data_path generated_data/qrel_pairs_bm25_top20 --round 1 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round1_epoch4_top20_mlm_finetuned_vibert_base_cased --batch_size 32
 
 ### mlm_finetuned_phobert_large
-python train_sentence_bert.py --pretrained_model saved_model/mlm_finetuned_phobert_large --max_seq_length 256 --pair_data_path generated_data/qrel_pairs_bm25_top20 --round 1 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round1_epoch4_topk20_mlm_finetuned_phobert_large --batch_size 32
+python train_sentence_bert.py --pretrained_model saved_model/mlm_finetuned_phobert_large --max_seq_length 256 --pair_data_path generated_data/qrel_pairs_bm25_top20 --round 1 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round1_epoch4_top20_mlm_finetuned_phobert_large --batch_size 32
 
 ### condenser_phobert_large, initialize with cls_pooling
-python train_sentence_bert.py --pretrained_model saved_model/condenser_phobert_large --max_seq_length 256 --pooling_mode cls  --pair_data_path generated_data/qrel_pairs_bm25_top20 --round 1 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round1_epoch4_topk20_condenser_phobert_large --batch_size 32
+python train_sentence_bert.py --pretrained_model saved_model/condenser_phobert_large --max_seq_length 256 --pooling_mode cls  --pair_data_path generated_data/qrel_pairs_bm25_top20 --round 1 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round1_epoch4_top20_condenser_phobert_large --batch_size 32
 
 ### cocondenser_phobert_large, initialize with cls_pooling
-python train_sentence_bert.py --pretrained_model saved_model/cocondenser_phobert_large --max_seq_length 256 --pooling_mode cls  --pair_data_path generated_data/qrel_pairs_bm25_top20 --round 1 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round1_epoch4_topk20_cocondenser_phobert_large --batch_size 32
+python train_sentence_bert.py --pretrained_model saved_model/cocondenser_phobert_large --max_seq_length 256 --pooling_mode cls  --pair_data_path generated_data/qrel_pairs_bm25_top20 --round 1 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round1_epoch4_top20_cocondenser_phobert_large --batch_size 32
 
 ## Negative samples mining from trained sbert models
 
 ### sbert_vibert_base_cased
-python hard_negative_mining.py --sbert_model_path saved_model/sbert_round1_epoch4_topk20_mlm_finetuned_vibert_base_cased --data_path alqac23_data --save_path generated_data --top_k 35 [--load_embedding]
+python hard_negative_mining.py --sbert_model_path saved_model/sbert_round1_epoch4_top20_mlm_finetuned_vibert_base_cased --data_path alqac23_data --save_path generated_data --top_k 35 [--load_embedding]
 
 ### sbert_phobert_large
-python hard_negative_mining.py --sbert_model_path saved_model/sbert_round1_epoch4_topk20_mlm_finetuned_phobert_large --data_path alqac23_data --save_path generated_data --top_k 35 [--load_embedding]
+python hard_negative_mining.py --sbert_model_path saved_model/sbert_round1_epoch4_top20_mlm_finetuned_phobert_large --data_path alqac23_data --save_path generated_data --top_k 35 [--load_embedding]
 
 
 ### sbert_condenser_phobert_large
-python hard_negative_mining.py --sbert_model_path saved_model/sbert_round1_epoch4_topk20_condenser_phobert_large --data_path alqac23_data --save_path generated_data --top_k 35 [--load_embedding]
+python hard_negative_mining.py --sbert_model_path saved_model/sbert_round1_epoch4_top20_condenser_phobert_large --data_path alqac23_data --save_path generated_data --top_k 35 [--load_embedding]
 
 
 ### sbert_cocondender_phobert_large
-python hard_negative_mining.py --sbert_model_path saved_model/sbert_round1_epoch4_topk20_cocondenser_phobert_large --data_path alqac23_data --save_path generated_data --top_k 35 [--load_embedding]
+python hard_negative_mining.py --sbert_model_path saved_model/sbert_round1_epoch4_top20_cocondenser_phobert_large --data_path alqac23_data --save_path generated_data --top_k 35 [--load_embedding]
 
 ## Train sentence transformers (round 2)
 
-### sbert_round1_epoch4_topk20_mlm_finetuned_vibert_base_cased
-python train_sentence_bert.py --pretrained_model saved_model/sbert_round1_epoch4_topk20_mlm_finetuned_vibert_base_cased --max_seq_length 512 --pair_data_path generated_data/qrel_pairs_sbert_round1_epoch4_topk20_mlm_finetuned_vibert_base_cased_top35.pkl --round 2 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round2_epoch4_topk35_mlm_finetuned_vibert_base_cased --batch_size 32
+### sbert_round1_epoch4_top20_mlm_finetuned_vibert_base_cased
+python train_sentence_bert.py --pretrained_model saved_model/sbert_round1_epoch4_top20_mlm_finetuned_vibert_base_cased --max_seq_length 512 --pair_data_path generated_data/qrel_pairs_sbert_round1_epoch4_top20_mlm_finetuned_vibert_base_cased_top35.pkl --round 2 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round2_epoch4_top35_mlm_finetuned_vibert_base_cased --batch_size 32
 
-### sbert_round1_epoch4_topk20_mlm_finetuned_phobert_large
-python train_sentence_bert.py --pretrained_model saved_model/sbert_round1_epoch4_topk20_mlm_finetuned_phobert_large --max_seq_length 256 --pair_data_path generated_data/qrel_pairs_sbert_round1_epoch4_topk20_mlm_finetuned_phobert_large_top35.pkl --round 2 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round2_epoch4_topk35_mlm_finetuned_phobert_large --batch_size 32
+### sbert_round1_epoch4_top20_mlm_finetuned_phobert_large
+python train_sentence_bert.py --pretrained_model saved_model/sbert_round1_epoch4_top20_mlm_finetuned_phobert_large --max_seq_length 256 --pair_data_path generated_data/qrel_pairs_sbert_round1_epoch4_top20_mlm_finetuned_phobert_large_top35.pkl --round 2 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round2_epoch4_top35_mlm_finetuned_phobert_large --batch_size 32
 
-### sbert_round1_epoch4_topk20_condenser_phobert_large
-python train_sentence_bert.py --pretrained_model saved_model/sbert_round1_epoch4_topk20_condenser_phobert_large --max_seq_length 256 --pair_data_path generated_data/qrel_pairs_sbert_round1_epoch4_topk20_condenser_phobert_large_top35.pkl --round 2 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round2_epoch4_topk35_condenser_phobert_large --batch_size 32
+### sbert_round1_epoch4_top20_condenser_phobert_large
+python train_sentence_bert.py --pretrained_model saved_model/sbert_round1_epoch4_top20_condenser_phobert_large --max_seq_length 256 --pair_data_path generated_data/qrel_pairs_sbert_round1_epoch4_top20_condenser_phobert_large_top35.pkl --round 2 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round2_epoch4_top35_condenser_phobert_large --batch_size 32
 
-### sbert_round1_epoch4_topk20_cocondenser_phobert_large
-python train_sentence_bert.py --pretrained_model saved_model/sbert_round1_epoch4_topk20_cocondenser_phobert_large --max_seq_length 256 --pair_data_path generated_data/qrel_pairs_sbert_round1_epoch4_topk20_cocondenser_phobert_large_top35.pkl --round 2 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round2_epoch4_topk35_cocondenser_phobert_large --batch_size 32
+### sbert_round1_epoch4_top20_cocondenser_phobert_large
+python train_sentence_bert.py --pretrained_model saved_model/sbert_round1_epoch4_top20_cocondenser_phobert_large --max_seq_length 256 --pair_data_path generated_data/qrel_pairs_sbert_round1_epoch4_top20_cocondenser_phobert_large_top35.pkl --round 2 --num_eval 1000 --epochs 4 --saved_model saved_model/sbert_round2_epoch4_top35_cocondenser_phobert_large --batch_size 32

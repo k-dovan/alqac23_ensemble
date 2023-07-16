@@ -47,7 +47,7 @@ Pairs will be saved to: generated_data/
 These pairs will be used to train round 1 Sentence Transformer model
 
 ## Create corpus: 
-Run ``python create_corpus.py``
+Run ``python create_corpus_text.py``
 This step will create:
 - corpus.txt  (for finetune language model)
 - cocondenser_data.json (for finetune CoCondenser model)
@@ -204,11 +204,11 @@ Here we pick $NUM_EVAL is 50 * 20 and 50 * 50 for top 20 and 50 pairs data respe
 python train_sentence_bert.py \
     --pretrained_model saved_model/mlm_finetuned_phobert_large \
     --max_seq_length 256 \
-    --pair_data_path generated_data/qrel_pairs_bm25_top20 \
+    --pair_data_path generated_data/alqac23_qrel_pairs_bm25_top20 \
     --round 1 \
     --num_eval 1000 \
     --epochs 4 \
-    --saved_model saved_model/sbert_round1_epoch4_topk20_mlm_finetuned_phobert_large \
+    --saved_model saved_model/sbert_round1_epoch4_top20_mlm_finetuned_phobert_large \
     --batch_size 32
 ```
 
@@ -218,11 +218,11 @@ python train_sentence_bert.py \
     --pretrained_model saved_model/condenser_phobert_large \
     --max_seq_length 256 \
     --pooling_mode cls \
-    --pair_data_path generated_data/qrel_pairs_bm25_top20 \
+    --pair_data_path generated_data/alqac23_qrel_pairs_bm25_top20 \
     --round 1 \
     --num_eval 1000 \
     --epochs 4 \
-    --saved_model saved_model/sbert_round1_epoch4_topk20_condenser_phobert_large \
+    --saved_model saved_model/sbert_round1_epoch4_top20_condenser_phobert_large \
     --batch_size 32
 ```
 
@@ -232,18 +232,18 @@ python train_sentence_bert.py \
     --pretrained_model saved_model/cocondenser_phobert_large \
     --max_seq_length 256 \
     --pooling_mode cls \
-    --pair_data_path generated_data/qrel_pairs_bm25_top20 \
+    --pair_data_path generated_data/alqac23_qrel_pairs_bm25_top20 \
     --round 1 \
     --num_eval 1000 \
     --epochs 4 \
-    --saved_model saved_model/sbert_round1_epoch4_topk20_cocondenser_phobert_large \
+    --saved_model saved_model/sbert_round1_epoch4_top20_cocondenser_phobert_large \
     --batch_size 32
 ```
 
 ### Round 2: using hard negative pairs create from Round 1 model
 - Step 1: Run the following cmd to generate hard negative pairs from round 1 model:
 ```
-python hard_negative_mining.py \
+python negative_mining.py \
     --model_path /path/to/your/sentence/bert/model\
     --data_path /path/to/the/lagal/corpus/json\
     --save_path /path/to/directory/to/save/neg/pairs\
@@ -278,17 +278,17 @@ To get the prediction, we use 4 2-round trained models with mlm pretrained is vi
 - 1 x Condenser-PhoBert-Large-round2: 0.3
 - 1 x Co-Condenser-PhoBert-Large-round2: 0.4
 
-``flattened_corpus.pkl`` and ``legal_dict.json`` are generated in `bm25_train` and `create_corpus`, respectively. 
+``alqac23_flat_corpus.pkl`` and ``alqac23_legal_dict.json`` are generated in `create_flat_corpus.py` and `create_legal_dict.py`, respectively. 
 
-We provide embedding vectors which is pre-encoded by ensemble model in ``generated_data/embedded_corpus_data.pkl``.
+We provide embedding vectors which is pre-encoded by ensemble model in ``generated_data/embedded_alqac23_corpus.pkl``.
 If you want to verified and get the final submission, please run the following command:
 ```
-python3 predict.py --data /path/to/test/data --legal_data generated_data/flattened_corpus.pkl --encode_legal_data
+python3 predict.py --data /path/to/test/data --legal_data generated_data/flat_corpus.pkl --encode_legal_data
 ```
 
-If you already have ``generated_data/embedded_corpus_data.pkl``, run the following command:
+If you already have ``generated_data/embedded_alqac23_corpus.pkl``, run the following command:
 ```
-python3 predict.py --data /path/to/test/data --legal_data generated_data/flattened_corpus.pkl
+python3 predict.py --data /path/to/test/data --legal_data generated_data/alqac23_flat_corpus.pkl
 ```
 
 ### Just for inference
