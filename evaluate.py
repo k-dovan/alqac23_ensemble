@@ -122,7 +122,8 @@ def ensemble_model_predict(bm25_model,
                       flat_corpus_data, 
                       all_models_corpus_embeddings, 
                       predicting_questions, 
-                      range_score
+                      range_score,
+                      max_relevants
                       ):
     # encode question for query
     all_models_questions_embeddings = all_models_encode_questions(sbert_models, predicting_questions)
@@ -160,9 +161,8 @@ def ensemble_model_predict(bm25_model,
         
         print ("top_scores: ", top_scores)
 
-        max_collected_items = 1
-        if top_scores.shape[0] > max_collected_items:
-            candidate_indices = np.argpartition(top_scores, -max_collected_items)[-max_collected_items:]
+        if top_scores.shape[0] > max_relevants:
+            candidate_indices = np.argpartition(top_scores, -max_relevants)[-max_relevants:]
             map_ids = map_ids[candidate_indices]
             
         pred_dict = {}
@@ -186,7 +186,8 @@ def single_model_predict(sbert_model,
                     flat_corpus_data, 
                     corpus_embeddings, 
                     predicting_questions, 
-                    range_score
+                    range_score,
+                    max_relevants
                     ):
     # encode question for query
     single_model_questions_embeddings = single_model_encode_questions(sbert_model, predicting_questions)
@@ -210,9 +211,8 @@ def single_model_predict(sbert_model,
 
         print ("top_scores: ", top_scores)
 
-        max_collected_items = 1
-        if top_scores.shape[0] > max_collected_items:
-            candidate_indices = np.argpartition(top_scores, -max_collected_items)[-max_collected_items:]
+        if top_scores.shape[0] > max_relevants:
+            candidate_indices = np.argpartition(top_scores, -max_relevants)[-max_relevants:]
             map_ids = map_ids[candidate_indices]
             
         pred_dict = {}
@@ -282,6 +282,7 @@ if __name__ == "__main__":
     parser.add_argument("--eval_model", default="", type=str, help="sbert model name to evaluate in `single` mode")
     parser.add_argument("--corpus_name", default="alqac23", type=str, choices=["alqac23", "alqac22", "zalo"], help="corpus to evaluate")
     parser.add_argument("--range_score", default=2.6, type=float, help="range of cosin score for multiple-answer")
+    parser.add_argument("--max_relevants", default=1, type=int, help="max relevant articles should be produced")
     parser.add_argument("--encode_corpus", action="store_true", help="encode corpus if not pre-computed")
     parser.add_argument("--eval_on", default="train", type=str, choices=["train", "test"], help="evaluate on train or test data")
     args = parser.parse_args()
@@ -331,7 +332,7 @@ if __name__ == "__main__":
         else:
             all_models_corpus_embeddings = load_all_models_emdbeddings(args.corpus_name, args.eval_round)
         
-        predictions = ensemble_model_predict(bm25, models, flat_corpus_data, all_models_corpus_embeddings, predicting_items, args.range_score)
+        predictions = ensemble_model_predict(bm25, models, flat_corpus_data, all_models_corpus_embeddings, predicting_items, args.range_score, args.max_relevants)
 
         if args.eval_on == "test":
             with open(f'results/ensemble_model_round{args.eval_round}_submission.json', 'w') as outfile:
@@ -350,7 +351,7 @@ if __name__ == "__main__":
         else:
             corpus_embeddings = load_single_model_emdbeddings(args.eval_model, args.corpus_name)
         
-        predictions = single_model_predict(model, flat_corpus_data, corpus_embeddings, predicting_items, args.range_score)
+        predictions = single_model_predict(model, flat_corpus_data, corpus_embeddings, predicting_items, args.range_score, args.max_relevants)
 
         if args.eval_on == "test":
             with open(f'results/{model_name}_submission.json', 'w') as outfile:
