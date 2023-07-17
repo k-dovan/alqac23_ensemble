@@ -11,8 +11,8 @@ import argparse
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--raw_data_dir", default="alqac23_data", type=str, help="directory to raw data")
-    parser.add_argument("--model_path", default="saved_model/bm25/alqac23_bm25plus_k1.5_b0.75", type=str)
-    parser.add_argument("--corpus_name", default="alqac23", type=str, choices=["alqac23", "alqac22", "zalo"], help="corpus for bm25")
+    parser.add_argument("--model_path", default="saved_model/bm25/all_bm25plus_k1.5_b0.75", type=str)
+    parser.add_argument("--corpus_name", default="alqac23", type=str, choices=["alqac23", "alqac22", "zalo", "all"], help="corpus for bm25")
     parser.add_argument("--top_k", default=20, type=int)
     parser.add_argument("--save_dir", default="generated_data", type=str, help="path to save pair sentence directory")
     args = parser.parse_args()
@@ -28,8 +28,13 @@ if __name__ == '__main__':
     }
     
     train_items = []
-    train_corpus_path = train_corpus_paths[args.corpus_name]
-    train_items = json.load(open(train_corpus_path))
+    if args.corpus_name == "all":
+        train_paths = list(train_corpus_paths.values())
+        for train_path in train_paths:
+            train_items.extend(json.load(open(train_path)))
+    else:
+        train_path = train_corpus_paths[args.corpus_name]
+        train_items = json.load(open(train_path))
 
     with open(args.model_path, "rb") as bm_file:
         bm25 = pickle.load(bm_file)
@@ -78,6 +83,6 @@ if __name__ == '__main__':
                     
     save_path = args.save_dir
     os.makedirs(save_path, exist_ok=True)
-    with open(os.path.join(save_path, f"{args.corpus_name}_qrel_pairs_bm25_top{top_n}"), "wb") as pair_file:
+    with open(os.path.join(save_path, f"{args.corpus_name}_qrel_pairs_bm25_top{top_n}.pkl"), "wb") as pair_file:
         pickle.dump(save_pairs, pair_file)
     print (f"Number of pairs: {len(save_pairs)}")

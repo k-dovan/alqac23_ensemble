@@ -20,7 +20,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # load document to save running time, 
     # must re-run if we change pre-process step
-    parser.add_argument("--corpus_name", default="alqac23", type=str, choices=["alqac23", "alqac22", "zalo"], help="corpus for bm25")
+    parser.add_argument("--corpus_name", default="alqac23", type=str, choices=["alqac23", "alqac22", "zalo", "all"], help="corpus for bm25")
     parser.add_argument("--load_docs", action="store_false")
     parser.add_argument("--num_eval", default=500, type=str)
     args = parser.parse_args()
@@ -40,9 +40,15 @@ if __name__ == '__main__':
         "alqac22": alqac22_corpus_path,
         "zalo": zalo_corpus_path
     }    
-    
-    data_path = corpus_paths[args.corpus_name]
-    data = json.load(open(data_path))
+
+    data = []
+    if args.corpus_name == "all":
+        data_paths = list(corpus_paths.values())
+        for data_path in data_paths:
+            data.extend(json.load(open(data_path)))
+    else:
+        data_path = corpus_paths[args.corpus_name]
+        data = json.load(open(data_path))
 
     if args.load_docs:
         print("Process documents")
@@ -83,13 +89,24 @@ if __name__ == '__main__':
     }
     
     train_items = []
-    train_corpus_path = train_corpus_paths[args.corpus_name]
-    train_items = json.load(open(train_corpus_path))
+    if args.corpus_name == "all":
+        train_paths = list(train_corpus_paths.values())
+        for train_path in train_paths:
+            train_items.extend(json.load(open(train_path)))
+    else:
+        train_path = train_corpus_paths[args.corpus_name]
+        train_items = json.load(open(train_path))
 
     print (f"Number of training questions: {len(train_items)}")
 
     bm25 = BM25Plus(documents, k1=cfg.bm25_k1, b=cfg.bm25_b)
-    # bm25 = BM25Plus(documents) # with default {k1,b} params    
+    # bm25 = BM25Plus(documents) # with default {k1,b} params 
+    #
+    # save the model with its performance
+    with open(os.path.join(save_path, 
+                           f"{args.corpus_name}_bm25plus_k{cfg.bm25_k1}_b{cfg.bm25_b}"), "wb"
+                           ) as bm_file:
+        pickle.dump(bm25, bm_file)   
         
     total_f2 = 0
     total_precision = 0
@@ -156,9 +173,3 @@ if __name__ == '__main__':
     print(f"Average F2: {total_f2/k:0.3f}")
     print(f"Average Precision: {total_precision/k:0.3f}")
     print(f"Average Recall: {total_recall/k:0.3f}")
-
-    # save the model with its performance
-    with open(os.path.join(save_path, 
-                           f"{args.corpus_name}_bm25plus_k{cfg.bm25_k1}_b{cfg.bm25_b}"), "wb"
-                           ) as bm_file:
-        pickle.dump(bm25, bm_file)

@@ -153,7 +153,7 @@ def ensemble_model_predict(bm25_model,
         cos_sim = torch.cat(cos_sim, dim=0)
         
         cos_sim = torch.sum(cos_sim, dim=0).squeeze(0).numpy()
-        combined_scores = np.sqrt(doc_scores) * cos_sim
+        combined_scores = doc_scores * cos_sim
         max_score = np.max(combined_scores)
         
         map_ids = np.where(combined_scores >= (max_score - range_score))[0]
