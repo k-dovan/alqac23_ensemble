@@ -153,7 +153,7 @@ def ensemble_model_predict(bm25_model,
         cos_sim = torch.cat(cos_sim, dim=0)
         
         cos_sim = torch.sum(cos_sim, dim=0).squeeze(0).numpy()
-        combined_scores = doc_scores * cos_sim
+        combined_scores = np.sqrt(doc_scores) * cos_sim
         max_score = np.max(combined_scores)
         
         map_ids = np.where(combined_scores >= (max_score - range_score))[0]
@@ -335,8 +335,9 @@ if __name__ == "__main__":
         predictions = ensemble_model_predict(bm25, models, flat_corpus_data, all_models_corpus_embeddings, predicting_items, args.range_score, args.max_relevants)
 
         if args.eval_on == "test":
-            with open(f'results/ensemble_model_round{args.eval_round}_submission.json', 'w') as outfile:
-                json.dump(predictions, outfile)
+            with open(f'results/ensemble_model_round{args.eval_round}_submission.json', 'w', encoding='utf-8') as outfile:
+                json_object = json.dumps(predictions, indent=4, ensure_ascii=False)
+                outfile.write(json_object)
 
     elif args.eval_mode == "single":
         model_name = args.eval_model
@@ -354,8 +355,9 @@ if __name__ == "__main__":
         predictions = single_model_predict(model, flat_corpus_data, corpus_embeddings, predicting_items, args.range_score, args.max_relevants)
 
         if args.eval_on == "test":
-            with open(f'results/{model_name}_submission.json', 'w') as outfile:
-                json.dump(predictions, outfile)
+            with open(f'results/{model_name}_submission.json', 'w', encoding='utf-8') as outfile:
+                json_object = json.dumps(predictions, indent=4, ensure_ascii=False)
+                outfile.write(json_object)
     
     if args.eval_on == "train":
         evaluate_results(predicting_items, predictions)
