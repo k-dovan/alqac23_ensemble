@@ -14,7 +14,7 @@ if __name__ == '__main__':
     
     os.makedirs(args.save_dir,exist_ok=True)
 
-    corpus_names = args.corpus_list.split(',')
+    corpus_names = list(set(args.corpus_list.split(',')))
     for corpus_name in corpus_names:
         assert corpus_name in ['alqac23', 'alqac22', 'zalo'], "corpus name item must be in [`alqac23`,`alqac22`,`zalo`"
     
