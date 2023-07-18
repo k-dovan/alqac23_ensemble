@@ -123,6 +123,7 @@ def ensemble_model_predict(bm25_model,
                       all_models_corpus_embeddings, 
                       predicting_questions,
                       scoring_weights,
+                      sqrt_lexical,
                       range_score,
                       max_relevants
                       ):
@@ -149,7 +150,10 @@ def ensemble_model_predict(bm25_model,
         cos_sim = torch.cat(cos_sim, dim=0)
         
         cos_sim = torch.sum(cos_sim, dim=0).squeeze(0).numpy()
-        combined_scores = doc_scores * cos_sim
+        if sqrt_lexical:
+            combined_scores = np.sqrt(doc_scores) * cos_sim
+        else:            
+            combined_scores = doc_scores * cos_sim
         max_score = np.max(combined_scores)
         
         map_ids = np.where(combined_scores >= (max_score - range_score))[0]
@@ -185,6 +189,7 @@ def ensemble_model_lexfirst_predict(
                       all_models_corpus_embeddings, 
                       predicting_questions, 
                       scoring_weights,
+                      sqrt_lexical,
                       lexical_top_k,
                       range_score,
                       max_relevants
@@ -207,11 +212,9 @@ def ensemble_model_lexfirst_predict(
         tokenized_query = bm25_tokenizer(question)
         doc_scores = bm25_model.get_scores(tokenized_query)
 
-        max_lex_score = np.max(doc_scores)
-        print ("max_lex_score: ", max_lex_score)
-
         # get top_k lexical-matching documents
         map_ids = np.argpartition(doc_scores, -lexical_top_k)[-lexical_top_k:]
+        top_lex_scores = doc_scores[map_ids]
 
         combined_scores = []
         for idx_2, _ in enumerate(models):
@@ -220,12 +223,18 @@ def ensemble_model_lexfirst_predict(
             scores = util.cos_sim(emb1, emb2)
             combined_scores.append(scoring_weights[idx_2] * scores)
         combined_scores = torch.cat(combined_scores, dim=0)
-        combined_scores = torch.sum(combined_scores, dim=0).squeeze(0).numpy()
+        combined_scores = torch.sum(combined_scores, dim=0).squeeze(0).numpy()        
+        if sqrt_lexical:
+            combined_scores = np.sqrt(top_lex_scores) * combined_scores
+        else:            
+            combined_scores = top_lex_scores * combined_scores
         max_score = np.max(combined_scores)
         
         top_score_ids = np.where(combined_scores >= (max_score - range_score))[0]
         top_scores = combined_scores[top_score_ids]
         map_ids = map_ids[top_score_ids]
+        
+        print ("top_scores: ", top_scores)
 
         if top_scores.shape[0] > max_relevants:
             candidate_indices = np.argpartition(top_scores, -max_relevants)[-max_relevants:]
@@ -345,6 +354,7 @@ if __name__ == "__main__":
     parser.add_argument("--scoring_weights", default="0.2,0.1,0.3,0.4", type=str, help="4-element-array scoring weights for 4 combined SBert models (viBert, phobert-large, condenser, co-condenser)")
     parser.add_argument("--lexical_nodiff", action="store_true", help="lexical and semantic scoring together in `ensemble` mode. If this is not set, lexical-matching first then semantic-matching.")
     parser.add_argument("--lexical_top_k", default=100, type=int, help="number of lexical-matching documents extracted with `lexical_nodiff` param unset")
+    parser.add_argument("--sqrt_lexical", action="store_true", help="apply `sqrt` for lexical score")
     parser.add_argument("--eval_model", default="", type=str, help="sbert model name to evaluate in `single` mode")
     parser.add_argument("--corpus_name", default="alqac23", type=str, choices=["alqac23", "alqac22", "zalo"], help="corpus to evaluate")
     parser.add_argument("--range_score", default=2.6, type=float, help="range of cosin score for multiple-answer")
@@ -404,15 +414,21 @@ if __name__ == "__main__":
             all_models_corpus_embeddings = load_all_models_emdbeddings(args.corpus_name, args.eval_round)
         
         if args.lexical_nodiff:
-            predictions = ensemble_model_predict(bm25, models, flat_corpus_data, all_models_corpus_embeddings, predicting_items, scoring_weights, args.range_score, args.max_relevants)
+            predictions = ensemble_model_predict(bm25, models, flat_corpus_data, all_models_corpus_embeddings, predicting_items, scoring_weights, args.sqrt_lexical, args.range_score, args.max_relevants)
         else:
-            predictions = ensemble_model_lexfirst_predict(bm25, models, flat_corpus_data, all_models_corpus_embeddings, predicting_items, scoring_weights, args.lexical_top_k, args.range_score, args.max_relevants)
+            predictions = ensemble_model_lexfirst_predict(bm25, models, flat_corpus_data, all_models_corpus_embeddings, predicting_items, scoring_weights, args.sqrt_lexical, args.lexical_top_k, args.range_score, args.max_relevants)
             
         if args.eval_on == "test":            
             if args.lexical_nodiff:
-                submission_name = f"{args.corpus_name}_ensemble_model_round{args.eval_round}_submission.json"
-            else:                
-                submission_name = f"{args.corpus_name}_ensemble_model_lexfirst{args.lexical_top_k}_round{args.eval_round}_submission.json"
+                if args.sqrt_lexical:
+                    submission_name = f"{args.corpus_name}_ensemble_model_round{args.eval_round}_sqrtlex_submission.json"
+                else:                    
+                    submission_name = f"{args.corpus_name}_ensemble_model_round{args.eval_round}_submission.json"
+            else:
+                if args.sqrt_lexical:                
+                    submission_name = f"{args.corpus_name}_ensemble_model_lexfirst{args.lexical_top_k}_round{args.eval_round}_sqrtlex_submission.json"
+                else:
+                    submission_name = f"{args.corpus_name}_ensemble_model_lexfirst{args.lexical_top_k}_round{args.eval_round}_submission.json"
 
             with open(f'results/{submission_name}', 'w', encoding='utf-8') as outfile:
                 json_object = json.dumps(predictions, indent=4, ensure_ascii=False)
