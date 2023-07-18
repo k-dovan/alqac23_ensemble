@@ -43,8 +43,10 @@ def encode_one(line):
     ]
     return json.dumps({'spans': tokenized})
 
+condenser_data_name = os.path.os.path.basename(args.file)
+condenser_data_name = os.path.splitext(condenser_data_name)[0]
 
-with open(os.path.join(args.save_path, 'cocondenser_data_encoded.json'), 'w') as f:
+with open(os.path.join(args.save_path, f'{condenser_data_name}_encoded.json'), 'w') as f:
     with Pool() as p:
         all_tokenized = p.imap_unordered(
             encode_one,

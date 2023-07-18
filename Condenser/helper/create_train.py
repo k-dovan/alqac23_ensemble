@@ -74,7 +74,11 @@ def encode_one_line(text: str):
 with open(args.corpus_file, 'r') as corpus_file:
     lines = corpus_file.readlines()
 
-with open(os.path.join(args.save_path, 'condenser_data_encoded.json'), 'w') as tokenized_file:
+corpus_name = os.path.os.path.basename(args.corpus_file)
+corpus_name = os.path.splitext(corpus_name)[0]
+corpus_name = corpus_name.replace("_corpus","")
+
+with open(os.path.join(args.save_path, f'{corpus_name}_condenser_data_encoded.json'), 'w') as tokenized_file:
     with Pool() as p:
         all_blocks = p.imap_unordered(
             encode_one_line,

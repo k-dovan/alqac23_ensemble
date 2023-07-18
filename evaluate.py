@@ -408,8 +408,13 @@ if __name__ == "__main__":
         else:
             predictions = ensemble_model_lexfirst_predict(bm25, models, flat_corpus_data, all_models_corpus_embeddings, predicting_items, scoring_weights, args.lexical_top_k, args.range_score, args.max_relevants)
             
-        if args.eval_on == "test":
-            with open(f'results/ensemble_model_round{args.eval_round}_submission.json', 'w', encoding='utf-8') as outfile:
+        if args.eval_on == "test":            
+            if args.lexical_nodiff:
+                submission_name = f"{args.corpus_name}_ensemble_model_round{args.eval_round}_submission.json"
+            else:                
+                submission_name = f"{args.corpus_name}_ensemble_model_lexfirst{args.lexical_top_k}_round{args.eval_round}_submission.json"
+
+            with open(f'results/{submission_name}', 'w', encoding='utf-8') as outfile:
                 json_object = json.dumps(predictions, indent=4, ensure_ascii=False)
                 outfile.write(json_object)
 
@@ -429,7 +434,7 @@ if __name__ == "__main__":
         predictions = single_model_predict(model, flat_corpus_data, corpus_embeddings, predicting_items, args.range_score, args.max_relevants)
 
         if args.eval_on == "test":
-            with open(f'results/{model_name}_submission.json', 'w', encoding='utf-8') as outfile:
+            with open(f'results/{args.corpus_name}_{model_name}_submission.json', 'w', encoding='utf-8') as outfile:
                 json_object = json.dumps(predictions, indent=4, ensure_ascii=False)
                 outfile.write(json_object)
     
