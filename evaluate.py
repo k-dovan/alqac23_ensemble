@@ -14,20 +14,33 @@ from sentence_transformers import SentenceTransformer, util
 # BM25 model used in `ensemble` evaluation mode
 BM25_MODEL = "bm25/alqac23_bm25plus_k1.5_b0.75"
 
+# ----------------------------------------------------------------------------------------
+# Set up data version to pick proper pre-embedded data for evaluation and testing
+# 
+# Note: We must change appropriate items for SBERT_MODELS_ROUND1, SBERT_MODELS_ROUND2
+# whenever we change data version.
+# 
+# Models for data v1 without and v2 with `all_corpora_ep5` in their names.
+#
+# ----------------------------------------------------------------------------------------
+# v1 - data version used alqac23 & alqac22 for training LMs, Co-/Condenser, SBerts
+# v2 - data version used alqac23, alqac22 & zalo for training LMs, Co-/Condenser, SBerts
+SBERT_TRAINED_DATA_VERSION = "v2"
+
 # candidate models for round 1 (single and/or ensemble)
 SBERT_MODELS_ROUND1 = [
-    "sbert_round1_epoch4_top20_mlm_finetuned_vibert_base_cased",
-    "sbert_round1_epoch4_top20_mlm_finetuned_phobert_large",
-    "sbert_round1_epoch4_top20_condenser_phobert_large",
-    "sbert_round1_epoch4_top20_cocondenser_phobert_large",
+    "sbert_round1_epoch4_top50_mlm_finetuned_vibert_base_cased_all_corpora_ep5",
+    "sbert_round1_epoch4_top50_mlm_finetuned_phobert_large_all_corpora_ep5",
+    "sbert_round1_epoch4_top50_condenser_phobert_large_all_corpora_ep5",
+    "sbert_round1_epoch4_top50_cocondenser_phobert_large_all_corpora_ep5",
 ]
 
 # candidate models for round 2 (single and/or ensemble)
 SBERT_MODELS_ROUND2 = [
-    "sbert_round2_epoch4_top35_mlm_finetuned_vibert_base_cased",
-    "sbert_round2_epoch4_top35_mlm_finetuned_phobert_large",
-    "sbert_round2_epoch4_top35_condenser_phobert_large",
-    "sbert_round2_epoch4_top35_cocondenser_phobert_large",
+    "sbert_round2_epoch4_top35_mlm_finetuned_vibert_base_cased_all_corpora_ep5",
+    "sbert_round2_epoch4_top35_mlm_finetuned_phobert_large_all_corpora_ep5",
+    "sbert_round2_epoch4_top35_condenser_phobert_large_all_corpora_ep5",
+    "sbert_round2_epoch4_top35_cocondenser_phobert_large_all_corpora_ep5",
 ]
 
 def all_models_encode_corpus(models, corpus_name, eval_round):
@@ -45,14 +58,14 @@ def all_models_encode_corpus(models, corpus_name, eval_round):
         list_emb_models.append(emb2_arr)
     
     # save embedded data to file
-    with open(f"generated_data/{corpus_name}_all_models_round{eval_round}_embeddings.pkl", "wb") as embedded_corpus_file:
+    with open(f"generated_data/{corpus_name}_all_models_round{eval_round}_embeddings_{SBERT_TRAINED_DATA_VERSION}.pkl", "wb") as embedded_corpus_file:
         pickle.dump(list_emb_models, embedded_corpus_file)
 
     return list_emb_models
 
 def load_all_models_emdbeddings(corpus_name, eval_round):
     print("Start loading all models embeddings")
-    embedded_corpus_path = f"generated_data/{corpus_name}_all_models_round{eval_round}_embeddings.pkl"
+    embedded_corpus_path = f"generated_data/{corpus_name}_all_models_round{eval_round}_embeddings_{SBERT_TRAINED_DATA_VERSION}.pkl"
     with open(embedded_corpus_path, "rb") as embedded_corpus_file:
         emb_legal_data = pickle.load(embedded_corpus_file)
     return emb_legal_data
@@ -405,7 +418,7 @@ if __name__ == "__main__":
         # load bm25 model 
         bm25 = load_bm25(args.model_dir, BM25_MODEL)
         models = load_models(args.model_dir, model_paths)
-        print("Number of SBert models: ", len(models))
+        print("Number of sbert models: ", len(models))
 
         # encode or load pre-encoded embedding of the corpus
         if args.encode_corpus:
