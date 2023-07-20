@@ -12,7 +12,7 @@ from utils import bm25_tokenizer, calculate_f2
 from sentence_transformers import SentenceTransformer, util
 
 # BM25 model used in `ensemble` evaluation mode
-BM25_MODEL = "bm25/alqac23_bm25plus_k1.5_b0.75"
+BM25_MODEL = "bm25/<<<corpus_name>>>_bm25plus_k1.5_b0.75"
 
 # ----------------------------------------------------------------------------------------
 # Set up data version to pick proper pre-embedded data for evaluation and testing
@@ -415,8 +415,9 @@ if __name__ == "__main__":
             model_paths = SBERT_MODELS_ROUND2
         
         print("Start loading models")
-        # load bm25 model 
-        bm25 = load_bm25(args.model_dir, BM25_MODEL)
+        # load bm25 model
+        bm25_model = BM25_MODEL.replace("<<<corpus_name>>>", args.corpus_name)
+        bm25 = load_bm25(args.model_dir, bm25_model)
         models = load_models(args.model_dir, model_paths)
         print("Number of sbert models: ", len(models))
 
