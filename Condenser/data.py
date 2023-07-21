@@ -143,7 +143,7 @@ class CondenserCollator(DataCollatorForWholeWordMask):
             masks.append(encoded['attention_mask'])
             encoded_examples.append(encoded['input_ids'])
 
-        inputs, labels = self.mask_tokens(
+        inputs, labels = self.torch_mask_tokens(
             torch.tensor(encoded_examples, dtype=torch.long),
             torch.tensor(mlm_masks, dtype=torch.long)
         )
