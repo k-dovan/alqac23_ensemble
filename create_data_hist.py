@@ -14,10 +14,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--raw_data_dir", default="alqac23_data", type=str, help="path to raw corpus")
     parser.add_argument("--corpus_name", default="alqac23", type=str, choices=["alqac23", "alqac22", "zalo"], help="corpus to evaluate")
+    parser.add_argument("--save_path", default="generated_data/histograms", type=str, help="path to save histograms")
     args = parser.parse_args()
-
-    # save dir
-    save_dir = "generated_data/histograms"
 
     # articles' paths
     alqac23_corpus_path = os.path.join(args.raw_data_dir, "law.json")
@@ -56,7 +54,7 @@ if __name__ == "__main__":
                     data_lengths.append(data_len)
 
         plt.hist(data_lengths, bins=20)
-        plt.savefig(f'{save_dir}/hist_{corpus_name}_articles.png')
+        plt.savefig(f'{args.save_path}/hist_{corpus_name}_articles.png')
         plt.close()
     
     for corpus_name, train_path in train_corpus_paths.items():
@@ -68,7 +66,7 @@ if __name__ == "__main__":
             data_lengths.append(data_len)                    
 
         plt.hist(data_lengths, bins=20)
-        plt.savefig(f'{save_dir}/hist_{corpus_name}_questions.png')
+        plt.savefig(f'{args.save_path}/hist_{corpus_name}_questions.png')
         plt.close()
                 
 def find_outliers(corpus_name, data_path):
@@ -85,6 +83,6 @@ def find_outliers(corpus_name, data_path):
     top_value_idxs = np.argpartition(np_arr, -50)[-50:]
     print (np_arr[top_value_idxs])
     plt.hist(np_arr[top_value_idxs], bins=20)
-    plt.savefig(f'{save_dir}/hist_{corpus_name}_outliers.png')
+    plt.savefig(f'{args.save_path}/hist_{corpus_name}_outliers.png')
     plt.close()
         
