@@ -38,6 +38,7 @@ if __name__ == '__main__':
     save_cocondenser_name = f"{'_'.join(corpus_names)}_cocondenser_data.json"
     co_f = open(os.path.join(args.save_dir, save_cocondenser_name), "w")
     count = 0
+    unique_keys = []
     for law_article in tqdm(data):
         law_id = law_article["id"]
         law_articles = law_article["articles"]
@@ -45,6 +46,11 @@ if __name__ == '__main__':
         for sub_article in law_articles:
             article_id = sub_article["id"]
             article_text = sub_article["text"]
+            
+            if (law_id + "_" + article_id) in unique_keys:
+                continue
+            unique_keys.append(law_id + "_" + article_id)
+
             article_full = re.sub(r'\n+', " ", article_text)
             cp.write(article_full + "\n")
             

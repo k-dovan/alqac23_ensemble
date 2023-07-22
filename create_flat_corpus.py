@@ -34,6 +34,7 @@ if __name__ == "__main__":
     print("=======================")
     print(f"Start create flat corpus for {args.corpus_name}")
     flat_corpus = []
+    unique_keys = []
     for law_article in tqdm(data):
         law_id = law_article["id"]
         law_articles = law_article["articles"]
@@ -41,7 +42,10 @@ if __name__ == "__main__":
         for sub_article in law_articles:
             article_id = sub_article["id"]
             article_text = sub_article["text"]
+            if (law_id + "_" + article_id) in unique_keys:
+                continue
             flat_corpus.append([law_id, article_id, article_text])
+            unique_keys.append(law_id + "_" + article_id)
     
     os.makedirs(args.save_dir, exist_ok=True)    
     with open(os.path.join(args.save_dir, f"{args.corpus_name}_flat_corpus.pkl"), "wb") as flat_corpus_file:

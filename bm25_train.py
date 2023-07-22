@@ -6,31 +6,26 @@ from tqdm import tqdm
 from rank_bm25 import *
 import argparse
 from utils import bm25_tokenizer, calculate_f2
-# from config import Config
-
-class Config:
-    raw_data_dir = "alqac23_data"
-    save_bm25 = "saved_model/bm25"
-    top_k_bm25 = 2
-    bm25_k1 = 1.5
-    bm25_b = 0.75
 
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     # load document to save running time, 
     # must re-run if we change pre-process step
+    parser.add_argument("--raw_data_dir", default="alqac23_data", type=str, help="directory to raw data")
     parser.add_argument("--corpus_name", default="alqac23", type=str, choices=["alqac23", "alqac22", "zalo", "all"], help="corpus for bm25")
+    parser.add_argument("--bm25_k1", default=0.6, type=float, help="bm25's k1 parameter")
+    parser.add_argument("--bm25_b", default=0.6, type=float, help="bm25's b parameter")
+    parser.add_argument("--bm25_top_k", default=2, type=int, help="number of documents retrieves by bm25")
+    parser.add_argument("--num_eval", default=500, type=int)
     parser.add_argument("--load_docs", action="store_false")
-    parser.add_argument("--num_eval", default=500, type=str)
+    parser.add_argument("--save_dir", default="saved_model/bm25", type=str, help="directory to save model")
     args = parser.parse_args()
-
-    cfg = Config()
     
-    save_path = cfg.save_bm25
+    save_path = args.save_dir
     os.makedirs(save_path, exist_ok=True)
 
-    raw_data = cfg.raw_data_dir
+    raw_data = args.raw_data_dir
     alqac23_corpus_path = os.path.join(raw_data, "law.json")
     alqac22_corpus_path = os.path.join(raw_data, "additional_data/ALQAC_2022_training_data/law.json")
     zalo_corpus_path = os.path.join(raw_data, "additional_data/zalo/zalo_corpus.json")
@@ -53,6 +48,7 @@ if __name__ == '__main__':
     if args.load_docs:
         print("Process documents")
         documents = []
+        unique_keys = []
         flat_corpus_data = []
         for law_article in tqdm(data):
             law_id = law_article["id"]
@@ -61,10 +57,14 @@ if __name__ == '__main__':
             for sub_article in law_articles:
                 article_id = sub_article["id"]
                 article_text = sub_article["text"]
+
+                if (law_id + "_" + article_id) in unique_keys:
+                    continue
                     
                 tokens = bm25_tokenizer(article_text)
                 documents.append(tokens)
                 flat_corpus_data.append([law_id, article_id, article_text])
+                unique_keys.append(law_id + "_" + article_id)
         
         with open(f"generated_data/{args.corpus_name}_bm25_tokenized_corpus.pkl", "wb") as documents_file:
             pickle.dump(documents, documents_file)
@@ -99,12 +99,12 @@ if __name__ == '__main__':
 
     print (f"Number of training questions: {len(train_items)}")
 
-    bm25 = BM25Plus(documents, k1=cfg.bm25_k1, b=cfg.bm25_b)
+    bm25 = BM25Plus(documents, k1=args.bm25_k1, b=args.bm25_b)
     # bm25 = BM25Plus(documents) # with default {k1,b} params 
     #
     # save the model with its performance
     with open(os.path.join(save_path, 
-                           f"{args.corpus_name}_bm25plus_k{cfg.bm25_k1}_b{cfg.bm25_b}"), "wb"
+                           f"{args.corpus_name}_bm25plus_k{args.bm25_k1}_b{args.bm25_b}"), "wb"
                            ) as bm_file:
         pickle.dump(bm25, bm_file)   
         
@@ -128,7 +128,7 @@ if __name__ == '__main__':
         # Get top N
         # N large -> reduce precision, increase recall
         # N small -> increase precision, reduce recall
-        predictions = np.argpartition(doc_scores, -cfg.top_k_bm25)[-cfg.top_k_bm25:]
+        predictions = np.argpartition(doc_scores, -args.bm25_top_k)[-args.bm25_top_k:]
 
         # suggest to investigate delta score for tricking
         #TODO: calculate histogram of the delta_scores to cutoff at right place

@@ -7,12 +7,12 @@ import argparse
 import os
 import pickle
 import glob
-from utils import bm25_tokenizer, calculate_f2
+from utils import bm25_tokenizer, calculate_f2, segment_long_text, aggregate_embeddings
 
 from sentence_transformers import SentenceTransformer, util
 
 # BM25 model used in `ensemble` evaluation mode
-BM25_MODEL = "bm25/<<<corpus_name>>>_bm25plus_k1.5_b0.75"
+BM25_MODEL = "bm25/<<<corpus_name>>>_bm25plus_k0.6_b0.6"
 
 # ----------------------------------------------------------------------------------------
 # Set up data version to pick proper pre-embedded data for evaluation and testing
@@ -49,10 +49,17 @@ def all_models_encode_corpus(models, corpus_name, eval_round):
     doc_data = json.load(open(legal_dict_path))
     # print(len(doc_data))
     list_emb_models = []
+    max_length = 2000
+    sliding_thresh = 1000
     for model in models:
         emb2_list = []
         for k, _ in tqdm(doc_data.items()):
-            emb2 = model.encode(doc_data[k]["text"])
+            text = doc_data[k]["text"]
+            if len(text) - text.count("\n") <= max_length:
+                emb2 = model.encode(text)
+            else:
+                paragraphs = segment_long_text(text, max_length, sliding_thresh)
+                emb2 = aggregate_embeddings(paragraphs, model)   
             emb2_list.append(emb2)
         emb2_arr = np.array(emb2_list)
         list_emb_models.append(emb2_arr)
@@ -76,8 +83,15 @@ def single_model_encode_corpus(model, model_name, corpus_name):
     doc_data = json.load(open(legal_dict_path))
     # print(len(doc_data))
     embeddings = []
+    max_length = 2000
+    sliding_thresh = 1000
     for k, _ in tqdm(doc_data.items()):
-        embedded = model.encode(doc_data[k]["text"])
+        text = doc_data[k]["text"]
+        if len(text) - text.count("\n") <= max_length:
+            embedded = model.encode(text)
+        else:
+            paragraphs = segment_long_text(text, max_length, sliding_thresh)
+            embedded = aggregate_embeddings(paragraphs, model)        
         embeddings.append(embedded)
     np_embeddings = np.array(embeddings)        
     
