@@ -25,22 +25,23 @@ BM25_MODEL = "bm25/<<<corpus_name>>>_bm25plus_k0.6_b0.6"
 # ----------------------------------------------------------------------------------------
 # v1 - data version used alqac23 & alqac22 for training LMs, Co-/Condenser, SBerts
 # v2 - data version used alqac23, alqac22 & zalo for training LMs, Co-/Condenser, SBerts
-SBERT_TRAINED_DATA_VERSION = "v2"
+# v2.1 - data version used alqac23, alqac22 & zalo and employ article segmentation
+SBERT_TRAINED_DATA_VERSION = "v2.1"
 
 # candidate models for round 1 (single and/or ensemble)
 SBERT_MODELS_ROUND1 = [
-    "sbert_round1_epoch4_top50_mlm_finetuned_vibert_base_cased_all_corpora_ep5",
-    "sbert_round1_epoch4_top50_mlm_finetuned_phobert_large_all_corpora_ep5",
-    "sbert_round1_epoch4_top50_condenser_phobert_large_all_corpora_ep5",
-    "sbert_round1_epoch4_top50_cocondenser_phobert_large_all_corpora_ep5",
+    "sbert_round1_epoch4_top50_mlm_finetuned_vibert_base_cased_all_corpora_ep10",
+    "sbert_round1_epoch4_top50_mlm_finetuned_phobert_large_all_corpora_ep10",
+    "sbert_round1_epoch4_top50_condenser_phobert_large_all_corpora_ep10",
+    "sbert_round1_epoch4_top50_cocondenser_phobert_large_all_corpora_ep10",
 ]
 
 # candidate models for round 2 (single and/or ensemble)
 SBERT_MODELS_ROUND2 = [
-    "sbert_round2_epoch4_top35_mlm_finetuned_vibert_base_cased_all_corpora_ep5",
-    "sbert_round2_epoch4_top35_mlm_finetuned_phobert_large_all_corpora_ep5",
-    "sbert_round2_epoch4_top35_condenser_phobert_large_all_corpora_ep5",
-    "sbert_round2_epoch4_top35_cocondenser_phobert_large_all_corpora_ep5",
+    "sbert_round2_epoch4_top20_mlm_finetuned_vibert_base_cased_all_corpora_ep10",
+    "sbert_round2_epoch4_top20_mlm_finetuned_phobert_large_all_corpora_ep10",
+    "sbert_round2_epoch4_top20_condenser_phobert_large_all_corpora_ep10",
+    "sbert_round2_epoch4_top20_cocondenser_phobert_large_all_corpora_ep10",
 ]
 
 def all_models_encode_corpus(models, corpus_name, eval_round):
@@ -388,6 +389,7 @@ if __name__ == "__main__":
     parser.add_argument("--max_relevants", default=1, type=int, help="max relevant articles should be produced")
     parser.add_argument("--encode_corpus", action="store_true", help="encode corpus if not pre-computed")
     parser.add_argument("--eval_on", default="train", type=str, choices=["train", "test"], help="evaluate on train or test data")
+    parser.add_argument("--test_type", default="public", type=str, choices=["public", "private"], help="type of test data to predict when `eval_on`=`test`")
     args = parser.parse_args()
 
     # parse scoring weights
@@ -412,7 +414,10 @@ if __name__ == "__main__":
         predicting_items = json.load(open(data_path))
     
     elif args.eval_on == "test":
-        alqac23_corpus_path_test = os.path.join(args.raw_data_dir, "public_test.json")
+        if args.test_type == "public":
+            alqac23_corpus_path_test = os.path.join(args.raw_data_dir, "public_test.json")
+        elif args.test_type == "private":
+            alqac23_corpus_path_test = os.path.join(args.raw_data_dir, "private_test.json")
         predicting_items = json.load(open(alqac23_corpus_path_test))
     
     print("Number of questions: ", len(predicting_items))
@@ -446,17 +451,22 @@ if __name__ == "__main__":
         else:
             predictions = ensemble_model_lexfirst_predict(bm25, models, flat_corpus_data, all_models_corpus_embeddings, predicting_items, scoring_weights, args.sqrt_lexical, args.lexical_top_k, args.range_score, args.max_relevants)
             
-        if args.eval_on == "test":            
+        if args.eval_on == "test":
+            if args.test_type == "public":
+                test_type = "public_test"
+            elif args.test_type == "private":
+                test_type = "private_test"
+
             if args.lexical_nodiff:
                 if args.sqrt_lexical:
-                    submission_name = f"{args.corpus_name}_ensemble_model_round{args.eval_round}_sqrtlex_submission.json"
+                    submission_name = f"{args.corpus_name}_ensemble_model_round{args.eval_round}_sqrtlex_{test_type}_submission.json"
                 else:                    
-                    submission_name = f"{args.corpus_name}_ensemble_model_round{args.eval_round}_submission.json"
+                    submission_name = f"{args.corpus_name}_ensemble_model_round{args.eval_round}_{test_type}_submission.json"
             else:
                 if args.sqrt_lexical:                
-                    submission_name = f"{args.corpus_name}_ensemble_model_lexfirst{args.lexical_top_k}_round{args.eval_round}_sqrtlex_submission.json"
+                    submission_name = f"{args.corpus_name}_ensemble_model_lexfirst{args.lexical_top_k}_round{args.eval_round}_sqrtlex_{test_type}_submission.json"
                 else:
-                    submission_name = f"{args.corpus_name}_ensemble_model_lexfirst{args.lexical_top_k}_round{args.eval_round}_submission.json"
+                    submission_name = f"{args.corpus_name}_ensemble_model_lexfirst{args.lexical_top_k}_round{args.eval_round}_{test_type}_submission.json"
 
             with open(f'results/{submission_name}', 'w', encoding='utf-8') as outfile:
                 json_object = json.dumps(predictions, indent=4, ensure_ascii=False)

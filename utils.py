@@ -132,7 +132,7 @@ def segment_long_text(long_text: str, max_length: int = 2000, sliding_thresh: in
     queue = deque([])
     total_length = 0
     shift = 0
-    for idx, length in tqdm(enumerate(lengths)):
+    for idx, length in enumerate(lengths):
         # print ("idx: ", idx)
         if total_length > 0:
             if total_length + length < max_length:
