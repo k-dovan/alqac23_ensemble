@@ -14,7 +14,12 @@ if __name__ == '__main__':
     
     os.makedirs(args.save_dir,exist_ok=True)
 
-    corpus_names = list(set(args.corpus_list.split(',')))
+    # remove accidentally duplicate corpus with the order kept
+    corpus_names = []
+    for corpus in args.corpus_list.split(','):
+        if corpus not in corpus_names:
+            corpus_names.append(corpus)
+
     for corpus_name in corpus_names:
         assert corpus_name in ['alqac23', 'alqac22', 'zalo'], "corpus name item must be in [`alqac23`,`alqac22`,`zalo`"
     
