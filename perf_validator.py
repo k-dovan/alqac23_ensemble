@@ -1,6 +1,6 @@
 import json
 import argparse
-from evaluate import evaluate_results
+from predict import evaluate_results
 
 
 if __name__ == "__main__":
