@@ -80,7 +80,7 @@ if __name__ == '__main__':
     
     train_items = []    
     for corpus_name in corpus_names:
-        data.extend(json.load(open(train_corpus_paths[corpus_name])))
+        train_items.extend(json.load(open(train_corpus_paths[corpus_name])))
 
     for item in tqdm(train_items):
         question = re.sub(r'\s*\n+\s*', " ", item["text"]) 
