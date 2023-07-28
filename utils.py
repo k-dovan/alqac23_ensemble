@@ -24,6 +24,12 @@ def remove_punctuation(w):
 def lower_case(w):
     return w.lower()
 
+def remove_newlines(text: str):
+    # print (text)
+    text_1 = re.sub(r'([\:;.])\n+', r'\1 ', text)
+    text_2 = re.sub(r'\n+', r'. ', text_1)
+    return text_2
+
 def bm25_tokenizer(text):
     text = re.sub(regx_numbered_list, " ", text)
     text = re.sub(regx_letter_list, " ", text)
@@ -217,6 +223,6 @@ if __name__ == "__main__":
 
     # print (candidate)
 
-    paragraphs = split_long_text(long_text)
+    # paragraphs = split_long_text(long_text)
 
-    print (paragraphs)
+    # print (paragraphs)
