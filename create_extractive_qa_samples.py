@@ -3,6 +3,7 @@ import re
 from tqdm import tqdm
 import random
 import numpy as np
+import os
 
 from utils import remove_newlines
 
@@ -88,10 +89,12 @@ if __name__ == '__main__':
     val_samples = list(np_samples[list(val_indices)])
     train_samples = list(np_samples[list(train_indices)])
     
-    with open("generated_data/extractive_qa_training_samples.json", "w", encoding="utf-8") as outfile:
+    save_dir = "generated_data/qa_extractive_question_data/"
+    os.makedirs(save_dir, exist_ok=True)
+    with open(f"{save_dir}/extractive_qa_training_samples.json", "w", encoding="utf-8") as outfile:
         json_object = json.dumps({"data": train_samples}, indent=4, ensure_ascii=False)
         outfile.write(json_object)
-    with open("generated_data/extractive_qa_validation_samples.json", "w", encoding="utf-8") as outfile:
+    with open(f"{save_dir}/extractive_qa_validation_samples.json", "w", encoding="utf-8") as outfile:
         json_object = json.dumps({"data": val_samples}, indent=4, ensure_ascii=False)
         outfile.write(json_object)
     

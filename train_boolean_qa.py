@@ -77,12 +77,21 @@ class DataTrainingArguments:
             "help": "Whether to do regression instead of classification. If None, will be inferred from the dataset."
         },
     )
-    text_column_names: Optional[str] = field(
+    question_column_name: Optional[str] = field(
         default=None,
         metadata={
             "help": (
-                "The name of the text column in the input dataset or a CSV/JSON file."
-                'If not specified, will use the "sentence" column for single/multi-label classifcation task.'
+                "The name of the law article text column in the input dataset or a CSV/JSON file."
+                'If not specified, will use the 1st column as question.'
+            )
+        },
+    )
+    context_column_name: Optional[str] = field(
+        default=None,
+        metadata={
+            "help": (
+                "The name of the law article text column in the input dataset or a CSV/JSON file."
+                'If not specified, will use the 2nd column as context.'
             )
         },
     )
@@ -498,6 +507,18 @@ def main():
         ignore_mismatched_sizes=model_args.ignore_mismatched_sizes,
     )
 
+    # Preprocessing the datasets.
+    # Preprocessing is slighlty different for training and evaluation.
+    if training_args.do_train:
+        column_names = raw_datasets["train"].column_names
+    elif training_args.do_eval:
+        column_names = raw_datasets["validation"].column_names
+    else:
+        column_names = raw_datasets["test"].column_names
+    question_column_name = "question" if "question" in column_names else column_names[0]
+    context_column_name = "context" if "context" in column_names else column_names[1]
+    answer_column_name = "label" if "label" in column_names else column_names[2]
+
     # Padding strategy
     if data_args.pad_to_max_length:
         padding = "max_length"
@@ -538,15 +559,9 @@ def main():
         return ids
 
     def preprocess_function(examples):
-        if data_args.text_column_names is not None:
-            text_column_names = data_args.text_column_names.split(",")
-            # join together text columns into "sentence" column
-            examples["sentence"] = examples[text_column_names[0]]
-            for column in text_column_names[1:]:
-                for i in range(len(examples[column])):
-                    examples["sentence"][i] += data_args.text_column_delimiter + examples[column][i]
-        # Tokenize the texts
-        result = tokenizer(examples["sentence"], padding=padding, max_length=max_seq_length, truncation=True)
+        # Tokenize the texts (not deal with long articles yet, since the model support 512 token as max length)
+        result = tokenizer(examples[question_column_name], examples[context_column_name], padding=padding, max_length=max_seq_length, truncation=True)
+        
         if label_to_id is not None and "label" in examples:
             if is_multi_label:
                 result["label"] = [multi_labels_to_ids(l) for l in examples["label"]]
