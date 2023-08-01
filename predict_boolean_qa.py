@@ -18,12 +18,11 @@ def prepare_bool_questions(questions: list):
         alqac23_law_dict = json.load(legal_dict_file)
 
     for q in tqdm(questions):
-        q_type = q["question_type"]
-        if q_type != "Đúng/Sai":
+        question_id = q["question_id"]
+        if "DS-" not in question_id:
             continue
 
         bool_questions.append(q)
-        question_id = q["question_id"]
         question = remove_newlines(q["text"])
         # question = q["text"]
 
@@ -35,8 +34,6 @@ def prepare_bool_questions(questions: list):
             
             ctx = remove_newlines(alqac23_law_dict[dict_key]["text"])
             # ctx = alqac23_law_dict[dict_key]["text"]
-            if len(ctx)  :
-                pass
             if len(ctx) <= max_length:
                 question_ids.append(question_id)
                 input_tuples.append((question, ctx))
@@ -50,8 +47,8 @@ def prepare_bool_questions(questions: list):
 
 def evaluate_results(questions, predictions):
     print("Start evaluating results")
-    print ("questions: ", questions)
-    print ("predictions: ", predictions)
+    # print ("questions: ", questions)
+    # print ("predictions: ", predictions)
     correct = 0
     for item in tqdm(questions):
         question_id = item["question_id"]
@@ -71,10 +68,10 @@ def predict_bool_questions(model, tokenizer, questions: list, eval_on: str):
 
     with torch.no_grad():
         logits = model(**batch_inputs).logits
-    print ("logits: ", logits)
+    # print ("logits: ", logits)
 
     class_ids = logits.argmax(dim=1).tolist()
-    print (class_ids)
+    # print (class_ids)
 
     preds = {}
     for idx, qid in enumerate(question_ids):
@@ -89,14 +86,12 @@ def predict_bool_questions(model, tokenizer, questions: list, eval_on: str):
     if eval_on == "train":
         evaluate_results(bool_questions, preds)
     
-    preds = [{"question_id": k, "answer": v} for k,v in preds.items()]
-    
     return preds
 
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model_path", default="saved_model/boolq_alqac23_ep3_google_ep3_finetuned_vi_mrc_large", type=str, help="path to boolean QA model")
+    parser.add_argument("--model_path", default="saved_model/boolq_alqac23_ep50_google_ep3_finetuned_vi_mrc_large/checkpoint-200", type=str, help="path to boolean QA model")
     parser.add_argument("--eval_on", default="train", type=str, choices=["train", "public_test", "private_test"], help="evaluate on train, public test or private test data")
     args = parser.parse_args()
 

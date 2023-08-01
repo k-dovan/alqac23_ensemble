@@ -4,6 +4,7 @@ from tqdm import tqdm
 import random
 import numpy as np
 import os
+from utils import clean_multichoice_question, add_choice_metadata, remove_newlines
 
 if __name__ == '__main__':
     
@@ -66,24 +67,14 @@ if __name__ == '__main__':
     alqac23_train_items = json.load(open("alqac23_data/train.json"))
 
     samples = []
-    count = 0
+    count_boolq, count_multchoice = 0, 0
+    max_length = 2000
     for item in tqdm(alqac23_train_items):
         q_type = item["question_type"]
-        if q_type != "Đúng/Sai":
-            continue        
-        count += 1
         question_id = item["question_id"]
-        # question = remove_newlines(item["text"])
+        question = remove_newlines(item["text"])
         question = item["text"]
-        answer_vi = item["answer"]
-
-        if answer_vi == "Đúng":
-            answer = "True"
-        elif answer_vi == "Sai":
-            answer = "False"
-        else:
-            print(f"> Incorrect label at question {question_id}, answer: {answer_vi}, expected: [Đúng, Sai]")
-            continue
+        answer = item["answer"]
 
         relevant_articles = item["relevant_articles"]
         context = ""
@@ -92,12 +83,64 @@ if __name__ == '__main__':
             article_id = art["article_id"]
             dict_key = law_id + "_" + article_id
             
-            # cxt = remove_newlines(alqac23_law_dict[dict_key]["text"])
-            cxt = alqac23_law_dict[dict_key]["text"]
+            cxt = remove_newlines(alqac23_law_dict[dict_key]["text"])
+            # cxt = alqac23_law_dict[dict_key]["text"]
             context = ' '.join([context, cxt]).strip()
         
-        qa_sample = {"question": question, "context": context, "label": answer}
-        samples.append(qa_sample)
+        if len(context) > max_length:
+            print (f"Too long artile refered by {question_id}.")
+            continue
+
+        if q_type == "Đúng/Sai":                    
+            count_boolq += 1
+
+            if answer == "Đúng":
+                answer_en = "True"
+            elif answer == "Sai":
+                answer_en = "False"
+            else:
+                print(f"> Incorrect label at question {question_id}, answer: {answer}, expected: [Đúng, Sai]")
+                continue
+
+            qa_sample = {"question": question, "context": context, "label": answer_en}
+            samples.append(qa_sample)
+
+        elif q_type == "Trắc nghiệm":
+            count_multchoice += 1
+            assert answer in ['A','B','C','D'], f"Multi-choices' questions answer must be A, B, C, or D. Actual: {answer}"
+            
+            q_text = clean_multichoice_question(remove_newlines(question))
+            q_meta = add_choice_metadata(item)
+            if answer in q_meta["metadata"]["standalones"]:
+                c_text = q_meta["choices"][answer]
+                query = ' '.join([q_text, c_text])
+                qa_sample = {"question": query, "context": context, "label": "True"}
+                samples.append(qa_sample)
+
+                # add all other standalone choices as negative samples
+                for c_label in q_meta["metadata"]["standalones"]:
+                    if c_label == answer:
+                        continue
+                    c_text = q_meta["choices"][c_label]
+                    query = ' '.join([q_text, c_text])
+                    qa_sample = {"question": query, "context": context, "label": "False"}
+                    samples.append(qa_sample)
+            elif answer == list(q_meta["metadata"]["trues"].keys())[0]:
+                refered_choices = q_meta["metadata"]["trues"][answer]
+                # add all refered choices as positive samples
+                for c_label in refered_choices:
+                    c_text = q_meta["choices"][c_label]
+                    query = ' '.join([q_text, c_text])
+                    qa_sample = {"question": query, "context": context, "label": "True"}
+                    samples.append(qa_sample)                
+            elif answer == list(q_meta["metadata"]["falses"].keys())[0]:
+                refered_choices = q_meta["metadata"]["falses"][answer]
+                # add all refered choices as negative samples
+                for c_label in refered_choices:
+                    c_text = q_meta["choices"][c_label]
+                    query = ' '.join([q_text, c_text])
+                    qa_sample = {"question": query, "context": context, "label": "False"}
+                    samples.append(qa_sample)            
 
     # sampling for train and validation sets
     np_samples = np.array(samples)
@@ -116,7 +159,8 @@ if __name__ == '__main__':
         outfile.write(json_object)
 
     print (f"> ALQAC23's training corpus:")
-    print (f">> Number of boolean samples: {count}")
+    print (f">> Number of boolean samples: {count_boolq}")
+    print (f">> Number of mulit-choice samples: {count_multchoice}")
     print (f">> Number of valid samples: {len(samples)}")
     print (f">> Number of training samples: {len(train_samples)}")
     print (f">> Number of validation samples: {len(val_samples)}")
