@@ -7,7 +7,7 @@ import argparse
 import os
 import pickle
 import glob
-from utils import bm25_tokenizer, calculate_f2, segment_long_text, aggregate_embeddings
+from utils import bm25_tokenizer, calculate_f2, segment_long_text, sbert_aggregate_embeddings
 
 from sentence_transformers import SentenceTransformer, util
 
@@ -60,7 +60,7 @@ def all_models_encode_corpus(models, corpus_name, eval_round):
                 emb2 = model.encode(text)
             else:
                 paragraphs = segment_long_text(text, max_length, sliding_thresh)
-                emb2 = aggregate_embeddings(paragraphs, model)   
+                emb2 = sbert_aggregate_embeddings(paragraphs, model)   
             emb2_list.append(emb2)
         emb2_arr = np.array(emb2_list)
         list_emb_models.append(emb2_arr)
@@ -92,7 +92,7 @@ def single_model_encode_corpus(model, model_name, corpus_name):
             embedded = model.encode(text)
         else:
             paragraphs = segment_long_text(text, max_length, sliding_thresh)
-            embedded = aggregate_embeddings(paragraphs, model)        
+            embedded = sbert_aggregate_embeddings(paragraphs, model)        
         embeddings.append(embedded)
     np_embeddings = np.array(embeddings)        
     
