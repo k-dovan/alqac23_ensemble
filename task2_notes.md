@@ -10,13 +10,13 @@ screen -dm bash -c "python train_extractive_qa.py   --model_name_or_path nguyenv
 ### On Google BoolQ Dataset
 
 ```
-python train_boolean_qa.py --model_name_or_path  saved_model/finetuned_vi_mrc_large/ --train_file generated_data/qa_boolean_question_data/google_boolean_qa_training_samples.json --validation_file generated_data/qa_boolean_question_data/google_boolean_qa_validation_samples.json   --shuffle_train_dataset --metric_name accuracy --question_column_name question  --context_column_name context --label_column_name label --do_train --do_eval --max_seq_length 512 --per_device_train_batch_size 16 --learning_rate 2e-5 --num_train_epochs 3 --logging_steps [1000] --save_steps [1000] --eval_steps [1000] --save_total_limit [5]  --output_dir saved_model/boolq_google_ep3_finetuned_vi_mrc_large/
+screen -dm bash -c "python train_boolean_qa.py --model_name_or_path  saved_model/finetuned_ep20_vi_mrc_large/checkpoint-800 --train_file generated_data/qa_boolean_question_data/google_boolean_qa_training_samples.json --validation_file generated_data/qa_boolean_question_data/google_boolean_qa_validation_samples.json   --shuffle_train_dataset --metric_name accuracy --question_column_name question  --context_column_name context --label_column_name label --do_train --do_eval --max_seq_length 512 --per_device_train_batch_size 16 --learning_rate 2e-5 --num_train_epochs 3 --logging_steps 500 --save_steps 500 --eval_steps 500 --save_total_limit 5  --output_dir saved_model/boolq_google_ep3_finetuned_ep20_vi_mrc_large/ 2> logs/boolq_google_ep3_finetuned_ep20_vi_mrc_large.log"
 ```
 
 ### On ALQAC 2023's boolean questions
 
 ```
-python train_boolean_qa.py --model_name_or_path  saved_model/boolq_google_ep3_finetuned_vi_mrc_large/ --train_file generated_data/qa_boolean_question_data/alqac23_boolean_qa_training_samples.json --validation_file generated_data/qa_boolean_question_data/alqac23_boolean_qa_validation_samples.json  --shuffle_train_dataset --metric_name accuracy --question_column_name question  --context_column_name context --label_column_name label --do_train --do_eval --max_seq_length 512 --per_device_train_batch_size 16 --learning_rate 2e-5 --num_train_epochs 50 --logging_steps 100 --save_steps 100 --eval_steps 100 --save_total_limit 5 --output_dir saved_model/boolq_alqac23_ep50_google_ep3_finetuned_vi_mrc_large/
+screen -dm bash -c "python train_boolean_qa.py --model_name_or_path  saved_model/boolq_google_ep3_finetuned_ep20_vi_mrc_large/ --train_file generated_data/qa_boolean_question_data/alqac23_boolean_qa_training_samples.json --validation_file generated_data/qa_boolean_question_data/alqac23_boolean_qa_validation_samples.json  --shuffle_train_dataset --metric_name accuracy --question_column_name question  --context_column_name context --label_column_name label --do_train --do_eval --max_seq_length 512 --per_device_train_batch_size 16 --learning_rate 2e-5 --num_train_epochs 50 --logging_steps 100 --save_steps 100 --eval_steps 100 --save_total_limit 5 --output_dir saved_model/boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large/ 2> logs/boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large.log"
 ```
 
 
