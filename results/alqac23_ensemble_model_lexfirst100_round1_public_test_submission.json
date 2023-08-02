@@ -274,7 +274,7 @@
         "relevant_articles": [
             {
                 "law_id": "Luật Cư trú",
-                "article_id": "33"
+                "article_id": "36"
             }
         ]
     },
@@ -526,7 +526,7 @@
         "relevant_articles": [
             {
                 "law_id": "Luật Cư trú",
-                "article_id": "27"
+                "article_id": "28"
             }
         ]
     },
@@ -544,7 +544,7 @@
         "relevant_articles": [
             {
                 "law_id": "Luật Phòng, chống ma túy",
-                "article_id": "36"
+                "article_id": "35"
             }
         ]
     },
@@ -580,7 +580,7 @@
         "relevant_articles": [
             {
                 "law_id": "Luật Hôn nhân và gia đình",
-                "article_id": "68"
+                "article_id": "71"
             }
         ]
     },
@@ -597,8 +597,8 @@
         "question_id": "TN-57",
         "relevant_articles": [
             {
-                "law_id": "Hiến pháp",
-                "article_id": "22"
+                "law_id": "Luật Cư trú",
+                "article_id": "2"
             }
         ]
     },
@@ -697,7 +697,7 @@
         "relevant_articles": [
             {
                 "law_id": "Luật Hôn nhân và gia đình",
-                "article_id": "59"
+                "article_id": "40"
             }
         ]
     },
@@ -724,7 +724,7 @@
         "relevant_articles": [
             {
                 "law_id": "Luật Trọng tài thương mại",
-                "article_id": "41"
+                "article_id": "7"
             }
         ]
     },
@@ -733,7 +733,7 @@
         "relevant_articles": [
             {
                 "law_id": "Luật Hôn nhân và gia đình",
-                "article_id": "95"
+                "article_id": "94"
             }
         ]
     },
@@ -832,7 +832,7 @@
         "relevant_articles": [
             {
                 "law_id": "Luật Trọng tài thương mại",
-                "article_id": "28"
+                "article_id": "21"
             }
         ]
     },
@@ -849,8 +849,8 @@
         "question_id": "TN-85",
         "relevant_articles": [
             {
-                "law_id": "Luật Điện ảnh",
-                "article_id": "9"
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "5"
             }
         ]
     },

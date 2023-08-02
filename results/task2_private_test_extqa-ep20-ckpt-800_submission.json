@@ -1,0 +1,26 @@
+[
+    {
+        "question_id": "TL-1",
+        "question_type": "Tự luận",
+        "text": "Khi thay đổi người giám hộ thì trong thời hạn bao nhiêu ngày, kể từ ngày có người giám hộ mới, người đã thực hiện việc giám hộ phải chuyển giao giám hộ cho người thay thế mình?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "61"
+            }
+        ],
+        "answer": "15 ngày"
+    },
+    {
+        "question_id": "TL-2",
+        "question_type": "Tự luận",
+        "text": "Theo BLDS năm 2015, nếu quyền đại diện được xác lập trên cơ sở một hợp đồng nhưng không thể xác định được thời hạn đại diện theo hợp đồng đó và cũng không có bất cứ thỏa thuận nào khác giữa các bên về thời hạn đại diện thì thời hạn đại diện trong trường hợp này là bao lâu và kể từ thời điểm nào?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "140"
+            }
+        ],
+        "answer": "01 năm, kể từ thời điểm phát sinh quyền đại diện"
+    }
+]

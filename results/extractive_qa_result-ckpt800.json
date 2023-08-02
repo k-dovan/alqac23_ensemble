@@ -1,0 +1,122 @@
+[
+    {
+        "question_id": "TL-1",
+        "question_type": "Tự luận",
+        "text": "Trong trường hợp các bên không có thỏa thuận khác hoặc quy tắc tố tụng của trung tâm trọng tài không có quy định khác, Trung tâm trọng tài phải gửi cho bị đơn bản sao đơn khởi kiện của nguyên đơn và những tài liệu theo quy định trong thời hạn bao lâu kể từ ngày nhận được đơn khởi kiện?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "32"
+            }
+        ],
+        "answer": "10 ngày"
+    },
+    {
+        "question_id": "TL-2",
+        "question_type": "Tự luận",
+        "text": "Hồ sơ đề nghị cấp lại thẻ hướng dẫn viên du lịch bao gồm ảnh chân dung màu cỡ bao nhiêu?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Du lịch",
+                "article_id": "63"
+            }
+        ],
+        "answer": "3 cm x 4 cm"
+    },
+    {
+        "question_id": "TL-3",
+        "question_type": "Tự luận",
+        "text": "Thời hạn quản lý người sử dụng trái phép chất ma túy là bao lâu kể từ ngày Chủ tịch Ủy ban nhân dân cấp xã, phường ra quyết định quản lý?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "23"
+            }
+        ],
+        "answer": "01 năm"
+    },
+    {
+        "question_id": "TL-4",
+        "question_type": "Tự luận",
+        "text": "Chức năng của Trung tâm trọng tài là gì?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "23"
+            }
+        ],
+        "answer": "tổ chức, điều phối hoạt động giải quyết tranh chấp"
+    },
+    {
+        "question_id": "TL-5",
+        "question_type": "Tự luận",
+        "text": "Sau khi sổ hộ khẩu hết hiệu lực (hết ngày 31/12/2022) thì chứng minh nơi thường trú bằng cách nào?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Cư trú",
+                "article_id": "38"
+            }
+        ],
+        "answer": "sử dụng thông tin trong Cơ sở dữ liệu về cư trú"
+    },
+    {
+        "question_id": "TL-6",
+        "question_type": "Tự luận",
+        "text": "Vợ chồng đã ly hôn muốn xác lập lại quan hệ vợ chồng thì cần làm thủ tục gì?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "9"
+            }
+        ],
+        "answer": "đăng ký kết hôn"
+    },
+    {
+        "question_id": "TL-7",
+        "question_type": "Tự luận",
+        "text": "Ai là người giữ vai trò quan trọng trong việc quản lý, tổ chức, và điều hành các hoạt động giáo dục?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Giáo dục",
+                "article_id": "18"
+            }
+        ],
+        "answer": "Cán bộ quản lý giáo dục"
+    },
+    {
+        "question_id": "TL-8",
+        "question_type": "Tự luận",
+        "text": "Nguồn tài chính nào giữ vai trò chủ đạo trong tổng nguồn lực đầu tư cho giáo dục?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Giáo dục",
+                "article_id": "17"
+            }
+        ],
+        "answer": "Ngân sách nhà nước"
+    },
+    {
+        "question_id": "TL-9",
+        "question_type": "Tự luận",
+        "text": "Cơ quan nào có trách nhiệm là cơ quan giúp Chính phủ thực hiện quản lý nhà nước về điện ảnh?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Điện ảnh",
+                "article_id": "45"
+            }
+        ],
+        "answer": "Bộ Văn hóa, Thể thao và Du lịch"
+    },
+    {
+        "question_id": "TL-10",
+        "question_type": "Tự luận",
+        "text": "Cơ quan nào có trách nhiệm thống nhất quản lý nhà nước về điện ảnh?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Điện ảnh",
+                "article_id": "45"
+            }
+        ],
+        "answer": "Chính phủ"
+    }
+]

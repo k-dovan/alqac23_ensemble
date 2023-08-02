@@ -1,0 +1,1368 @@
+[
+    {
+        "question_id": "DS-1",
+        "question_type": "Đúng/Sai",
+        "text": "Việc bán ngôi nhà duy nhất vợ chồng đang ở có thể được thực hiện chỉ cần có sự đồng ý của chồng mà không cần sự đồng ý của vợ, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "31"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-2",
+        "question_type": "Đúng/Sai",
+        "text": "Người khuyết tật, người sinh sống ở khu vực biên giới, hải đảo, miền núi, vùng có điều kiện kinh tế - xã hội đặc biệt khó khăn không được phép thực hiện quyền tiếp cận thông tin, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tiếp cận thông tin",
+                "article_id": "3"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-3",
+        "question_type": "Đúng/Sai",
+        "text": "Theo Luật Du Lịch, biệt thự du lịch là một loại cơ sở lưu trú du lịch?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Du lịch",
+                "article_id": "48"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-4",
+        "question_type": "Đúng/Sai",
+        "text": "Theo Luật Điện ảnh, khi đi xem phim loại C tại rạp chiếu phim, trẻ em dưới 13 tuổi bắt buộc phải có cha mẹ hoặc người giám hộ đi cùng là đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Điện ảnh",
+                "article_id": "32"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-5",
+        "question_type": "Đúng/Sai",
+        "text": "Người đủ 16 tuổi đang cai nghiện ma túy bắt buộc mà bị phát hiện thực hiện hành vi phạm tội trước hoặc trong thời gian chấp hành quyết định cai nghiện ma túy bắt buộc và bị Tòa án xử phạt tù nhưng không được hưởng án treo thì không được miễn chấp hành thời gian còn lại trong quyết định đưa vào cơ sở cai nghiện bắt buộc, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "39"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-6",
+        "question_type": "Đúng/Sai",
+        "text": "Địa điểm giải quyết tranh chấp bằng Trọng tài phải ở trong lãnh thổ Việt Nam. Đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "11"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-7",
+        "question_type": "Đúng/Sai",
+        "text": "Thoả thuận trọng tài là thoả thuận giữa các bên về việc giải quyết tranh chấp có thể phát sinh hoặc đã phát sinh bằng trọng tài. Đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "3"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-8",
+        "question_type": "Đúng/Sai",
+        "text": "Phán quyết trọng tài không bị xem xét lại theo thủ tục phúc thẩm, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "60"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-9",
+        "question_type": "Đúng/Sai",
+        "text": "Tòa án giải quyết cho ly hôn khi có yêu cầu ly hôn từ vợ hoặc chồng của người bị Tòa án tuyên bố mất tích, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "56"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-10",
+        "question_type": "Đúng/Sai",
+        "text": "Việc thống nhất quản lý nhà nước về phòng, chống ma túy thuộc trách nhiệm quản lý trực tiếp của Quốc hội, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "45"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-11",
+        "question_type": "Đúng/Sai",
+        "text": "Theo Luật Giáo dục năm 2019, một trong những yêu cầu đặt ra đối với phương pháp giáo dục là phải phát huy được tính tích cực, chủ động, tự giác, tư duy sáng tạo của người học, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Giáo dục",
+                "article_id": "7"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-12",
+        "question_type": "Đúng/Sai",
+        "text": "Luật sư có thể bảo vệ quyền và lợi ích hợp pháp của nhiều đương sự trong cùng một vụ án, nếu quyền và lợi ích hợp pháp của những người đó không đối lập nhau, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tố tụng hành chính",
+                "article_id": "61"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-13",
+        "question_type": "Đúng/Sai",
+        "text": "Thanh niên là công dân Việt Nam từ đủ 18 tuổi trở lên, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Thanh niên",
+                "article_id": "1"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-14",
+        "question_type": "Đúng/Sai",
+        "text": "Quan hệ giữa nam và nam sau khi kết hôn theo quy định của Luật hôn nhân và gia đình năm 2014 là quan hệ hôn nhân, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "3"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-15",
+        "question_type": "Đúng/Sai",
+        "text": "Khoảng thời gian xảy ra trở ngại khách quan làm cho chủ thể có quyền khởi kiện không thể khởi kiện vụ án dân sự trong phạm vi thời hiệu theo quy định của pháp luật thì không tính vào thời hiệu khởi kiện, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "156"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-16",
+        "question_type": "Đúng/Sai",
+        "text": "Đất đai là tài sản công thuộc sở hữu toàn dân do Nhà nước đại diện chủ sở hữu và thống nhất quản lý. Đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Hiến pháp",
+                "article_id": "53"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-17",
+        "question_type": "Đúng/Sai",
+        "text": "Vật chất ở thể rắn, lỏng, khí hoặc ở dạng khác được thải ra từ hoạt động sản xuất, kinh doanh, dịch vụ, sinh hoạt hoặc hoạt động khác có chứa yếu tố độc hại, phóng xạ, lây nhiễm, dễ cháy, dễ nổ, gây ăn mòn, gây nhiễm độc hoặc có đặc tính nguy hại khác là chất thải nguy hại, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Bảo vệ môi trường",
+                "article_id": "3"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-18",
+        "question_type": "Đúng/Sai",
+        "text": "Người bị tuyên bố là đã chết mà còn sống có quyền yêu cầu những người đã nhận tài sản thừa kế trả lại tài sản, giá trị tài sản được thừa kế, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "73"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-19",
+        "question_type": "Đúng/Sai",
+        "text": "Thẩm phán không được thực hiện nhiệm vụ, quyền hạn khác ngoài những quyền hạn, nhiệm vụ đã quy định trong điều 38 luật tố tụng hành chính 2015?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tố tụng hành chính",
+                "article_id": "39"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-20",
+        "question_type": "Đúng/Sai",
+        "text": "Thẩm phán không có quyền quyết định việc áp dụng, thay đổi, hủy bỏ biện pháp khẩn cấp tạm thời đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tố tụng hành chính",
+                "article_id": "67"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-21",
+        "question_type": "Đúng/Sai",
+        "text": "Trong mọi trường hợp, phí trọng tài là khoản thu từ việc cung cấp dịch vụ giải quyết tranh chấp bằng Trọng tài và do Hội đồng trọng tài ấn định. Đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "34"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-22",
+        "question_type": "Đúng/Sai",
+        "text": "Người tố cáo có nghĩa vụ cung cấp thông tin rõ ràng về họ, tên của mình cho cơ quan có thẩm quyền theo quy định của pháp luật, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tố tụng hành chính",
+                "article_id": "338"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-23",
+        "question_type": "Đúng/Sai",
+        "text": "Chị B được chị A nhờ mang thai hộ. Chị A mong muốn có con trai, nhưng chị B sinh ra con gái. Trong trường hợp này, chị A có quyền từ chối nhận con, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "98"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-24",
+        "question_type": "Đúng/Sai",
+        "text": "Tổ chức, cá nhân nước ngoài tham gia hoạt động điện ảnh tại Việt Nam không thuộc đối tượng điều chỉnh của Luật Điện ảnh là đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Điện ảnh",
+                "article_id": "2"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-25",
+        "question_type": "Đúng/Sai",
+        "text": "Ông A làm mất hộ khẩu vào tháng 8 năm 2022, trong thời hạn sổ hộ khẩu vẫn được sử dụng, thì vẫn được cấp lại sổ hộ khẩu, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Cư trú",
+                "article_id": "38"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-26",
+        "question_type": "Đúng/Sai",
+        "text": "Người sử dụng trái phép chất ma túy có trách nhiệm chấp hành việc quản lý của cơ quan nhà nước có thẩm quyền, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "24"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-27",
+        "question_type": "Đúng/Sai",
+        "text": "Quyền hưởng dụng là một loại quyền khác đối với tài sản, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "257"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-28",
+        "question_type": "Đúng/Sai",
+        "text": "Nếu không phạm tội quả tang, một người sẽ không bị bắt nếu không có quyết định hoặc phê chuẩn của cơ quan nhà nước có thẩm quyền theo quy định của pháp luật. Đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Hiến pháp",
+                "article_id": "20"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-29",
+        "question_type": "Đúng/Sai",
+        "text": "Công dân không được tiếp cận thông tin về cuộc họp nội bộ của cơ quan nhà nước, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tiếp cận thông tin",
+                "article_id": "6"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-30",
+        "question_type": "Đúng/Sai",
+        "text": "Trồng cây có chứa chất gây nghiện được quy định trong danh mục chất ma túy do Chính phủ ban hành là một trong những hành vi bị nghiêm cấm, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "5"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-31",
+        "question_type": "Đúng/Sai",
+        "text": "Tòa án cần xem xét nguyện vọng của con khi quyết định giao con chung từ đủ 07 tuổi trở lên cho cha hoặc mẹ trực tiếp nuôi sau khi cha mẹ ly hôn, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "81"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-32",
+        "question_type": "Đúng/Sai",
+        "text": "Nguyễn Văn A sinh ngày 03/10/2003 thì ngày 03/10/2023 A đủ tuổi kết hôn, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "8"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-33",
+        "question_type": "Đúng/Sai",
+        "text": "Chồng có nghĩa vụ giúp đỡ vợ trong việc tham gia hoạt động văn hóa, chính trị, kinh tế, xã hội, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "23"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-34",
+        "question_type": "Đúng/Sai",
+        "text": "Công chức thuộc Cơ quan thi hành án có trình độ đại học và đã qua thực tế công tác theo ngành đã học từ 5 năm trở lên đủ tiêu chuẩn làm Trọng tài viên, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "20"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-35",
+        "question_type": "Đúng/Sai",
+        "text": "Người đã hoàn thành cai nghiện ma túy tự nguyện đã chấp hành xong quyết định đưa vào cơ sở cai nghiện không chịu sự theo dõi hành vi sử dụng trái phép chất ma túy trong thời hạn 12 tháng kể từ ngày hoàn thành việc cai nghiện, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "40"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-36",
+        "question_type": "Đúng/Sai",
+        "text": "Hội đồng trọng tài có thể không dùng pháp luật Việt Nam để giải quyết tranh chấp, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "14"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-37",
+        "question_type": "Đúng/Sai",
+        "text": "Bắt buộc phải thu hồi toàn bộ sổ hộ khẩu khi sổ này hết giá trị sử dụng kể từ ngày 01/01/2023, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Cư trú",
+                "article_id": "38"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-38",
+        "question_type": "Đúng/Sai",
+        "text": "Bản án phúc thẩm được tuyên vào ngày 20/01/2023, cho nên ngày 20/02/2023 thì bản án phúc thẩm đã có hiệu lực pháp luật, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tố tụng hành chính",
+                "article_id": "244"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-39",
+        "question_type": "Đúng/Sai",
+        "text": "Hợp đồng là một trong những căn cứ làm phát sinh nghĩa vụ, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "275"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-40",
+        "question_type": "Đúng/Sai",
+        "text": "Doanh nghiệp, tổ chức bắt buộc phải ưu tiên tuyển dụng thanh niên là người dân tộc thiểu số, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Thanh niên",
+                "article_id": "25"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-41",
+        "question_type": "Đúng/Sai",
+        "text": "Trong phân cấp quản lý nhà nước về trọng tài, Bộ Tư pháp chịu trách nhiệm trước Chính phủ thực hiện quản lý nhà nước về trọng tài. Đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "15"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-42",
+        "question_type": "Đúng/Sai",
+        "text": "Người được cấp thẻ để hành nghề hướng dẫn du lịch là hướng dẫn viên du lịch, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Du lịch",
+                "article_id": "58"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-43",
+        "question_type": "Đúng/Sai",
+        "text": "Hợp đồng không bắt buộc phải có phụ lục kèm theo, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "403"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-44",
+        "question_type": "Đúng/Sai",
+        "text": "Chỉ nhà hát, nhà văn hóa, nhà triển lãm, trung tâm văn hóa mới được xem là địa điểm chiếu phim công cộng, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Điện ảnh",
+                "article_id": "3"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-45",
+        "question_type": "Đúng/Sai",
+        "text": "Giấy phép phân loại phim do cơ quan nhà nước có thẩm quyền cấp theo quy định của pháp luật điện ảnh có giá trị trong toàn quốc, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Điện ảnh",
+                "article_id": "27"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-46",
+        "question_type": "Đúng/Sai",
+        "text": "Theo BLDS năm 2015, vật phân biệt được với các vật khác bằng những đặc điểm riêng về ký hiệu, hình dáng, màu sắc, chất liệu, đặc tính, vị trí là vật đặc định, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "113"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-47",
+        "question_type": "Đúng/Sai",
+        "text": "Ngày 01/08/2022, Luật Cư trú năm 2020 đang có hiệu lực thi hành, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Cư trú",
+                "article_id": "38"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-48",
+        "question_type": "Đúng/Sai",
+        "text": "Người mất năng lực hành vi dân sự có thể tự mình thực hiện yêu cầu cung cấp thông tin, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tiếp cận thông tin",
+                "article_id": "4"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-49",
+        "question_type": "Đúng/Sai",
+        "text": " Cơ quan hành chính nhà nước cao nhất của nước Cộng hoà xã hội chủ nghĩa Việt Nam là Chính Phủ, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Hiến pháp",
+                "article_id": "94"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-50",
+        "question_type": "Đúng/Sai",
+        "text": "Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch có thẩm quyền quy định tiêu chí phân loại phim áp dụng chung cho các hình thức phổ biến phim, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Điện ảnh",
+                "article_id": "32"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-51",
+        "question_type": "Đúng/Sai",
+        "text": "Lời nói là một hình thức thể hiện của giao dịch dân sự, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "119"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-52",
+        "question_type": "Đúng/Sai",
+        "text": "Không được phép lợi dụng hoạt động giáo dục để chống phá nhà nước Cộng hòa xã hội chủ nghĩa Việt Nam, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Giáo dục",
+                "article_id": "21"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-53",
+        "question_type": "Đúng/Sai",
+        "text": "Chủ sở hữu tài sản có quyền định đoạt tài sản, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "195"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-54",
+        "question_type": "Đúng/Sai",
+        "text": "Một cá nhân, pháp nhân chỉ có thể đại diện cho một cá nhân hoặc pháp nhân khác, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "141"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-55",
+        "question_type": "Đúng/Sai",
+        "text": "Một người có thể được người có quyền theo quy định của pháp luật yêu cầu Tòa án ra quyết định tuyên bố là đã chết khi người đó biệt tích trong chiến tranh sau 05 năm, kể từ ngày chiến tranh kết thúc mà vẫn không có tin tức xác thực là còn sống, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "71"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-56",
+        "question_type": "Đúng/Sai",
+        "text": "Quan hệ giữa nam và nữ sau khi kết hôn theo quy định của Luật hôn nhân và gia đình là quan hệ hôn nhân, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "3"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-57",
+        "question_type": "Đúng/Sai",
+        "text": "Kinh doanh dịch vụ lữ hành nội địa được phục vụ cả khách du lịch nội địa và khách du lịch quốc tế. Đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Du lịch",
+                "article_id": "30"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-58",
+        "question_type": "Đúng/Sai",
+        "text": "Khi hợp đồng vô hiệu, thoả thuận trọng tài trong hợp đồng đó vẫn có hiệu lực pháp luật, trừ trường hợp thỏa thuận trọng tài đó vô hiệu theo quy định của pháp luật, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "18"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-59",
+        "question_type": "Đúng/Sai",
+        "text": "Tất cả mọi người đều bình đẳng, không bị phân biệt đối xử trong việc thực hiện quyền tiếp cận thông tin, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tiếp cận thông tin",
+                "article_id": "3"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-60",
+        "question_type": "Đúng/Sai",
+        "text": "Quốc hội có thể bãi nhiệm đại biểu Quốc hội khi đại biểu đó không còn xứng đáng với sự tín nhiệm của nhân dân. Đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Hiến pháp",
+                "article_id": "7"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-61",
+        "question_type": "Đúng/Sai",
+        "text": "Trường hợp người kháng cáo rút toàn bộ kháng cáo hoặc Viện kiểm sát rút toàn bộ kháng nghị, tùy từng trường hợp, tòa án có thẩm quyền ra quyết định đình chỉ xét xử phúc thẩm vụ án hành chính, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tố tụng hành chính",
+                "article_id": "229"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-62",
+        "question_type": "Đúng/Sai",
+        "text": "Trong một số trường hợp, hợp đồng không có hiệu lực pháp luật nhưng thỏa thuận trọng tài vẫn có hiệu lực, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "5"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-63",
+        "question_type": "Đúng/Sai",
+        "text": "Theo Điều 143, luật Tố tụng hành chính 2015, Tòa án phải đình chỉ vụ án nếu đương sự đã được triệu tập không có mặt, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tố tụng hành chính",
+                "article_id": "165"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-64",
+        "question_type": "Đúng/Sai",
+        "text": "Viên chức đang trong thời hạn bị xử lý kỷ luật được giải quyết nghỉ hưu là đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Viên chức",
+                "article_id": "56"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-65",
+        "question_type": "Đúng/Sai",
+        "text": "Người tố cáo có quyền yêu cầu được giữ bí mật địa chỉ của mình",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tố tụng hành chính",
+                "article_id": "338"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-66",
+        "question_type": "Đúng/Sai",
+        "text": "Trong mọi trường hợp, một người chỉ có thể được một người giám hộ, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "47"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-67",
+        "question_type": "Đúng/Sai",
+        "text": "Trong thời hạn 30 ngày kể từ ngày nhận đủ hồ sơ hợp lệ, cơ quan nhà nước có thẩm quyền sẽ cấp Giấy phép phân loại phim là đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Điện ảnh",
+                "article_id": "27"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-68",
+        "question_type": "Đúng/Sai",
+        "text": "Nơi cư trú của công dân bao gồm nơi công dân sinh sống ổn định, lâu dài, đã được đăng ký thường trú và nơi công dân sinh sống trong một khoảng thời gian nhất định ngoài nơi thường trú, đã được đăng ký tạm trú, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Cư trú",
+                "article_id": "11"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-69",
+        "question_type": "Đúng/Sai",
+        "text": "\nNgười 20 tuổi là người thành niên, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "21"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-70",
+        "question_type": "Đúng/Sai",
+        "text": "Học sinh được phép gian lận trong học tập và thi cử, đồng thời có quyền được hút thuốc, uống rượu bia, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Giáo dục",
+                "article_id": "22"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-71",
+        "question_type": "Đúng/Sai",
+        "text": "Theo Luật Trồng trọt, cây hằng năm là loại cây được gieo trồng một lần, sinh trưởng trong nhiều năm và cho thu hoạch một hoặc nhiều lần. Đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trồng trọt",
+                "article_id": "2"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-72",
+        "question_type": "Đúng/Sai",
+        "text": "Người chưa thành niên có nguyện vọng học xa gia đình có thể cư trú tại nơi khác với nơi cư trú của cha, mẹ mẹ nếu được cha, mẹ đồng ý, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Cư trú",
+                "article_id": "12"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-73",
+        "question_type": "Đúng/Sai",
+        "text": "Cơ sở dữ liệu về cư trú là tài sản quốc gia do Bộ Công an thống nhất quản lý, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Cư trú",
+                "article_id": "36"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-74",
+        "question_type": "Đúng/Sai",
+        "text": "Trong tố tụng hành chính, trong mọi trường hợp, đương sự phải tự mình bảo vệ quyền và lợi ích hợp pháp của mình trong các giai đọan giải quyết vụ án hành chính, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tố tụng hành chính",
+                "article_id": "19"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-75",
+        "question_type": "Đúng/Sai",
+        "text": "Sau khi nam nữ kết hôn, tài sản riêng của họ bắt buộc phải nhập vào tài sản chung, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "46"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-76",
+        "question_type": "Đúng/Sai",
+        "text": "Nguyễn Văn A sinh ngày 03/10/2003 thì ngày 02/10/2023 A đủ tuổi kết hôn, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "8"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-77",
+        "question_type": "Đúng/Sai",
+        "text": "Thẩm phán không có trách nhiệm giải thích, hướng dẫn cho đương sự biết để họ thực hiện quyền được yêu cầu trợ giúp pháp lý đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tố tụng hành chính",
+                "article_id": "38"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-78",
+        "question_type": "Đúng/Sai",
+        "text": "Định nghĩa về không gian mạng được quy định tại khoản 3 Điều 2 Luật An ninh mạng số 24/2018/QH14 do Quốc hội ban hành ngày 12 tháng 6 năm 2018, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật An ninh mạng",
+                "article_id": "2"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-79",
+        "question_type": "Đúng/Sai",
+        "text": "Trong thời hạn 14 ngày kể từ ngày lập biên bản, người bị kiện phải gửi cho Tòa án quyết định hành chính mới hoặc thông báo về việc chấm dứt hành vi hành chính bị khởi kiện và người khởi kiện phải gửi cho Tòa án văn bản rút đơn khởi kiện. Hết thời hạn này mà một trong các đương sự không thực hiện cam kết của mình thì Thẩm phán tiến hành các thủ tục để mở phiên tòa xét xử vụ án .",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tố tụng hành chính",
+                "article_id": "140"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-80",
+        "question_type": "Đúng/Sai",
+        "text": "Tiếng việt không phải là ngôn ngữ duy nhất được dùng để dạy và học trong cơ sở giáo dục, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Giáo dục",
+                "article_id": "11"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-81",
+        "question_type": "Đúng/Sai",
+        "text": "Anh C là công dân Việt Nam. Anh C chỉ cần thực hiện nghĩa vụ quân sự mà không cần thực hiện các nhiệm vụ quốc phòng và an ninh khác. Đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Hiến pháp",
+                "article_id": "45"
+            }
+        ]
+    },
+    {
+        "question_id": "DS-82",
+        "question_type": "Đúng/Sai",
+        "text": "Cung cấp thông tin bao gồm việc cơ quan nhà nước có thẩm quyền cung cấp thông tin theo yêu cầu của công dân và công khai thông tin theo quy định của pháp luật, đúng hay sai?",
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tiếp cận thông tin",
+                "article_id": "2"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-1",
+        "question_type": "Trắc nghiệm",
+        "text": "Các khu vực nào sau đây cần phải có trong cơ sở cai nghiện ma túy công lập?",
+        "choices": {
+            "A": "Khu lưu trú tạm thời",
+            "B": "Khu cai nghiện ma túy bắt buộc",
+            "C": "Khu cai nghiện ma túy tự nguyện",
+            "D": "Cả A, B, C đều đúng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "35"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-2",
+        "question_type": "Trắc nghiệm",
+        "text": "Hợp đồng là một trong những căn cứ làm phát sinh nghĩa vụ, đúng hay sai?",
+        "choices": {
+            "A": "Hợp đồng ",
+            "B": "Hành vi pháp lý đơn phương",
+            "C": "Hợp đồng và Hành vi pháp lý đơn phương",
+            "D": "Hợp đồng Hành vi pháp lý đơn phương và các căn cứ khác"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "275"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-3",
+        "question_type": "Trắc nghiệm",
+        "text": "Trường hợp nào sau đây có thể hạn chế quyền tiếp cận thông tin?",
+        "choices": {
+            "A": "Vì lợi ích kinh tế và xã hội.",
+            "B": "Vì lợi ích cá nhân và tổ chức.",
+            "C": "Vì lợi ích của công dân.",
+            "D": "Vì lý do quốc phòng, an ninh quốc gia."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tiếp cận thông tin",
+                "article_id": "3"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-4",
+        "question_type": "Trắc nghiệm",
+        "text": "Quãng thời gian cai nghiện ma túy tự nguyện tại cơ sở cai nghiện ma túy là bao lâu?",
+        "choices": {
+            "A": "Từ 1 tháng đến 5 tháng",
+            "B": "Từ nửa năm đến một năm",
+            "C": "Trên 1 năm",
+            "D": "Trên 2 năm"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "31"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-5",
+        "question_type": "Trắc nghiệm",
+        "text": "Trang thông tin điện tử, cổng thông tin điện tử hoặc chuyên trang trên mạng xã hội của cơ quan, tổ chức, cá nhân không được cung cấp, đăng tải, truyền đưa thông tin có nội dung nào dưới đây?",
+        "choices": {
+            "A": "Thông tin xúc phạm nghiêm trọng danh dự, uy tín, nhân phẩm của người khác",
+            "B": "Thông tin bịa đặt, sai sự thật về sản phẩm, hàng hóa, tiền, trái phiếu, tín phiếu, công trái, séc và các loại giấy tờ có giá khác",
+            "C": "Thông tin tuyên truyền xuyên tạc, phỉ báng chính quyền nhân dân",
+            "D": "Cả 3 đáp  án A, B, C"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tiếp cận thông tin",
+                "article_id": "19"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-6",
+        "question_type": "Trắc nghiệm",
+        "text": "Phân bón khi lưu thông trên thị trường phải được ghi nhãn theo quy định của pháp luật về nhãn hàng hóa và nhãn phân bón phải bao gồm nội dung nào? Chọn câu trả lời đúng nhất.",
+        "choices": {
+            "A": "Loại phân bón.",
+            "B": "Mã số phân bón.",
+            "C": "Cả A và B đều đúng.",
+            "D": "Cả A và B đều sai."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trồng trọt",
+                "article_id": "48"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-7",
+        "question_type": "Trắc nghiệm",
+        "text": "Loại hợp đồng nào sau đây không được BLDS 2015 quy định?",
+        "choices": {
+            "A": "Hợp đồng đơn vụ",
+            "B": "Hợp đồng song vụ",
+            "C": "Hợp đồng đa vụ",
+            "D": "Hợp đồng có điều kiện"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "402"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-8",
+        "question_type": "Trắc nghiệm",
+        "text": "Chủ thể nào có thẩm quyền thành lập Hội đồng thẩm định, phân loại phim?",
+        "choices": {
+            "A": "Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch",
+            "B": "Chủ tịch Ủy ban nhân dân cấp tỉnh",
+            "C": "Người đứng đầu cơ quan báo chí có giấy phép hoạt động truyền hình",
+            "D": "Cả 3 đáp án A, B, C đều đúng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Điện ảnh",
+                "article_id": "31"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-9",
+        "question_type": "Trắc nghiệm",
+        "text": "Sau khi ly hôn, nếu người mẹ đủ điều kiện để trực tiếp trông nom, chăm sóc, nuôi dưỡng, giáo dục con, trường hợp nào trong các trường hợp dưới đây, con được giao cho mẹ trực tiếp nuôi?",
+        "choices": {
+            "A": "Con được 10 tháng tuổi",
+            "B": "Con được 10 tuổi",
+            "C": "Con được 18 tuổi",
+            "D": "Con được 40 tháng tuổi"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "81"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-10",
+        "question_type": "Trắc nghiệm",
+        "text": "Theo nguyên tắc bảo đảm quyền tiếp cận thông tin, thông tin phải được cung cấp như thế nào?",
+        "choices": {
+            "A": "Không chính xác và trễ hẹn.",
+            "B": "Không đầy đủ và minh bạch.",
+            "C": "Chính xác và thuận lợi.",
+            "D": "Đầy đủ và không kịp thời."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tiếp cận thông tin",
+                "article_id": "3"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-11",
+        "question_type": "Trắc nghiệm",
+        "text": "Bên bán phải chịu trách nhiệm về khuyết tật của vật bán trong trường hợp nào sau đây?",
+        "choices": {
+            "A": "Khuyết tật của vật chỉ được bên mua phát hiện sau khi mua",
+            "B": "Sản phẩm là hàng đã qua sử dụng được mua ở cửa hàng đồ cũ",
+            "C": "Sau khi mua hàng, bên mua có lỗi gây ra khuyết tật của vật",
+            "D": "Cả A,B,C đều sai"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "445"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-12",
+        "question_type": "Trắc nghiệm",
+        "text": "Trường hợp người đến lưu trú lúc 22 giờ thì việc thông báo lưu trú được thực hiện lúc nào?",
+        "choices": {
+            "A": "Trước 07 giờ ngày hôm sau.",
+            "B": "Trước 08 giờ ngày hôm sau.",
+            "C": "Trong vòng 2 tiếng kể từ thời điểm đến lưu trú.",
+            "D": "Trước 23 giờ của ngày bắt đầu lưu trú."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Cư trú",
+                "article_id": "30"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-13",
+        "question_type": "Trắc nghiệm",
+        "text": "Hồ sơ đề nghị cấp thẻ hướng dẫn viên du lịch quốc tế không bao gồm thứ gì sau đây?",
+        "choices": {
+            "A": "Sơ yếu lý lịch có xác nhận của Ủy ban nhân dân cấp xã nơi cư trú.",
+            "B": "02 ảnh chân dung màu cỡ 3 cm x 4 cm.",
+            "C": "02 ảnh chân dung màu cỡ 4 cm x 6 cm.",
+            "D": "Đơn đề nghị cấp thẻ hướng dẫn viên du lịch theo mẫu do Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch quy định."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Du lịch",
+                "article_id": "60"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-14",
+        "question_type": "Trắc nghiệm",
+        "text": "Viên chức bị cảnh cáo thì bị kéo dài thời hạn nâng lương trong bao lâu?",
+        "choices": {
+            "A": "03 tháng",
+            "B": "06 tháng",
+            "C": "12 tháng",
+            "D": "24 tháng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Viên chức",
+                "article_id": "56"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-15",
+        "question_type": "Trắc nghiệm",
+        "text": "Theo Luật Du Lịch, có cách loại cơ sở lưu trú du lịch nào?",
+        "choices": {
+            "A": "Khách sạn",
+            "B": "Cả 3 đáp án A,B.C đều đúng",
+            "C": "Căn hộ du lịch.",
+            "D": "Biệt thự du lịch.\n\n"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Du lịch",
+                "article_id": "48"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-16",
+        "question_type": "Trắc nghiệm",
+        "text": "Điều nào sau đây không phải nghĩa vụ hiến định của công dân Việt Nam?",
+        "choices": {
+            "A": "Bảo vệ chủ quyền lãnh thổ của quốc gia khác.",
+            "B": "Thực hiện nghĩa vụ quân sự cũng như tham gia xây dựng nền quốc phòng toàn dân.",
+            "C": "Bảo vệ Tổ quốc.",
+            "D": "Trung thành với Tổ quốc."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Hiến pháp",
+                "article_id": "17"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-17",
+        "question_type": "Trắc nghiệm",
+        "text": "Cơ quan nào phân công việc thực hiện quản lý nhà nước về hôn nhân và gia đình?",
+        "choices": {
+            "A": "Các bộ, cơ quan ngang bộ",
+            "B": "Ủy ban nhân dân các cấp",
+            "C": "Chính phủ",
+            "D": "Ủy ban nhân dân cấp tỉnh"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "4"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-18",
+        "question_type": "Trắc nghiệm",
+        "text": "Trách nhiệm của người sử dụng trái phép chất ma túy là gì?",
+        "choices": {
+            "A": "Sử dụng ma túy",
+            "B": "Buôn bán ma túy",
+            "C": "Cung cấp thông tin một cách đầy đủ và chính xác về hành vi sử dụng trái phép chất ma túy cho công an cấp xã, phường nơi cư ngụ",
+            "D": "A, B, C đều sai"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "24"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-19",
+        "question_type": "Trắc nghiệm",
+        "text": "Cơ quan nào có thẩm quyền cấp Giấy phép phân loại phim?",
+        "choices": {
+            "A": "Bộ Văn hóa, Thể thao và Du lịch",
+            "B": "Ủy ban nhân dân cấp tỉnh",
+            "C": "Ủy ban nhân dân cấp tỉnh đáp ứng các điều kiện theo quy định của Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch",
+            "D": "Bộ Văn hóa, Thể thao và Du lịch; Ủy ban nhân dân cấp tỉnh đáp ứng các điều kiện theo quy định của Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Điện ảnh",
+                "article_id": "27"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-20",
+        "question_type": "Trắc nghiệm",
+        "text": "Viên chức giữ chức vụ quản lý được bổ nhiệm có thời hạn tối đa là bao lâu?",
+        "choices": {
+            "A": "02 năm",
+            "B": "03 năm",
+            "C": "04 năm",
+            "D": "05 năm"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Viên chức",
+                "article_id": "37"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-21",
+        "question_type": "Trắc nghiệm",
+        "text": "Nguyên tắc bảo đảm quyền tiếp cận thông tin theo quy định của Luật Tiếp cận thông tin bao gồm mấy nguyên tắc?",
+        "choices": {
+            "A": "1",
+            "B": "3",
+            "C": "6",
+            "D": "9"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Tiếp cận thông tin",
+                "article_id": "3"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-22",
+        "question_type": "Trắc nghiệm",
+        "text": "Trường hợp nào dưới đây các bên trong quan hệ hợp đồng được thỏa thuận lựa chọn pháp luật áp dụng đối với hợp đồng?",
+        "choices": {
+            "A": "Trường hợp hợp đồng có đối tượng là bất động sản",
+            "B": "Trường hợp thoả thuận thay đổi pháp luật áp dụng đối với hợp đồng có ảnh hưởng đến quyền, lợi ích hợp pháp của người thứ ba",
+            "C": "Trường hợp pháp luật do các bên lựa chọn trong hợp đồng lao động, hợp đồng tiêu dùng có ảnh hưởng đến quyền lợi tối thiểu của người lao động, người tiêu dùng theo quy định của pháp luật Việt Nam",
+            "D": "Tất cả đều sai"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "683"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-23",
+        "question_type": "Trắc nghiệm",
+        "text": "Ông N là đại biểu quốc hội, hành động nào dưới đây không phải là một quyền của ông N được Hiến pháp quy định?",
+        "choices": {
+            "A": "Chất vấn Thủ tướng Chính phủ, Bộ trưởng và các thành viên khác của Chính phủ.",
+            "B": "Chất vấn Chủ tịch nước, Chủ tịch Quốc hội.",
+            "C": "Chất vấn Tổng bí thư Đảng Cộng sản Việt Nam",
+            "D": "yêu cầu cơ quan, tổ chức, cá nhân cung cấp thông tin, tài liệu liên quan đến nhiệm vụ của cơ quan, tổ chức, cá nhân đó"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Hiến pháp",
+                "article_id": "79"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-24",
+        "question_type": "Trắc nghiệm",
+        "text": "Thời hạn tối đa tạm đình chỉ công tác đối với viên chức là bao lâu?",
+        "choices": {
+            "A": "15 ngày",
+            "B": "20 ngày",
+            "C": "30 ngày",
+            "D": "40 ngày"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Viên chức",
+                "article_id": "54"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-25",
+        "question_type": "Trắc nghiệm",
+        "text": "Nghĩa vụ cấp dưỡng chấm dứt trong trường hợp nào dưới đây?",
+        "choices": {
+            "A": "Người được cấp dưỡng đã thành niên và có khả năng lao động hoặc có tài sản để tự nuôi mình.",
+            "B": "Người được cấp dưỡng được nhận làm con nuôi hoặc người cấp dưỡng đã trực tiếp nuôi dưỡng người được cấp dưỡng.",
+            "C": "Người cấp dưỡng hoặc người được cấp dưỡng chết hoặc bên được cấp dưỡng sau khi ly hôn đã kết hôn.",
+            "D": "Cả 3 phương án trên đều đúng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "118"
+            }
+        ]
+    },
+    {
+        "question_id": "TN-26",
+        "question_type": "Trắc nghiệm",
+        "text": "Điều nào không là quyền hiến định của công dân Việt Nam?",
+        "choices": {
+            "A": "quyền được sống.",
+            "B": "quyền có nơi ở hợp pháp.",
+            "C": "quyền tước đoạt mạng sống của người khác một cách tùy ý.",
+            "D": "quyền tự do tín ngưỡng, tôn giáo."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Hiến pháp",
+                "article_id": "17"
+            }
+        ]
+    },
+    {
+        "question_id": "TL-1",
+        "question_type": "Tự luận",
+        "text": "Khi thay đổi người giám hộ thì trong thời hạn bao nhiêu ngày, kể từ ngày có người giám hộ mới, người đã thực hiện việc giám hộ phải chuyển giao giám hộ cho người thay thế mình?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "61"
+            }
+        ]
+    },
+    {
+        "question_id": "TL-2",
+        "question_type": "Tự luận",
+        "text": "Theo BLDS năm 2015, nếu quyền đại diện được xác lập trên cơ sở một hợp đồng nhưng không thể xác định được thời hạn đại diện theo hợp đồng đó và cũng không có bất cứ thỏa thuận nào khác giữa các bên về thời hạn đại diện thì thời hạn đại diện trong trường hợp này là bao lâu và kể từ thời điểm nào?",
+        "relevant_articles": [
+            {
+                "law_id": "Bộ luật dân sự",
+                "article_id": "140"
+            }
+        ]
+    }
+]

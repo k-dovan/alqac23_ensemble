@@ -50,10 +50,16 @@ if __name__ == '__main__':
     print ("Done")
 
     data_paths = [
-        "alqac23_data/train.json",                                                      # train      
-        "results/alqac23_ensemble_2035_lexfirst100_round2_public_test.json",            # public test              
-        "alqac23_data/private_test_GOLD_TASK_1.json"                                    # private test
+        "alqac23_data/train.json",                                             
+        "results/alqac23_ensemble_model_lexfirst100_round1_public_test_detailed.json",           
+        "alqac23_data/private_test_GOLD_TASK_1.json"                         
     ]
+
+    # data_paths = [
+    #     "alqac23_data/train.json",                                             # train      
+    #     "results/alqac23_ensemble_2035_lexfirst100_round2_public_test.json",   # public test              
+    #     "alqac23_data/private_test_GOLD_TASK_1.json"                           # private test
+    # ]
     
     if args.eval_on == "train":
         data_path = data_paths[0]

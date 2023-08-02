@@ -26,23 +26,42 @@ BM25_MODEL = "bm25/<<<corpus_name>>>_bm25plus_k0.6_b0.6"
 # v1 - data version used alqac23 & alqac22 for training LMs, Co-/Condenser, SBerts
 # v2 - data version used alqac23, alqac22 & zalo for training LMs, Co-/Condenser, SBerts
 # v2.1 - data version used alqac23, alqac22 & zalo and employ article segmentation
-SBERT_TRAINED_DATA_VERSION = "v2.1"
+SBERT_TRAINED_DATA_VERSION = "v2"
 
+
+# SBERT_TRAINED_DATA_VERSION v2
 # candidate models for round 1 (single and/or ensemble)
 SBERT_MODELS_ROUND1 = [
-    "sbert_round1_epoch4_top50_mlm_finetuned_vibert_base_cased_all_corpora_ep10",
-    "sbert_round1_epoch4_top50_mlm_finetuned_phobert_large_all_corpora_ep10",
-    "sbert_round1_epoch4_top50_condenser_phobert_large_all_corpora_ep10",
-    "sbert_round1_epoch4_top50_cocondenser_phobert_large_all_corpora_ep10",
+    "sbert_round1_epoch4_top50_mlm_finetuned_vibert_base_cased_all_corpora_ep5",
+    "sbert_round1_epoch4_top50_mlm_finetuned_phobert_large_all_corpora_ep5",
+    "sbert_round1_epoch4_top50_condenser_phobert_large_all_corpora_ep5",
+    "sbert_round1_epoch4_top50_cocondenser_phobert_large_all_corpora_ep5",
 ]
 
 # candidate models for round 2 (single and/or ensemble)
 SBERT_MODELS_ROUND2 = [
-    "sbert_round2_epoch4_top20_mlm_finetuned_vibert_base_cased_all_corpora_ep10",
-    "sbert_round2_epoch4_top20_mlm_finetuned_phobert_large_all_corpora_ep10",
-    "sbert_round2_epoch4_top20_condenser_phobert_large_all_corpora_ep10",
-    "sbert_round2_epoch4_top20_cocondenser_phobert_large_all_corpora_ep10",
+    "sbert_round2_epoch4_top35_mlm_finetuned_vibert_base_cased_all_corpora_ep5",
+    "sbert_round2_epoch4_top35_mlm_finetuned_phobert_large_all_corpora_ep5",
+    "sbert_round2_epoch4_top35_condenser_phobert_large_all_corpora_ep5",
+    "sbert_round2_epoch4_top35_cocondenser_phobert_large_all_corpora_ep5",
 ]
+
+# # SBERT_TRAINED_DATA_VERSION v2.1
+# # candidate models for round 1 (single and/or ensemble)
+# SBERT_MODELS_ROUND1 = [
+#     "sbert_round1_epoch4_top50_mlm_finetuned_vibert_base_cased_all_corpora_ep10",
+#     "sbert_round1_epoch4_top50_mlm_finetuned_phobert_large_all_corpora_ep10",
+#     "sbert_round1_epoch4_top50_condenser_phobert_large_all_corpora_ep10",
+#     "sbert_round1_epoch4_top50_cocondenser_phobert_large_all_corpora_ep10",
+# ]
+
+# # candidate models for round 2 (single and/or ensemble)
+# SBERT_MODELS_ROUND2 = [
+#     "sbert_round2_epoch4_top20_mlm_finetuned_vibert_base_cased_all_corpora_ep10",
+#     "sbert_round2_epoch4_top20_mlm_finetuned_phobert_large_all_corpora_ep10",
+#     "sbert_round2_epoch4_top20_condenser_phobert_large_all_corpora_ep10",
+#     "sbert_round2_epoch4_top20_cocondenser_phobert_large_all_corpora_ep10",
+# ]
 
 def all_models_encode_corpus(models, corpus_name, eval_round):
     legal_dict_path = f"generated_data/{corpus_name}_legal_dict.json"

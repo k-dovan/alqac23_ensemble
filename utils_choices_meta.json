@@ -1,0 +1,1224 @@
+[
+    {
+        "question_id": "TN-1",
+        "question_type": "Trắc nghiệm",
+        "text": "Viên chức bị đơn vị sự nghiệp đơn phương chấm dứt hợp đồng trong trường hợp nào?",
+        "choices": {
+            "A": "Viên chức có 02 năm liên tiếp bị phân loại đánh giá ở mức độ không hoàn thành nhiệm vụ",
+            "B": "Viên chức ốm đau hoặc bị tai nạn, đang điều trị bệnh nghề nghiệp theo quyết định của cơ sở chữa bệnh",
+            "C": "Viên chức đang nghỉ hàng năm, nghỉ về việc riêng và những trường hợp nghỉ khác được người đứng đầu đơn vị sự nghiệp công lập cho phép",
+            "D": "Viên chức nữ đang trong thời gian có thai, nghỉ thai sản, nuôi con dưới 36 tháng tuổi"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Viên chức",
+                "article_id": "29"
+            }
+        ],
+        "answer": "A",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-2",
+        "question_type": "Trắc nghiệm",
+        "text": "Theo Luật Du Lịch, các loại dịch vụ du lịch khác bao gồm điều nào dưới đây? Chọn câu trả lời đúng nhất.",
+        "choices": {
+            "A": "Dịch vụ thể thao.",
+            "B": "Dịch vụ ăn uống.",
+            "C": "Dịch vụ chăm sóc sức khỏe.",
+            "D": "Cả 3 phương án trên."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Du lịch",
+                "article_id": "54"
+            }
+        ],
+        "answer": "D",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C"
+            ],
+            "trues": {
+                "D": [
+                    "A",
+                    "B",
+                    "C"
+                ]
+            },
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-3",
+        "question_type": "Trắc nghiệm",
+        "text": "Địa điểm nào sau đây được phép đăng ký thường trú mới?",
+        "choices": {
+            "A": "Nhà ở đã có quyết định phá dỡ của cơ quan nhà nước có thẩm quyền.",
+            "B": "Chỗ ở bị tịch thu theo quyết định của cơ quan nhà nước có thẩm quyền.",
+            "C": "Chỗ ở nằm trong di tích lịch sử - văn hóa chưa được xếp hạng.",
+            "D": "Phương tiện được dùng làm nơi đăng ký thường trú đã bị xóa đăng ký phương tiện."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Cư trú",
+                "article_id": "23"
+            }
+        ],
+        "answer": "C",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-4",
+        "question_type": "Trắc nghiệm",
+        "text": "Thông báo nghỉ hưu đối với viên chức được cơ quan, đơn vị, tổ chức ban hành trong thời gian bao lâu trước khi đến thời hạn viên chức nghỉ hưu? ",
+        "choices": {
+            "A": "06 tháng",
+            "B": "04 tháng",
+            "C": "03 tháng",
+            "D": "02 tháng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Viên chức",
+                "article_id": "46"
+            }
+        ],
+        "answer": "A",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-5",
+        "question_type": "Trắc nghiệm",
+        "text": "Hoạt động của trường quay bao gồm các hoạt động nào sau đây?",
+        "choices": {
+            "A": "Tổ chức quản lý, điều hành hoặc hợp tác liên doanh, liên kết sản xuất phim.",
+            "B": "Cung cấp dịch vụ sản xuất phim và dịch vụ khác theo quy định của pháp luật.",
+            "C": "Cả A và B đều đúng",
+            "D": "Cả A và B đều sai"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Điện ảnh",
+                "article_id": "12"
+            }
+        ],
+        "answer": "C",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B"
+            ],
+            "trues": {
+                "C": [
+                    "A",
+                    "B"
+                ]
+            },
+            "falses": {
+                "D": [
+                    "A",
+                    "B"
+                ]
+            }
+        }
+    },
+    {
+        "question_id": "TN-6",
+        "question_type": "Trắc nghiệm",
+        "text": "Trường hợp nào sau đây ngôn ngữ được sử dụng trong tố tụng không phải là tiếng Việt?",
+        "choices": {
+            "A": "Tranh chấp có yếu tố nước ngoài, các bên không thể thỏa thuận về ngôn ngữ tố tụng, Hội đồng trọng tài quyết định sử dụng tiếng Việt.",
+            "B": "Tranh chấp có yếu tố nước ngoài và một trong các bên không sử dụng được tiếng Việt và các bên thỏa thuận sử dụng tiếng Anh làm ngôn ngữ tố tụng.",
+            "C": "Tranh chấp không có yếu tố nước ngoài, một trong các bên không sử dụng được tiếng Việt.",
+            "D": "Tranh chấp mà ít nhất một bên là doanh nghiệp có vốn đầu tư nước ngoài và các bên thỏa thuận sử dụng tiếng Việt làm ngôn ngữ tố tụng."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "10"
+            }
+        ],
+        "answer": "B",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-7",
+        "question_type": "Trắc nghiệm",
+        "text": "Nguồn tài chính nào sau đây được dùng cho phòng, chống ma túy?",
+        "choices": {
+            "A": "Ngân sách nhà nước",
+            "B": "Nguồn tài trợ, viện trợ, đầu tư, tặng cho của tổ chức, cá nhân trong nước và ngoài nước",
+            "C": "Chi trả của gia đình, người nghiện ma túy",
+            "D": "Cả A, B, C đều đúng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "4"
+            }
+        ],
+        "answer": "D",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C"
+            ],
+            "trues": {
+                "D": [
+                    "A",
+                    "B",
+                    "C"
+                ]
+            },
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-8",
+        "question_type": "Trắc nghiệm",
+        "text": "Quy trình cai nghiệm ma túy bao gồm những giai đoạn nào sau đây?",
+        "choices": {
+            "A": "Điều trị cắt cơn, giải độc, điều trị rối loạn tâm thần và các bệnh lý khác",
+            "B": "Giáo dục, tư vấn, phục hồi hành vi và nhân cách",
+            "C": "Lao động trị liệu, học nghề và chuẩn bị tái hòa nhập cộng đồng",
+            "D": "Cả A, B, C đều đúng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "29"
+            }
+        ],
+        "answer": "D",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C"
+            ],
+            "trues": {
+                "D": [
+                    "A",
+                    "B",
+                    "C"
+                ]
+            },
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-9",
+        "question_type": "Trắc nghiệm",
+        "text": "Có bao nhiêu trình độ giáo dục nghề nghiệp được đào tạo?",
+        "choices": {
+            "A": "Trình độ sơ cấp và trung cấp",
+            "B": "Trình độ cao đẳng",
+            "C": "Chương trình đào tạo nghề nghiệp khác cho người học",
+            "D": "Cả A, B, C đều đúng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Giáo dục",
+                "article_id": "35"
+            }
+        ],
+        "answer": "D",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C"
+            ],
+            "trues": {
+                "D": [
+                    "A",
+                    "B",
+                    "C"
+                ]
+            },
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-10",
+        "question_type": "Trắc nghiệm",
+        "text": "Hồ sơ đăng ký thường trú của công dân có chỗ ở hợp pháp thuộc quyền sở hữu của mình bao gồm những gì?",
+        "choices": {
+            "A": "Tờ khai thay đổi thông tin cư trú; giấy tờ, tài liệu chứng minh đủ diện tích nhà ở để đăng ký thường trú theo quy định.",
+            "B": "Tờ khai thay đổi thông tin cư trú; hợp đồng cho thuê, cho mượn, cho ở nhờ hoặc văn bản về việc cho mượn, cho ở nhờ chỗ ở hợp pháp đã được công chứng hoặc chứng thực theo quy định của pháp luật.",
+            "C": "Tờ khai thay đổi thông tin cư trú; giấy tờ, tài liệu chứng minh việc sở hữu chỗ ở hợp pháp.",
+            "D": "Tờ khai thay đổi thông tin cư trú; giấy tờ, tài liệu chứng minh quan hệ nhân thân với thành viên hộ gia đình."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Cư trú",
+                "article_id": "21"
+            }
+        ],
+        "answer": "C",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-11",
+        "question_type": "Trắc nghiệm",
+        "text": "Trọng tài có thẩm quyền giải quyết tranh chấp trong những trường hợp nào?",
+        "choices": {
+            "A": "Tranh chấp giữa các bên phát sinh từ hoạt động thương mại",
+            "B": "Tranh chấp phát sinh giữa các bên trong đó có ít nhất 1 bên có hoạt động thương mại",
+            "C": "Tranh chấp khác giữa các bên mà pháp luật quy định được giải quyết bằng Trọng tài",
+            "D": "Cả 3 phương án A, B, C đều đúng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "2"
+            }
+        ],
+        "answer": "D",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C"
+            ],
+            "trues": {
+                "D": [
+                    "A",
+                    "B",
+                    "C"
+                ]
+            },
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-12",
+        "question_type": "Trắc nghiệm",
+        "text": "Hành vi nào sau đây không thuộc hành vi bị nghiêm cấm về cư trú?",
+        "choices": {
+            "A": "Làm giả giấy tờ, tài liệu, dữ liệu về cư trú; sử dụng giấy tờ, tài liệu, dữ liệu giả về cư trú; cung cấp thông tin, giấy tờ, tài liệu sai sự thật về cư trú.",
+            "B": "Khai thác thông tin về cư trú của mình trong Cơ sở dữ liệu quốc gia về dân cư.",
+            "C": "Giải quyết cho đăng ký thường trú, đăng ký tạm trú khi biết rõ người đăng ký thường trú, đăng ký tạm trú không sinh sống tại chỗ ở đó.",
+            "D": "Khai man điều kiện, giả mạo hồ sơ, giấy tờ, tài liệu để được đăng ký thường trú, đăng ký tạm trú; mua, bán, thuê, cho thuê, mượn, cho mượn, cầm cố, nhận cầm cố, hủy hoại giấy tờ, tài liệu về cư trú."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Cư trú",
+                "article_id": "7"
+            }
+        ],
+        "answer": "B",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-13",
+        "question_type": "Trắc nghiệm",
+        "text": "Đâu không phải là vai trò của nhà nước là gì trong việc bảo hộ hôn nhân và gia đình?",
+        "choices": {
+            "A": "Xác lập hôn nhân tự nguyện, tiến bộ, một vợ một chồng, vợ chồng bình đẳng.",
+            "B": "Xây dựng gia đình ấm no, tiến bộ, hạnh phúc và thực hiện đầy đủ chức năng của mình.",
+            "C": "Cấm đoán giáo dục pháp luật về hôn nhân và gia đình.",
+            "D": "Vận động nhân dân xóa bỏ phong tục, tập quán lạc hậu về hôn nhân và gia đình."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "4"
+            }
+        ],
+        "answer": "C",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-14",
+        "question_type": "Trắc nghiệm",
+        "text": "Vợ chồng có quyền như nào trong việc chiếm hữu, sử dụng và định đoạt tài sản chung",
+        "choices": {
+            "A": "Vợ chồng tự thỏa thuận",
+            "B": "Vợ có quyền cao hơn chồng",
+            "C": "Vợ chồng có quyền ngang nhau",
+            "D": "Chồng có quyền cao hơn vợ"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "35"
+            }
+        ],
+        "answer": "A",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-15",
+        "question_type": "Trắc nghiệm",
+        "text": "Đâu không phải là điều kiện cấp thẻ dướng dẫn viên du lịch?",
+        "choices": {
+            "A": "Có quốc tịch Việt Nam, thường trú tại Việt Nam.",
+            "B": "Có năng lực hành vi dân sự đầy đủ.",
+            "C": "Tốt nghiệp đại học trở lên chuyên ngành kế toán.",
+            "D": "Không mắc bệnh truyền nhiễm, không sử dụng chất ma túy."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Du lịch",
+                "article_id": "59"
+            }
+        ],
+        "answer": "C",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-16",
+        "question_type": "Trắc nghiệm",
+        "text": "Điều nào sau đây không thuộc trách nhiệm của cơ quan đăng ký cư trú?",
+        "choices": {
+            "A": "Xác nhận thông tin về cư trú, thông báo về kết quả thực hiện các thủ tục đăng ký thường trú, đăng ký tạm trú, gia hạn tạm trú, khai báo thông tin, điều chỉnh thông tin về cư trú, tách hộ, khai báo tạm vắng dưới hình thức văn bản, tin nhắn điện tử hoặc hình thức khác theo quy định của Bộ trưởng Bộ Công an.",
+            "B": "Ban hành, in ấn và quản lý tờ khai thay đổi thông tin cư trú và các giấy tờ, tài liệu, biểu mẫu, sổ sách về cư trú.",
+            "C": "Cập nhật thông tin về cư trú của công dân vào Cơ sở dữ liệu quốc gia về dân cư, Cơ sở dữ liệu về cư trú.",
+            "D": "Quản lý, lưu trữ hồ sơ, giấy tờ, tài liệu về đăng ký, quản lý cư trú và bảo mật thông tin về đăng ký cư trú của công dân."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Cư trú",
+                "article_id": "33"
+            }
+        ],
+        "answer": "B",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-17",
+        "question_type": "Trắc nghiệm",
+        "text": "Đơn vị nào có thẩm quyền cấp giấy phép phân loại phim?",
+        "choices": {
+            "A": "Bộ Văn hóa, Thể thao và Du lịch",
+            "B": "Ủy ban nhân dân cấp tỉnh",
+            "C": "Ủy ban nhân dân cấp tỉnh đáp ứng các điều kiện theo quy định của Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch",
+            "D": "Bộ Văn hóa, Thể thao và Du lịch; Ủy ban nhân dân cấp tỉnh đáp ứng các điều kiện theo quy định của Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Điện ảnh",
+                "article_id": "27"
+            }
+        ],
+        "answer": "D",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-18",
+        "question_type": "Trắc nghiệm",
+        "text": "Đâu không phải là nghĩa vụ, quyền của cha, mẹ không trực tiếp nuôi con sau khi ly hôn",
+        "choices": {
+            "A": "Tôn trọng quyền của con \nđược sống chung với \nngười trực tiếp nuôi.",
+            "B": "Cấp dưỡng cho con",
+            "C": "Lạm dụng việc thăm nom để cản trở hoặc gây ảnh hưởng xấu đến việc trông nom, chăm sóc, nuôi dưỡng, giáo dục con ",
+            "D": "Thăm nom con mà không ai được cản trở. "
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "82"
+            }
+        ],
+        "answer": "C",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-19",
+        "question_type": "Trắc nghiệm",
+        "text": "Điều kiện để giải quyết tranh chấp bằng trọng tài là gì?",
+        "choices": {
+            "A": "Các bên có thỏa thuận trọng tài, thỏa thuận này có thể được lập trước hoặc sau khi xảy ra tranh chấp",
+            "B": "Trường hợp một bên tham gia thoả thuận trọng tài là cá nhân chết hoặc mất năng lực hành vi, thoả thuận trọng tài vẫn có hiệu lực đối với người thừa kế hoặc người đại diện theo pháp luật của người đó, trừ trường hợp các bên có thoả thuận khác.",
+            "C": "Trường hợp một bên tham gia thỏa thuận trọng tài là tổ chức phải chấm dứt hoạt động, bị phá sản, giải thể, hợp nhất, sáp nhập, chia, tách hoặc chuyển đổi hình thức tổ chức, thỏa thuận trọng tài vẫn có hiệu lực đối với tổ chức tiếp nhận quyền và nghĩa vụ của tổ chức đó, trừ trường hợp các bên có thoả thuận khác.",
+            "D": "Cả 3 phương án trên đều đúng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "5"
+            }
+        ],
+        "answer": "D",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C"
+            ],
+            "trues": {
+                "D": [
+                    "A",
+                    "B",
+                    "C"
+                ]
+            },
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-20",
+        "question_type": "Trắc nghiệm",
+        "text": "Trong tố tụng trọng tài, các bên có thể thương lượng, hòa giải với nhau như thế nào?",
+        "choices": {
+            "A": "Các bên có quyền tự do thương lượng thỏa thuận với nhau về việc giải quyết tranh chấp nhưng không có quyền yêu cầu Hội đồng trọng tài hòa giải để các bên thỏa thuận với nhau về việc giải quyết tranh chấp.",
+            "B": "Các bên có quyền tự do thương lượng, thỏa thuận với nhau về việc giải quyết tranh chấp hoặc yêu cầu Hội đồng trọng tài hòa giải để các bên thỏa thuận với nhau về việc giải quyết tranh chấp.",
+            "C": "Các bên không có quyền tự do thương lượng, hòa giải với nhau mà phải yêu cầu Hội đồng trọng tài hòa giải để các bên có thể thỏa thuận với nhau về việc giải quyết tranh chấp",
+            "D": "Các bên không có quyền tự do thương lượng, hòa giải cũng như yêu cầu Hội đồng trọng tài hòa giải cho các bên thỏa thuận về việc giải quyết tranh chấp."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "9"
+            }
+        ],
+        "answer": "B",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-21",
+        "question_type": "Trắc nghiệm",
+        "text": "Thời hạn cơ quan đăng ký cư trú thẩm định, cập nhật thông tin về hộ gia đình liên quan đến việc tách hộ vào Cơ sở dữ liệu về cư trú là bao lâu kể từ ngày nhận được hồ sơ đầy đủ và hợp lệ?",
+        "choices": {
+            "A": "05 ngày làm việc.",
+            "B": "05 ngày kể cả ngày nghỉ và cuối tuần.",
+            "C": "03 ngày làm việc.",
+            "D": "03 ngày kể cả ngày nghỉ và cuối tuần."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Cư trú",
+                "article_id": "25"
+            }
+        ],
+        "answer": "A",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-22",
+        "question_type": "Trắc nghiệm",
+        "text": "Cha mẹ KHÔNG có nghĩa vụ cùng nhau chăm sóc, nuôi dưỡng con khi nào ",
+        "choices": {
+            "A": "Con chưa thành niên",
+            "B": "Con đã thành niên và kết hôn ",
+            "C": "Con đã thành niên nhưng mất năng lực hành vi dân sự",
+            "D": "Con không có khả năng lao động và không có tài sản để nuôi mình"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "71"
+            }
+        ],
+        "answer": "B",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-23",
+        "question_type": "Trắc nghiệm",
+        "text": "Cây có chứa chất ma túy là cây gì?",
+        "choices": {
+            "A": "Cây thuốc phiện",
+            "B": "Cây dừa",
+            "C": "Cây cacao",
+            "D": "Cả A, B, C đều đúng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "2"
+            }
+        ],
+        "answer": "A",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C"
+            ],
+            "trues": {
+                "D": [
+                    "A",
+                    "B",
+                    "C"
+                ]
+            },
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-24",
+        "question_type": "Trắc nghiệm",
+        "text": "Điều nào dưới đây nằm trong luật áp dụng giải quyết tranh chấp được quy định trong Luật Trọng tài thương mại?",
+        "choices": {
+            "A": "Đối với tranh chấp không có yếu tố nước ngoài, Hội đồng trọng tài áp dụng pháp luật Việt Nam để giải quyết tranh chấp.",
+            "B": "Đối với tranh chấp có yếu tố nước ngoài, Hội đồng trọng tài áp dụng pháp luật do các bên lựa chọn; nếu các bên không có thỏa thuận về luật áp dụng thì Hội đồng trọng tài quyết định áp dụng pháp luật mà Hội đồng trọng tài cho là phù hợp nhất.",
+            "C": "Trường hợp pháp luật Việt Nam, pháp luật do các bên lựa chọn không có quy định cụ thể liên quan đến nội dung tranh chấp thì Hội đồng trọng tài được áp dụng tập quán quốc tế để giải quyết tranh chấp nếu việc áp dụng hoặc hậu quả của việc áp dụng đó không trái với các nguyên tắc cơ bản của pháp luật Việt Nam.",
+            "D": "Cả 3 phương án trên đều đúng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "14"
+            }
+        ],
+        "answer": "D",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C"
+            ],
+            "trues": {
+                "D": [
+                    "A",
+                    "B",
+                    "C"
+                ]
+            },
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-25",
+        "question_type": "Trắc nghiệm",
+        "text": "Trong trường hợp nào thỏa thuận trọng tài bị vô hiệu?",
+        "choices": {
+            "A": "Tranh chấp phát sinh trong các lĩnh vực không thuộc thẩm quyền của Trọng tài quy định tại Điều 2 của Luật này.\n",
+            "B": "Thỏa thuận trọng tài không vi phạm điều cấm của pháp luật.",
+            "C": "Hình thức của thoả thuận trọng tài phù hợp với quy định tại Điều 16 của Luật này.\n",
+            "D": "Người xác lập thoả thuận trọng tài là người có thẩm quyền theo quy định của pháp luật."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "18"
+            }
+        ],
+        "answer": "A",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-26",
+        "question_type": "Trắc nghiệm",
+        "text": "Thỏa thuận trọng tài có độc lập với hợp đồng hay không?",
+        "choices": {
+            "A": "Thoả thuận trọng tài hoàn toàn độc lập với hợp đồng. Việc thay đổi, gia hạn, hủy bỏ hợp đồng, hợp đồng vô hiệu hoặc không thể thực hiện được không làm mất hiệu lực của thoả thuận trọng tài.",
+            "B": "Thoả thuận trọng tài không hoàn toàn độc lập với hợp đồng. Việc thay đổi hay gia hạn hợp đồng làm mất hiệu lực của thoả thuận trọng tài.",
+            "C": "Thoả thuận trọng tài không hoàn toàn độc lập với hợp đồng. Việc hủy bỏ hợp đồng hay hợp đồng vô hiệu hoặc không thể thực hiện được làm mất hiệu lực của thoả thuận trọng tài.",
+            "D": "Thỏa thuận trọng tài phụ thuộc vào hợp đồng. Những hành động thay đổi, gia hạn, hủy bỏ hợp đồng hay việc hợp đồng vô hiệu hoặc không thể thực hiện được sẽ làm mất hiệu lực của thỏa thuận trọng tài"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "19"
+            }
+        ],
+        "answer": "A",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-27",
+        "question_type": "Trắc nghiệm",
+        "text": "Chất hướng thần được định nghĩa là gì?",
+        "choices": {
+            "A": "Chất hướng thần là chất kích thích thần kinh",
+            "B": "Chất hướng thần là chất kích thích hoặc ức chế thần kinh hoặc gây ảo giác, nếu sử dụng nhiều lần có thể dẫn tới tình trạng nghiện đối với người sử dụng.",
+            "C": "Chất hướng thần là chất ức chế thần kinh",
+            "D": "Cả A, B, C đều sai"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "2"
+            }
+        ],
+        "answer": "B",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C"
+            ],
+            "trues": {},
+            "falses": {
+                "D": [
+                    "A",
+                    "B",
+                    "C"
+                ]
+            }
+        }
+    },
+    {
+        "question_id": "TN-28",
+        "question_type": "Trắc nghiệm",
+        "text": "Hồ sơ đăng ký công nhận hạng cơ sở lưu trú du lịch không bao gồm?",
+        "choices": {
+            "A": "Đơn đề nghị công nhận hạng cơ sở lưu trú du lịch theo mẫu do Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch quy định.",
+            "B": "Danh sách người thân của nhân viên trong cơ sở lưu trú du lịch.",
+            "C": "Bản tự đánh giá chất lượng của cơ sở lưu trú du lịch theo quy định trong tiêu chuẩn quốc gia về xếp hạng cơ sở lưu trú du lịch.",
+            "D": "Danh sách người quản lý và nhân viên trong cơ sở lưu trú du lịch."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Du lịch",
+                "article_id": "50"
+            }
+        ],
+        "answer": "B",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-29",
+        "question_type": "Trắc nghiệm",
+        "text": "Trong trường hợp nào thì đơn vị sự nghiệp công lập được đơn phương chấm dứt hợp đồng lao động đối với viên chức?",
+        "choices": {
+            "A": "Viên chức bị nhận hình thức kỷ luật khiển trách",
+            "B": "Viên chức nữ đang trong thời gian có thai, nghỉ thai sản, nuôi con dưới 36 tháng tuổi",
+            "C": "Đơn vị sự nghiệp công lập chấm dứt hoạt động theo quyết định của cơ quan có thẩm quyền",
+            "D": "Viên chức đang nghỉ hàng năm, nghỉ về việc riêng và những trường hợp nghỉ khác được người đứng đầu đơn vị sự nghiệp công lập cho phép"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Viên chức",
+                "article_id": "29"
+            }
+        ],
+        "answer": "C",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-30",
+        "question_type": "Trắc nghiệm",
+        "text": "Nguyên tắc hoạt động của Quỹ hỗ trợ phát triển du lịch không bao gồm điều nào dưới đây?",
+        "choices": {
+            "A": "Không vì mục đích lợi nhuận; bảo toàn vốn điều lệ và tự bù đắp chi phí quản lý.",
+            "B": "Thực hiện thu, chi, quyết toán, công khai tài chính, tài sản và công tác kế toán theo quy định của pháp luật.",
+            "C": "Chịu sự kiểm tra, thanh tra, kiểm toán của cơ quan quản lý nhà nước về tài chính và kiểm toán nhà nước về các hoạt động tài chính của Quỹ hỗ trợ phát triển du lịch.",
+            "D": "Số dư kinh phí năm trước của Quỹ hỗ trợ phát triển du lịch được tự ý sử dụng cho mục đích cá nhân."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Du lịch",
+                "article_id": "72"
+            }
+        ],
+        "answer": "D",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-31",
+        "question_type": "Trắc nghiệm",
+        "text": "Đơn vị nào có thẩm quyền thành lập hội đồng thẩm định, phân loại phim?",
+        "choices": {
+            "A": "Bộ trưởng Bộ Văn hóa, Thể thao và Du lịch",
+            "B": "Chủ tịch Ủy ban nhân dân cấp tỉnh",
+            "C": "Người đứng đầu cơ quan báo chí có giấy phép hoạt động truyền hình",
+            "D": "Cả 3 đáp án A, B, C đều đúng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Điện ảnh",
+                "article_id": "31"
+            }
+        ],
+        "answer": "D",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C"
+            ],
+            "trues": {
+                "D": [
+                    "A",
+                    "B",
+                    "C"
+                ]
+            },
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-32",
+        "question_type": "Trắc nghiệm",
+        "text": "Quỹ hỗ trợ phát triển điện ảnh có mục đích gì?",
+        "choices": {
+            "A": "Hỗ trợ cho dự án sản xuất phim thể nghiệm, phim đầu tay, phim của tác giả trẻ.",
+            "B": "Hỗ trợ cho tác giả, dự án sản xuất phim, phim Việt Nam xuất sắc tham gia liên hoan phim, giải thưởng phim, cuộc thi phim, hội chợ phim, chương trình phim, tuần phim tại nước ngoài.",
+            "C": "Cả 3 đáp án còn lại đều đúng",
+            "D": "Hỗ trợ các hoạt động khác để phát triển điện ảnh."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Điện ảnh",
+                "article_id": "43"
+            }
+        ],
+        "answer": "C",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "D"
+            ],
+            "trues": {
+                "C": [
+                    "A",
+                    "B",
+                    "D"
+                ]
+            },
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-33",
+        "question_type": "Trắc nghiệm",
+        "text": "Theo Luật Du Lịch về trách nhiệm quản lý nhà nước về du lịch, ủy ban nhân dân các cấp không có nhiệm vụ, quyền hạn nào sau đây?",
+        "choices": {
+            "A": "Tổ chức tiếp nhận và giải quyết kiến nghị của khách du lịch;",
+            "B": "Lợi dụng hoạt động du lịch để đưa người từ Việt Nam ra nước ngoài hoặc từ nước ngoài vào Việt Nam trái pháp luật.",
+            "C": "Quản lý tài nguyên du lịch, khu du lịch, điểm du lịch, hoạt động kinh doanh du lịch và hướng dẫn du lịch trên địa bàn;",
+            "D": "Tuyên truyền, nâng cao nhận thức của người dân để bảo đảm môi trường du lịch thân thiện, lành mạnh và văn minh;"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Du lịch",
+                "article_id": "75"
+            }
+        ],
+        "answer": "B",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-34",
+        "question_type": "Trắc nghiệm",
+        "text": "Hiệp hội trọng tài là gì?",
+        "choices": {
+            "A": "Hiệp hội trọng tài là tổ chức xã hội – nghề nghiệp của Trọng tài viên và Trung tâm trọng tài  theo phạm vi từng tỉnh/thành phố.",
+            "B": "Hiệp hội trọng tài là tổ chức xã hội – nghề nghiệp của Trọng tài viên và Trung tâm trọng tài trong phạm vi cả nước.",
+            "C": "Hiệp hội trọng tài là tổ chức xã hội – nghề nghiệp của Kiểm sát viên và Trung tâm trọng tài trong phạm vi cả nước.",
+            "D": "Hiệp hội trọng tài là tổ chức xã hội – nghề nghiệp của Trọng tài viên và Tòa án nhân dân trong phạm vi cả nước."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Trọng tài thương mại",
+                "article_id": "22"
+            }
+        ],
+        "answer": "B",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "trues": {},
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-35",
+        "question_type": "Trắc nghiệm",
+        "text": "Hành vi nào sau đây bị cấm?",
+        "choices": {
+            "A": "Cưỡng ép ly hôn, lừa dối ly hôn, cản trở ly hôn.",
+            "B": "Yêu sách của cải trong kết hôn.",
+            "C": "Thực hiện sinh con bằng kỹ thuật hỗ trợ sinh sản vì mục đích thương mại.",
+            "D": "Cả 3 đáp án A, B, C đều đúng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Hôn nhân và gia đình",
+                "article_id": "5"
+            }
+        ],
+        "answer": "D",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C"
+            ],
+            "trues": {
+                "D": [
+                    "A",
+                    "B",
+                    "C"
+                ]
+            },
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-36",
+        "question_type": "Trắc nghiệm",
+        "text": "Cơ sở cai nghiện ma túy công lập phải bố trí các khu gì?",
+        "choices": {
+            "A": "Khu lưu trú tạm thời",
+            "B": "Khu cai nghiện ma túy bắt buộc",
+            "C": "Khu cai nghiện ma túy tự nguyện",
+            "D": "Cả A, B, C đều đúng"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "35"
+            }
+        ],
+        "answer": "D",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C"
+            ],
+            "trues": {
+                "D": [
+                    "A",
+                    "B",
+                    "C"
+                ]
+            },
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-37",
+        "question_type": "Trắc nghiệm",
+        "text": "Trường hợp nào sau đây không được đăng ký thường trú tại cơ sở tín ngưỡng, cơ sở tôn giáo có công trình phụ trợ là nhà ở?",
+        "choices": {
+            "A": "Người được người đại diện hoặc ban quản lý cơ sở tín ngưỡng đồng ý cho đăng ký thường trú để trực tiếp quản lý, tổ chức hoạt động tín ngưỡng tại cơ sở tín ngưỡng.",
+            "B": "Người đại diện cơ sở tín ngưỡng.",
+            "C": "Người làm việc cho cơ sở tín ngưỡng.",
+            "D": "Cả 3 đáp án A, B, C."
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Cư trú",
+                "article_id": "20"
+            }
+        ],
+        "answer": "C",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B",
+                "C"
+            ],
+            "trues": {
+                "D": [
+                    "A",
+                    "B",
+                    "C"
+                ]
+            },
+            "falses": {}
+        }
+    },
+    {
+        "question_id": "TN-38",
+        "question_type": "Trắc nghiệm",
+        "text": "Mục tiêu của giáo dục nghề nghiệp là gì?",
+        "choices": {
+            "A": "Đào tạo nhân lực trực tiếp cho sản xuất, kinh doanh và dịch vụ.",
+            "B": "Tạo điều kiện cho người học sau khi hoàn thành khóa học có khả năng tìm việc làm hoặc học trình độ cao hơn",
+            "C": "Cả A, B đều đúng",
+            "D": "Cả A, B đều sai"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Giáo dục",
+                "article_id": "36"
+            }
+        ],
+        "answer": "C",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B"
+            ],
+            "trues": {
+                "C": [
+                    "A",
+                    "B"
+                ]
+            },
+            "falses": {
+                "D": [
+                    "A",
+                    "B"
+                ]
+            }
+        }
+    },
+    {
+        "question_id": "TN-39",
+        "question_type": "Trắc nghiệm",
+        "text": "Nhiệm vụ của giáo dục thường xuyên là gì?",
+        "choices": {
+            "A": "Thực hiện xóa mù chữ cho người trong độ tuổi theo quy định của pháp luật",
+            "B": "Tạo cơ hội cho người có nhu cầu học tập nâng cao trình độ học vấn",
+            "C": "Cả A, B đều đúng",
+            "D": "Cả A, B đều sai"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Giáo dục",
+                "article_id": "42"
+            }
+        ],
+        "answer": "C",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B"
+            ],
+            "trues": {
+                "C": [
+                    "A",
+                    "B"
+                ]
+            },
+            "falses": {
+                "D": [
+                    "A",
+                    "B"
+                ]
+            }
+        }
+    },
+    {
+        "question_id": "TN-40",
+        "question_type": "Trắc nghiệm",
+        "text": "Các biện pháp cai nghiện ma túy là những biện pháp nào sau đây?",
+        "choices": {
+            "A": "Cai nghiện ma túy tự nguyện",
+            "B": "Cai nghiện ma túy bắt buộc",
+            "C": "Cả A, B đều đúng",
+            "D": "Cả A, B đều sai"
+        },
+        "relevant_articles": [
+            {
+                "law_id": "Luật Phòng, chống ma túy",
+                "article_id": "28"
+            }
+        ],
+        "answer": "C",
+        "metadata": {
+            "standalones": [
+                "A",
+                "B"
+            ],
+            "trues": {
+                "C": [
+                    "A",
+                    "B"
+                ]
+            },
+            "falses": {
+                "D": [
+                    "A",
+                    "B"
+                ]
+            }
+        }
+    }
+]
