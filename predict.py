@@ -159,6 +159,7 @@ def ensemble_model_predict(bm25_model,
     all_models_questions_embeddings = all_models_encode_questions(sbert_models, predicting_questions)
 
     pred_list = []
+    pred_list_detailed = []     # save for task 2
 
     print("Start calculating results")
     for _, item in tqdm(enumerate(predicting_questions)):
@@ -196,6 +197,10 @@ def ensemble_model_predict(bm25_model,
         pred_dict = {}
         pred_dict["question_id"] = question_id
         pred_dict["relevant_articles"] = []
+
+        pred_dict_detailed = item
+        # override relevant articles if exists
+        pred_dict_detailed["relevant_articles"] = []
         
         dup_ans = []
         for _, idx_pred in enumerate(map_ids):
@@ -206,9 +211,11 @@ def ensemble_model_predict(bm25_model,
             if law_id + "_" + article_id not in dup_ans:
                 dup_ans.append(law_id + "_" + article_id)
                 pred_dict["relevant_articles"].append({"law_id": law_id, "article_id": article_id})
+                pred_dict_detailed["relevant_articles"].append({"law_id": law_id, "article_id": article_id})
         pred_list.append(pred_dict)
+        pred_list_detailed.append(pred_dict_detailed)
 
-    return pred_list
+    return pred_list, pred_list_detailed
 
 def ensemble_model_lexfirst_predict(
                       bm25_model, 
@@ -230,6 +237,7 @@ def ensemble_model_lexfirst_predict(
     all_models_questions_embeddings = all_models_encode_questions(sbert_models, predicting_questions)
 
     pred_list = []
+    pred_list_detailed = []     # save for task 2
 
     print("Start calculating results")
     for _, item in tqdm(enumerate(predicting_questions)):
@@ -271,6 +279,10 @@ def ensemble_model_lexfirst_predict(
         pred_dict = {}
         pred_dict["question_id"] = question_id
         pred_dict["relevant_articles"] = []
+
+        pred_dict_detailed = item
+        # override relevant articles if exists
+        pred_dict_detailed["relevant_articles"] = []
         
         dup_ans = []
         for _, idx_pred in enumerate(map_ids):
@@ -281,9 +293,11 @@ def ensemble_model_lexfirst_predict(
             if law_id + "_" + article_id not in dup_ans:
                 dup_ans.append(law_id + "_" + article_id)
                 pred_dict["relevant_articles"].append({"law_id": law_id, "article_id": article_id})
+                pred_dict_detailed["relevant_articles"].append({"law_id": law_id, "article_id": article_id})
         pred_list.append(pred_dict)
+        pred_list_detailed.append(pred_dict_detailed)
 
-    return pred_list
+    return pred_list, pred_list_detailed
 
 def single_model_predict(sbert_model, 
                     flat_corpus_data, 
@@ -296,6 +310,7 @@ def single_model_predict(sbert_model,
     single_model_questions_embeddings = single_model_encode_questions(sbert_model, predicting_questions)
 
     pred_list = []
+    pred_list_detailed = []     # save for task 2
 
     print("Start calculating results")
     for _, item in tqdm(enumerate(predicting_questions)):
@@ -318,6 +333,10 @@ def single_model_predict(sbert_model,
         pred_dict = {}
         pred_dict["question_id"] = question_id
         pred_dict["relevant_articles"] = []
+
+        pred_dict_detailed = item
+        # override relevant articles if exists
+        pred_dict_detailed["relevant_articles"] = []
         
         dup_ans = []
         for _, idx_pred in enumerate(map_ids):
@@ -328,9 +347,11 @@ def single_model_predict(sbert_model,
             if law_id + "_" + article_id not in dup_ans:
                 dup_ans.append(law_id + "_" + article_id)
                 pred_dict["relevant_articles"].append({"law_id": law_id, "article_id": article_id})
+                pred_dict_detailed["relevant_articles"].append({"law_id": law_id, "article_id": article_id})
         pred_list.append(pred_dict)
+        pred_list_detailed.append(pred_dict_detailed)
 
-    return pred_list
+    return pred_list, pred_list_detailed
 
 def evaluate_results(train_questions, predictions):
     print("Start evaluating results")
@@ -447,29 +468,29 @@ if __name__ == "__main__":
             all_models_corpus_embeddings = load_all_models_emdbeddings(args.corpus_name, args.eval_round)
         
         if args.lexical_nodiff:
-            predictions = ensemble_model_predict(bm25, models, flat_corpus_data, all_models_corpus_embeddings, predicting_items, scoring_weights, args.sqrt_lexical, args.range_score, args.max_relevants)
+            predictions, predictions_detailed = ensemble_model_predict(bm25, models, flat_corpus_data, all_models_corpus_embeddings, predicting_items, scoring_weights, args.sqrt_lexical, args.range_score, args.max_relevants)
         else:
-            predictions = ensemble_model_lexfirst_predict(bm25, models, flat_corpus_data, all_models_corpus_embeddings, predicting_items, scoring_weights, args.sqrt_lexical, args.lexical_top_k, args.range_score, args.max_relevants)
+            predictions, predictions_detailed = ensemble_model_lexfirst_predict(bm25, models, flat_corpus_data, all_models_corpus_embeddings, predicting_items, scoring_weights, args.sqrt_lexical, args.lexical_top_k, args.range_score, args.max_relevants)
             
         if args.eval_on == "test":
-            if args.test_type == "public":
-                test_type = "public_test"
-            elif args.test_type == "private":
-                test_type = "private_test"
-
             if args.lexical_nodiff:
                 if args.sqrt_lexical:
-                    submission_name = f"{args.corpus_name}_ensemble_model_round{args.eval_round}_sqrtlex_{test_type}_submission.json"
+                    submission_name = f"{args.corpus_name}_ensemble_model_round{args.eval_round}_sqrtlex_{args.test_type}_test_submission.json"
                 else:                    
-                    submission_name = f"{args.corpus_name}_ensemble_model_round{args.eval_round}_{test_type}_submission.json"
+                    submission_name = f"{args.corpus_name}_ensemble_model_round{args.eval_round}_{args.test_type}_test_submission.json"
             else:
                 if args.sqrt_lexical:                
-                    submission_name = f"{args.corpus_name}_ensemble_model_lexfirst{args.lexical_top_k}_round{args.eval_round}_sqrtlex_{test_type}_submission.json"
+                    submission_name = f"{args.corpus_name}_ensemble_model_lexfirst{args.lexical_top_k}_round{args.eval_round}_sqrtlex_{args.test_type}_test_submission.json"
                 else:
-                    submission_name = f"{args.corpus_name}_ensemble_model_lexfirst{args.lexical_top_k}_round{args.eval_round}_{test_type}_submission.json"
+                    submission_name = f"{args.corpus_name}_ensemble_model_lexfirst{args.lexical_top_k}_round{args.eval_round}_{args.test_type}_test_submission.json"
 
             with open(f'results/{submission_name}', 'w', encoding='utf-8') as outfile:
                 json_object = json.dumps(predictions, indent=4, ensure_ascii=False)
+                outfile.write(json_object)
+
+            # save for task 2
+            with open(f'results/{submission_name.replace("_submission", "")}', 'w', encoding='utf-8') as outfile:
+                json_object = json.dumps(predictions_detailed, indent=4, ensure_ascii=False)
                 outfile.write(json_object)
 
     elif args.eval_mode == "single":
@@ -485,11 +506,16 @@ if __name__ == "__main__":
         else:
             corpus_embeddings = load_single_model_emdbeddings(args.eval_model, args.corpus_name)
         
-        predictions = single_model_predict(model, flat_corpus_data, corpus_embeddings, predicting_items, args.range_score, args.max_relevants)
+        predictions, predictions_detailed = single_model_predict(model, flat_corpus_data, corpus_embeddings, predicting_items, args.range_score, args.max_relevants)
 
         if args.eval_on == "test":
-            with open(f'results/{args.corpus_name}_{model_name}_submission.json', 'w', encoding='utf-8') as outfile:
+            with open(f'results/{args.corpus_name}_{model_name}_{args.test_type}_test_submission.json', 'w', encoding='utf-8') as outfile:
                 json_object = json.dumps(predictions, indent=4, ensure_ascii=False)
+                outfile.write(json_object)            
+
+            # save for task 2
+            with open(f'results/{args.corpus_name}_{model_name}_{args.test_type}_test.json', 'w', encoding='utf-8') as outfile:
+                json_object = json.dumps(predictions_detailed, indent=4, ensure_ascii=False)
                 outfile.write(json_object)
     
     if args.eval_on == "train":
