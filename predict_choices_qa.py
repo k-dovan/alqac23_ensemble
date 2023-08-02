@@ -176,7 +176,7 @@ def predict_choices_questions(model, tokenizer, questions: list, eval_on: str):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model_path", default="saved_model/boolq_alqac23_ep50_google_ep3_finetuned_vi_mrc_large/checkpoint-200", type=str, help="path to boolean QA model")
+    parser.add_argument("--model_path", default="saved_model/boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large/checkpoint-200", type=str, help="path to boolean QA model")
     parser.add_argument("--eval_on", default="train", type=str, choices=["train", "public_test", "private_test"], help="evaluate on train, public test or private test data")
     args = parser.parse_args()
 
@@ -186,9 +186,9 @@ if __name__ == '__main__':
     print ("Done")
 
     data_paths = [
-        "alqac23_data/train.json",                                                              # train      
-        "results/alqac23_ensemble_2035_lexfirst100_ro2_private_test_submission_2.json",         # public test              
-        "alqac23_data/private_test_GOLD_TASK_1.json"                                            # private test
+        "alqac23_data/train.json",                                                   # train      
+        "results/alqac23_ensemble_2035_lexfirst100_round2_public_test.json",         # public test              
+        "alqac23_data/private_test_GOLD_TASK_1.json"                                 # private test
     ]
     
     if args.eval_on == "train":

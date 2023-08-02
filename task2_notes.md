@@ -16,17 +16,44 @@ screen -dm bash -c "python train_boolean_qa.py --model_name_or_path  saved_model
 ### On ALQAC 2023's boolean questions
 
 ```
-screen -dm bash -c "python train_boolean_qa.py --model_name_or_path  saved_model/boolq_google_ep3_finetuned_ep20_vi_mrc_large/ --train_file generated_data/qa_boolean_question_data/alqac23_boolean_qa_training_samples.json --validation_file generated_data/qa_boolean_question_data/alqac23_boolean_qa_validation_samples.json  --shuffle_train_dataset --metric_name accuracy --question_column_name question  --context_column_name context --label_column_name label --do_train --do_eval --max_seq_length 512 --per_device_train_batch_size 16 --learning_rate 2e-5 --num_train_epochs 50 --logging_steps 100 --save_steps 100 --eval_steps 100 --save_total_limit 5 --output_dir saved_model/boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large/ 2> logs/boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large.log"
+screen -dm bash -c "python train_boolean_qa.py --model_name_or_path  saved_model/boolq_google_ep3_finetuned_ep20_vi_mrc_large/checkpoint-1500 --train_file generated_data/qa_boolean_question_data/alqac23_boolean_qa_training_samples.json --validation_file generated_data/qa_boolean_question_data/alqac23_boolean_qa_validation_samples.json  --shuffle_train_dataset --metric_name accuracy --question_column_name question  --context_column_name context --label_column_name label --do_train --do_eval --max_seq_length 512 --per_device_train_batch_size 16 --learning_rate 2e-5 --num_train_epochs 50 --logging_steps 100 --save_steps 100 --eval_steps 100 --save_total_limit 5 --output_dir saved_model/boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large/ 2> logs/boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large.log"
 ```
 
 
 # Experiments
+## Extractive QA models
+### 6-epoch finetuned Extractive-QA model `finetuned_vi_mrc_large`
+- saved_model/finetuned_vi_mrc_large
 
+### 20-epoch finetuned Extractive-QA model `finetuned_ep20_vi_mrc_large`
+- saved_model/finetuned_ep20_vi_mrc_large
+- saved_model/finetuned_ep20_vi_mrc_large/checkpoint-800
+
+**Note:** Manual check on train questions -> results by the two above 20-epoch models are identical.
+
+## Boolean/mutliple-choice QA models
+### Models finetuning from 6-epoch finetuned Extractive-QA model `finetuned_vi_mrc_large`
 - Model `boolq_alqac23_ep50_google_ep3_finetuned_vi_mrc_large`:                boolean acc: 0.88/ multi-choice acc: 0.875
-- Model `boolq_alqac23_ep50_google_ep3_finetuned_vi_mrc_large/checkpoint-100`: boolean acc: 0.84/ multi-choice acc: 0.95
+- Model `boolq_alqac23_ep50_google_ep3_finetuned_vi_mrc_large/checkpoint-100`: boolean acc: 0.84/ multi-choice acc: 0.95 (`removed`)
 - Model `boolq_alqac23_ep50_google_ep3_finetuned_vi_mrc_large/checkpoint-200`: boolean acc: 0.88/ multi-choice acc: 0.90
-- Model `boolq_alqac23_ep50_google_ep3_finetuned_vi_mrc_large/checkpoint-300`: boolean acc: 0.88/ multi-choice acc: 0.90
-- Model `boolq_alqac23_ep50_google_ep3_finetuned_vi_mrc_large/checkpoint-400`: boolean acc: 0.88/ multi-choice acc: 0.875
+- Model `boolq_alqac23_ep50_google_ep3_finetuned_vi_mrc_large/checkpoint-300`: boolean acc: 0.88/ multi-choice acc: 0.90 (`removed`)
+- Model `boolq_alqac23_ep50_google_ep3_finetuned_vi_mrc_large/checkpoint-400`: boolean acc: 0.88/ multi-choice acc: 0.875 (`removed`)
+
+### BoolQA models finetuning from 20-epoch finetuned Extractive-QA model `finetuned_ep20_vi_mrc_large`
+- Model `boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large`: boolean acc: 0.90/ multi-choice acc: 0.925
+- Model `boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large/checkpoint-200`: boolean acc: 0.90/ multi-choice acc: 0.95
+- Model `boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large/checkpoint-300`: boolean acc: 0.90/ multi-choice acc: 0.95
+- Model `boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large/checkpoint-400`: boolean acc: 0.90/ multi-choice acc: 0.925 (`removed`)
+
+## Candidate BoolQA models
+- saved_model/boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large/checkpoint-200
+- saved_model/boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large/checkpoint-300
+- saved_model/boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large
+
+## Submission
+```
+python predict_mixed_qa.py --eval_on public_test --extr_model_path saved_model/finetuned_ep20_vi_mrc_large/checkpoint-800 --boolq_model_path saved_model/boolq_alqac23_ep50_google_ep3_finetuned_ep20_vi_mrc_large/checkpoint-200 --extqa_model_sig extqa-ep20-ckpt-800 --boolqa_model_sig boolqa-eps-50-3-20-ckpt-200
+```
 
 ## TODOS:
 ## most of wrong predictions from all-standalone-choice questions -> model embedding improve?
