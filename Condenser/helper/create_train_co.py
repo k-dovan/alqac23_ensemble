@@ -20,9 +20,9 @@ from multiprocessing import Pool
 from tqdm import tqdm
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--file', required=True)
-parser.add_argument('--save_path', required=True)
-parser.add_argument('--tokenizer', required=True)
+parser.add_argument('--file', required=True, help="path to co-condenser data file")
+parser.add_argument('--save_path', required=True, help="path to save encoded co-condenser data")
+parser.add_argument('--tokenizer', required=True, help="tokenizer to use")
 args = parser.parse_args()
 
 tokenizer = AutoTokenizer.from_pretrained(args.tokenizer, use_fast=True)
@@ -43,10 +43,10 @@ def encode_one(line):
     ]
     return json.dumps({'spans': tokenized})
 
-condenser_data_name = os.path.os.path.basename(args.file)
-condenser_data_name = os.path.splitext(condenser_data_name)[0]
+cocondenser_data_name = os.path.os.path.basename(args.file)
+cocondenser_data_name = os.path.splitext(cocondenser_data_name)[0]
 
-with open(os.path.join(args.save_path, f'{condenser_data_name}_encoded.json'), 'w') as f:
+with open(os.path.join(args.save_path, f'{cocondenser_data_name}_encoded.json'), 'w') as f:
     with Pool() as p:
         all_tokenized = p.imap_unordered(
             encode_one,
