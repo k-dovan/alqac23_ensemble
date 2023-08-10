@@ -53,9 +53,8 @@ def evaluate_results(questions, predictions):
     for item in tqdm(questions):
         question_id = item["question_id"]
         answer = item["answer"]
-        answer_en = "True" if answer == "Đúng" else "False"
         
-        if answer_en == predictions[question_id]:
+        if answer == predictions[question_id]:
             correct += 1
 
     print(f"Accuracy: {correct/len(questions):0.3f}")
@@ -79,7 +78,13 @@ def predict_bool_questions(model, tokenizer, questions: list, eval_on: str):
             preds[qid] = model.config.id2label[class_ids[idx]]
         else:
             if model.config.id2label[class_ids[idx]] == "True":
-                preds[qid] = model.config.id2label[class_ids[idx]]    
+                preds[qid] = model.config.id2label[class_ids[idx]] 
+    # convert label to vi :v
+    for key in preds:
+        if preds[key] == "True":
+            preds[key] = "Đúng"
+        elif preds[key] == "False":
+            preds[key] = "Sai"
     
     assert len(bool_questions) == len(preds), "Number of bool questions must be equal to number of predictions."
 
