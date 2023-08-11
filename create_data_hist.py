@@ -39,6 +39,7 @@ if __name__ == "__main__":
         "zalo": zalo_corpus_path_train
     }
     
+    global_data_lengths = []
     for corpus_name, data_path in corpus_paths.items():
         data = json.load(open(data_path))
             
@@ -52,22 +53,47 @@ if __name__ == "__main__":
                 # from find outliers -> threshold of outliers
                 if data_len < outlier_thresh:
                     data_lengths.append(data_len)
+                    global_data_lengths.append(data_len)
 
+        plt.title(label = f"[{corpus_name}] Article Length Distribution", loc='center')
+        plt.xlabel("Length")  
+        plt.ylabel("Frequency")  
         plt.hist(data_lengths, bins=20)
         plt.savefig(f'{args.save_path}/hist_{corpus_name}_articles.png')
         plt.close()
     
+    # create combined histogram
+    plt.title(label = f"Article Length Distribution", loc='center')
+    plt.xlabel("Length")  
+    plt.ylabel("Frequency")
+    plt.hist(global_data_lengths, bins=20)
+    plt.savefig(f'{args.save_path}/hist_all_articles.png')
+    plt.close()
+    
+    global_data_lengths = []
     for corpus_name, train_path in train_corpus_paths.items():
         data = json.load(open(train_path))
             
         data_lengths = []
         for item in tqdm(data):
             data_len = len(item["text"])
-            data_lengths.append(data_len)                    
-
+            data_lengths.append(data_len)   
+            global_data_lengths.append(data_len)                 
+        
+        plt.title(label = f"[{corpus_name}] Question Length Distribution", loc='center')
+        plt.xlabel("Length")  
+        plt.ylabel("Frequency")  
         plt.hist(data_lengths, bins=20)
         plt.savefig(f'{args.save_path}/hist_{corpus_name}_questions.png')
         plt.close()
+    
+    # create combined histogram
+    plt.title(label = f"Question Length Distribution", loc='center')
+    plt.xlabel("Length")  
+    plt.ylabel("Frequency")
+    plt.hist(global_data_lengths, bins=20)
+    plt.savefig(f'{args.save_path}/hist_all_questions.png')
+    plt.close()
                 
 def find_outliers(corpus_name, data_path):
     data = json.load(open(data_path))
